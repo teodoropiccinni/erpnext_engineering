@@ -1,4 +1,5 @@
 import frappe
+from frappe.permissions import add_permission
 
 def setup_workspace_access(workspace_name):
     """
@@ -38,53 +39,15 @@ def setup_workspace_access(workspace_name):
         })
         user_group.save(ignore_permissions=True)
 
-    # Add Role Permission for 'Item Coding Table'
-    if not frappe.db.exists(
-        "Custom DocPerm",
-        {"parent": "Item Coding Table", "role": role_name}
-    ):
-        frappe.get_doc({
-            "doctype": "Custom DocPerm",
-            "parent": "Item Coding Table",
-            "role": role_name,
-            "permlevel": 0,
-            "read": 1,
-            "write": 1,
-            "create": 1,
-            "delete": 0
-        }).insert(ignore_permissions=True)
-
-    # Add Role Permission for 'Item'
-    if not frappe.db.exists(
-        "Custom DocPerm",
-        {"parent": "Item", "role": role_name}
-    ):
-        frappe.get_doc({
-            "doctype": "Custom DocPerm",
-            "parent": "Item",
-            "role": role_name,
-            "permlevel": 0,
-            "read": 1,
-            "write": 1,
-            "create": 1,
-            "delete": 0
-        }).insert(ignore_permissions=True)
-
-    # Add Role Permission for 'Project'
-    if not frappe.db.exists(
-        "Custom DocPerm",
-        {"parent": "Project", "role": role_name}
-    ):
-        frappe.get_doc({
-            "doctype": "Custom DocPerm",
-            "parent": "Project",
-            "role": role_name,
-            "permlevel": 0,
-            "read": 1,
-            "write": 1,
-            "create": 1,
-            "delete": 0
-        }).insert(ignore_permissions=True)
+    # Add Role Permissions for selected Doctypes
+    for doctype in ["Item Coding Table", "Item", "Project"]:
+        existing_perms = frappe.get_all(
+            "Custom DocPerm",
+            filters={"parent": doctype, "role": role_name, "permlevel": 0},
+            limit=1
+        )
+        if not existing_perms:
+            add_permission(doctype=doctype, role=role_name, permlevel=0)
 
     frappe.db.commit()
 
