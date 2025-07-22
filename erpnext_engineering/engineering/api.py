@@ -21,6 +21,7 @@ def setup_workspace_access(workspace_name):
         frappe.get_doc({
             "doctype": "Role",
             "role_name": role_name
+            "name": "Engineering-Role",
         }).insert(ignore_permissions=True)
 
     # Create User Group if it doesn't exist
@@ -28,6 +29,7 @@ def setup_workspace_access(workspace_name):
         frappe.get_doc({
             "doctype": "User Group",
             "user_group_name": group_name,
+            "name": "Engineering-User_Group",
             "enabled": 1
         }).insert(ignore_permissions=True)
 
