@@ -176,7 +176,7 @@ doc_events = {
         "after_insert": "erpnext-engineering.engineering.api.create_workspace_group_and_permissions",
         "on_update": "erpnext-engineering.engineering.api.create_workspace_group_and_permissions"
     }
-#
+}
 
 # Scheduled Tasks
 # ---------------
