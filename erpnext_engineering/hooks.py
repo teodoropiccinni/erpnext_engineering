@@ -25,6 +25,12 @@ required_apps = ["frappe", "erpnext"]
 # ------------------
 fixtures = [
     {
+        "doctype": "Workspace",
+        "filters": [
+            ["module", "=", "Engineering"]
+        ]
+    },
+    {
         "dt": "Custom Field",
         "filters": [
             ["module", "=", "Engineering"]
