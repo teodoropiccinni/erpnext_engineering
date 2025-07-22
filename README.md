@@ -11,11 +11,11 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
-URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext-engineering.git"
+URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext_engineering.git"
 VERSION_OF_FRAPPE="version-15"
 cd $PATH_TO_YOUR_BENCH
 bench get-app $URL_OF_THIS_REPO --branch $VERSION_OF_FRAPPE
-bench install-app erpnext_carworkshop
+bench install-app erpnext_engineering
 ```
 Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is the current version. Adapt those parameters to your needs.
 

@@ -173,8 +173,8 @@ doc_events = {
 #       "on_trash": "method"
 #   }
     "Workspace": {
-        "after_insert": "erpnext-engineering.engineering.api.create_workspace_group_and_permissions",
-        "on_update": "erpnext-engineering.engineering.api.create_workspace_group_and_permissions"
+        "after_insert": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions",
+        "on_update": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions"
     }
 }
 
