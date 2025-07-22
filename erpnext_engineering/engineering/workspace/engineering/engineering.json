@@ -1,7 +1,7 @@
 {
  "charts": [],
- "content": "[{\"id\":\"csBCiDglCE\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"YHCQG3wAGv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"BOM Creator\",\"col\":3}},{\"id\":\"xit0dg7KvY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"BOM\",\"col\":3}},{\"id\":\"LRhGV9GAov\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Plan\",\"col\":3}},{\"id\":\"69KKosI6Hg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Work Order\",\"col\":3}},{\"id\":\"PwndxuIpB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Job Card\",\"col\":3}},{\"id\":\"Ubj6zXcmIQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Plant Floor\",\"col\":3}},{\"id\":\"OtMcArFRa5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"BOM Stock Report\",\"col\":3}},{\"id\":\"76yYsI5imF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Planning Report\",\"col\":3}},{\"id\":\"PIQJYZOMnD\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Learn Manufacturing\",\"col\":3}},{\"id\":\"OaiDqTT03Y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Forecasting\",\"col\":3}},{\"id\":\"bN_6tHS-Ct\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"yVEFZMqVwd\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"rwrmsTI58-\",\"type\":\"card\",\"data\":{\"card_name\":\"Production\",\"col\":4}},{\"id\":\"6dnsyX-siZ\",\"type\":\"card\",\"data\":{\"card_name\":\"Bill of Materials\",\"col\":4}},{\"id\":\"CIq-v5f5KC\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}},{\"id\":\"8RRiQeYr0G\",\"type\":\"card\",\"data\":{\"card_name\":\"Tools\",\"col\":4}},{\"id\":\"Pu8z7-82rT\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}}]",
- "creation": "2025-07-22 04:22:02.467031",
+ "content": "[{\"id\":\"csBCiDglCE\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Le tue scorciatoie</b></span>\",\"col\":12}},{\"id\":\"PZ7TfvN6Gq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Articoli\",\"col\":3}},{\"id\":\"xit0dg7KvY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Elenco BOM\",\"col\":3}},{\"id\":\"YHCQG3wAGv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"BOM Creator\",\"col\":3}},{\"id\":\"OtMcArFRa5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Progetti\",\"col\":3}},{\"id\":\"bN_6tHS-Ct\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"yVEFZMqVwd\",\"type\":\"header\",\"data\":{\"text\":\"Funzionalit\u00e0 Ingegneria\",\"col\":12}},{\"id\":\"rwrmsTI58-\",\"type\":\"card\",\"data\":{\"card_name\":\"Articoli\",\"col\":4}},{\"id\":\"6dnsyX-siZ\",\"type\":\"card\",\"data\":{\"card_name\":\"Distinte materiali\",\"col\":4}},{\"id\":\"CgBeLUeksT\",\"type\":\"card\",\"data\":{\"card_name\":\"Produzione\",\"col\":4}},{\"id\":\"8OElyjEPCu\",\"type\":\"card\",\"data\":{\"card_name\":\"Progetti\",\"col\":4}},{\"id\":\"8RRiQeYr0G\",\"type\":\"card\",\"data\":{\"card_name\":\"Tools\",\"col\":4}},{\"id\":\"CIq-v5f5KC\",\"type\":\"card\",\"data\":{\"card_name\":\"Report\",\"col\":4}},{\"id\":\"Pu8z7-82rT\",\"type\":\"card\",\"data\":{\"card_name\":\"Impostazioni\",\"col\":4}}]",
+ "creation": "2025-07-22 09:02:53.093346",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -13,15 +13,6 @@
  "is_hidden": 0,
  "label": "Engineering",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Production",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
   {
    "dependencies": "Item, BOM",
    "hidden": 0,
@@ -109,15 +100,6 @@
    "type": "Link"
   },
   {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Settings",
-   "link_count": 0,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
    "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
@@ -131,28 +113,66 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Bill of Materials",
-   "link_count": 6,
+   "label": "Articoli",
+   "link_count": 4,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
   {
-   "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Item",
+   "label": "Articoli",
    "link_count": 0,
    "link_to": "Item",
    "link_type": "DocType",
-   "onboard": 1,
+   "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gruppo Articoli",
+   "link_count": 0,
+   "link_to": "Item Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attributo Articoli",
+   "link_count": 0,
+   "link_to": "Item Attribute",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Prezzo Articoli",
+   "link_count": 0,
+   "link_to": "Item Price",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Distinte materiali",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
   },
   {
    "dependencies": "Item",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Bill of Materials",
+   "label": "Distinte materiali",
    "link_count": 0,
    "link_to": "BOM",
    "link_type": "DocType",
@@ -160,32 +180,18 @@
    "type": "Link"
   },
   {
-   "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Workstation Type",
-   "link_count": 0,
-   "link_to": "Workstation Type",
+   "label": "Produzione",
+   "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
-   "dependencies": "",
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Workstation",
-   "link_count": 0,
-   "link_to": "Workstation",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "",
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Operation",
+   "label": "Operazione",
    "link_count": 0,
    "link_to": "Operation",
    "link_type": "DocType",
@@ -193,12 +199,11 @@
    "type": "Link"
   },
   {
-   "dependencies": "Work Order",
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Routing",
+   "is_query_report": 0,
+   "label": "Tipo Stazione di Lavoro",
    "link_count": 0,
-   "link_to": "Routing",
+   "link_to": "Workstation Type",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -206,72 +211,56 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Reports",
-   "link_count": 10,
+   "label": "Stazione di Lavoro",
+   "link_count": 0,
+   "link_to": "Workstation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Progetti",
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
   {
-   "dependencies": "Work Order",
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Production Planning Report",
+   "is_query_report": 0,
+   "label": "Progetti",
    "link_count": 0,
-   "link_to": "Production Planning Report",
-   "link_type": "Report",
+   "link_to": "Project",
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   },
   {
-   "dependencies": "Work Order",
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Work Order Summary",
+   "is_query_report": 0,
+   "label": "Scheda Attivit\u00e0",
    "link_count": 0,
-   "link_to": "Work Order Summary",
-   "link_type": "Report",
+   "link_to": "Timesheet",
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   },
   {
-   "dependencies": "Quality Inspection",
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Quality Inspection Summary",
-   "link_count": 0,
-   "link_to": "Quality Inspection Summary",
-   "link_type": "Report",
+   "is_query_report": 0,
+   "label": "Report",
+   "link_count": 2,
+   "link_type": "DocType",
    "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Downtime Entry",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Downtime Analysis",
-   "link_count": 0,
-   "link_to": "Downtime Analysis",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Job Card",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Job Card Summary",
-   "link_count": 0,
-   "link_to": "Job Card Summary",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
+   "type": "Card Break"
   },
   {
    "dependencies": "BOM",
    "hidden": 0,
    "is_query_report": 1,
-   "label": "BOM Search",
+   "label": "Ricerca Distinta Base",
    "link_count": 0,
    "link_to": "BOM Search",
    "link_type": "Report",
@@ -282,29 +271,7 @@
    "dependencies": "BOM",
    "hidden": 0,
    "is_query_report": 1,
-   "label": "BOM Stock Report",
-   "link_count": 0,
-   "link_to": "BOM Stock Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "Work Order",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Production Analytics",
-   "link_count": 0,
-   "link_to": "Production Analytics",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "dependencies": "BOM",
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "BOM Operations Time",
+   "label": "Tempo di operazioni BOM",
    "link_count": 0,
    "link_to": "BOM Operations Time",
    "link_type": "Report",
@@ -313,16 +280,35 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 1,
-   "label": "Work Order Consumed Materials",
+   "is_query_report": 0,
+   "label": "Impostazioni",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Impostazioni Codifica Documenti",
    "link_count": 0,
-   "link_to": "Work Order Consumed Materials",
-   "link_type": "Report",
+   "link_to": "Document Naming Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Modelli di Progetto",
+   "link_count": 0,
+   "link_to": "Project Template",
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2025-07-22 04:25:28.256490",
+ "modified": "2025-07-22 11:04:56.437006",
  "modified_by": "Administrator",
  "module": "Engineering",
  "name": "Engineering",
@@ -330,12 +316,7 @@
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [
-  {
-   "document_type": "Item",
-   "label": "Articolo"
-  }
- ],
+ "quick_lists": [],
  "restrict_to_domain": "",
  "roles": [
   {}
@@ -343,17 +324,19 @@
  "sequence_id": 8.1,
  "shortcuts": [
   {
-   "color": "Grey",
+   "color": "Blue",
    "doc_view": "List",
-   "label": "Learn Manufacturing",
-   "type": "URL",
-   "url": "https://school.frappe.io/lms/courses/manufacturing?utm_source=in_app"
+   "label": "Articoli",
+   "link_to": "Item",
+   "stats_filter": "[[\"Item\",\"disabled\",\"=\",0,false]]",
+   "type": "DocType"
   },
   {
-   "color": "Grey",
+   "color": "Cyan",
    "doc_view": "List",
-   "label": "Plant Floor",
-   "link_to": "Plant Floor",
+   "label": "Elenco BOM",
+   "link_to": "BOM",
+   "stats_filter": "[[\"BOM\",\"is_active\",\"=\",1,false]]",
    "type": "DocType"
   },
   {
@@ -364,57 +347,12 @@
    "type": "DocType"
   },
   {
-   "color": "Grey",
+   "color": "Orange",
    "doc_view": "List",
-   "label": "BOM",
-   "link_to": "BOM",
-   "stats_filter": "{\"is_active\":[\"=\",1]}",
+   "label": "Progetti",
+   "link_to": "Project",
+   "stats_filter": "[[\"Project\",\"is_active\",\"=\",\"Yes\",false]]",
    "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Production Plan",
-   "link_to": "Production Plan",
-   "stats_filter": "{\"status\":[\"not in\",[\"Closed\",\"Cancelled\",\"Completed\"]]}",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Work Order",
-   "link_to": "Work Order",
-   "stats_filter": "{\"status\":[\"not in\",[\"Closed\",\"Cancelled\",\"Completed\"]]}",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Job Card",
-   "link_to": "Job Card",
-   "stats_filter": "{\"status\":[\"not in\",[\"Cancelled\",\"Completed\",null]]}",
-   "type": "DocType"
-  },
-  {
-   "doc_view": "",
-   "label": "Forecasting",
-   "link_to": "Exponential Smoothing Forecasting",
-   "report_ref_doctype": "Sales Order",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "BOM Stock Report",
-   "link_to": "BOM Stock Report",
-   "report_ref_doctype": "BOM",
-   "type": "Report"
-  },
-  {
-   "doc_view": "",
-   "label": "Production Planning Report",
-   "link_to": "Production Planning Report",
-   "report_ref_doctype": "Work Order",
-   "type": "Report"
   }
  ],
  "title": "Engineering"
