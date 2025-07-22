@@ -38,26 +38,53 @@ def setup_workspace_access(workspace_name):
         })
         user_group.save(ignore_permissions=True)
 
-    # Helper function to add permission if missing
-    def add_perm(doctype):
-        if not frappe.db.exists(
-            "Custom DocPerm",
-            {"parent": doctype, "role": role_name}
-        ):
-            frappe.get_doc({
-                "doctype": "Custom DocPerm",
-                "parent": doctype,
-                "role": role_name,
-                "permlevel": 0,
-                "read": 1,
-                "write": 1,
-                "create": 1,
-                "delete": 0
-            }).insert(ignore_permissions=True)
+    # Add Role Permission for 'Item Coding Table'
+    if not frappe.db.exists(
+        "Custom DocPerm",
+        {"parent": "Item Coding Table", "role": role_name}
+    ):
+        frappe.get_doc({
+            "doctype": "Custom DocPerm",
+            "parent": "Item Coding Table",
+            "role": role_name,
+            "permlevel": 0,
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 0
+        }).insert(ignore_permissions=True)
 
-    # Add Role Permissions
-    for doctype in ["Item Coding Table", "Item", "Project"]:
-        add_perm(doctype)
+    # Add Role Permission for 'Item'
+    if not frappe.db.exists(
+        "Custom DocPerm",
+        {"parent": "Item", "role": role_name}
+    ):
+        frappe.get_doc({
+            "doctype": "Custom DocPerm",
+            "parent": "Item",
+            "role": role_name,
+            "permlevel": 0,
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 0
+        }).insert(ignore_permissions=True)
+
+    # Add Role Permission for 'Project'
+    if not frappe.db.exists(
+        "Custom DocPerm",
+        {"parent": "Project", "role": role_name}
+    ):
+        frappe.get_doc({
+            "doctype": "Custom DocPerm",
+            "parent": "Project",
+            "role": role_name,
+            "permlevel": 0,
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 0
+        }).insert(ignore_permissions=True)
 
     frappe.db.commit()
 
@@ -71,5 +98,6 @@ def create_workspace_group_and_permissions(doc, method):
     """
     Hook function for Workspace `after_insert`.
     """
-    result = setup_workspace_access(doc.title or doc.name)
+    workspace_name = doc.title or doc.name
+    result = setup_workspace_access(workspace_name)
     frappe.msgprint(f"Created Group: {result['group']} | Role: {result['role']}")
