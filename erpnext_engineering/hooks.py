@@ -50,14 +50,6 @@ fixtures = [
     }
 ]
 
-# Workspace
-# ------------------
-
-workspace_json_files = [
-    "erpnext_engineering/workspace/engineering.json"
-]
-
-
 # Includes in <head>
 # ------------------
 
