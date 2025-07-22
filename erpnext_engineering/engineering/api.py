@@ -21,7 +21,6 @@ def setup_workspace_access(workspace_name):
         frappe.get_doc({
             "doctype": "Role",
             "role_name": role_name,
-            "name": "Engineering-Role"
         }).insert(ignore_permissions=True)
 
     # Create User Group if it doesn't exist
@@ -29,9 +28,9 @@ def setup_workspace_access(workspace_name):
         frappe.get_doc({
             "doctype": "User Group",
             "user_group_name": group_name,
-            "name": "Engineering-User_Group",
-            "enabled": 1
-        }).insert(ignore_permissions=True)
+            "enabled": 1,
+            "user_group_members": []  # Required to avoid MandatoryError
+        }).insert(ignore_permissions=True, ignore_mandatory=True)
 
     # Link Role to the User Group if not already linked
     user_group = frappe.get_doc("User Group", group_name)
@@ -41,7 +40,7 @@ def setup_workspace_access(workspace_name):
         })
         user_group.save(ignore_permissions=True)
 
-    # Add Role Permissions for selected Doctypes
+    # Add Role Permissions if missing
     for doctype in ["Item Coding Table", "Item", "Project"]:
         existing_perms = frappe.get_all(
             "Custom DocPerm",
