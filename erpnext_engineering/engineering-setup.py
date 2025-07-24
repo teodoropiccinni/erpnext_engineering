@@ -1,3 +1,5 @@
+# All functions here are launched only once during the first installation
+
 def setup():
     import frappe
 
