@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "options",
+    "property_type": "Text",
+    "value": "000.#####\n100.#####\n101.#####\n102.#####\n103.#####\n104.#####\n104.#####\n105.#####\n106.#####\n110.#####\n111.#####\n112.#####\n113.#####\n114.#####\n115.#####\n120.#####\n121.#####\n200.#####\n201.#####\n202.#####\n203.#####\n204.#####"
+  },
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "default",
+    "property_type": "Data",
+    "value": "000.#####"
+  },
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "allow_in_quick_entry",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "reqd",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "set_only_once",
+    "property_type": "Check",
+    "value": "1"
+  },
+  {
+    "doctype": "Property Setter",
+    "doc_type": "Item",
+    "field_name": "naming_series",
+    "property": "sort_options",
+    "property_type": "Check",
+    "value": "1"
+  }
+]
