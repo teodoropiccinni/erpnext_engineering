@@ -158,9 +158,10 @@ fixtures = [
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
+override_doctype_class = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+    "Item": "erpnext_engineering.overrides.item.CustomItem"
+}
 
 # Document Events
 # ---------------
