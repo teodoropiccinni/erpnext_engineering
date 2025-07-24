@@ -77,14 +77,15 @@ def setup():
 
         frappe.db.commit()
 
-    # Adding Roles for Car Workshop
+    # Adding Roles for Engineering
     create_role("Engineering Manager")
     create_role("Engineering User")
     create_role("Engineering Viewer")
 
-    # Adding Role Profile for Car Workshop
-    create_role_profile("Engineering Profile", ["Engineering User", "Engineering Viewer", "Engineering Manager"])
-
+    # Adding Role Profile for Engineering
+    create_role_profile("Engineering Manager Profile", ["Employee", "Engineering Manager", "Stock User", "Projects User", "Purchase User"])
+    create_role_profile("Engineering User Profile", ["Employee", "Engineering User", "Stock User", "Projects User", "Purchase User"])
+    create_role_profile("Engineering Viewer Profile", ["Employee", "Engineering Viewer"])
 
     # Adding permssions for Engineering Manager
     add_role_permissions("Engineering Manager", "Item", permlevel=0, perm="rwcdls")
