@@ -113,7 +113,7 @@ fixtures = [
 
 # before_install = "erpnext_engineering.install.before_install"
 # after_install = "erpnext_engineering.install.after_install"
-after_install = "erpnext_engineering.engineering-setup.py"
+after_install = "erpnext_engineering.engineering-setup.setup"
 
 # Uninstallation
 # ------------
