@@ -1,6 +1,7 @@
 [
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-options",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "options",
@@ -9,6 +10,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-default",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "default",
@@ -17,6 +19,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-allow_in_quick_entry",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "allow_in_quick_entry",
@@ -25,6 +28,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-reqd",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "reqd",
@@ -33,6 +37,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-set_only_once",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "set_only_once",
@@ -41,6 +46,7 @@
   },
   {
     "doctype": "Property Setter",
+    "name": "Engineering-Item-naming_series-sort_options",
     "doc_type": "Item",
     "field_name": "naming_series",
     "property": "sort_options",
