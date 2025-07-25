@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "allow_import": 1,
- "autoname": "field:engineering_item_version_title",
+ "autoname": "field:engineering_item_version_id",
  "creation": "2025-07-11 11:33:52.137166",
  "editable_grid": 1,
  "istable": 1,
@@ -94,7 +94,7 @@
    "in_filter": 1,
    "in_global_search": 1,
    "in_preview": 1,
-   "label": "Title",
+   "label": "Release Note",
    "length": 450,
    "read_only": 1,
    "reqd": 0
