@@ -10,12 +10,12 @@ def setup():
                 "doctype": "Role",
                 "role_name": role_name,
                 "desk_access": desk_access,
-                "home_page": "/app/engineering"
+                "home_page": "/app/car-workshop"
             })
             role.insert(ignore_permissions=True)
         else:
             role = frappe.get_doc("Role", role_name)
-            role.home_page = "/app/engineering"
+            role.home_page = "/app/car-workshop"
             role.save(ignore_permissions=True)
         frappe.db.commit()
 
@@ -47,6 +47,16 @@ def setup():
         for p in doc.permissions:
             if p.role == role and p.permlevel == permlevel:
                 return  # Permission already exists, skip
+
+        # Evita flag non validi se il DocType non è Submittable
+        if not doc.is_submittable:
+            perm_flags["submit"] = False
+            perm_flags["cancel"] = False
+
+        # Verifica se il permesso già esiste
+        for p in doc.permissions:
+            if p.role == role and p.permlevel == permlevel:
+                return  # già esiste
 
         # Append new permission
         doc.append("permissions", {
