@@ -9,17 +9,16 @@ def setup():
             role = frappe.get_doc({
                 "doctype": "Role",
                 "role_name": role_name,
-                "desk_access": 1,
+                "desk_access": desk_access,
                 "home_page": "/app/engineering"
             })
             role.insert(ignore_permissions=True)
         else:
-            # Se esiste, aggiorna la Home Page
             role = frappe.get_doc("Role", role_name)
             role.home_page = "/app/engineering"
             role.save(ignore_permissions=True)
         frappe.db.commit()
-    
+
     # Generate Role Profiles
     def create_role_profile(profile_name, roles):
         if not frappe.db.exists("Role Profile", profile_name):
@@ -30,15 +29,7 @@ def setup():
             }).insert(ignore_permissions=True)
         frappe.db.commit()
 
-
-    # Permissions assignment
-    #  "read": "r"
-    #  "write": "w"
-    #  "create": "c"
-    #  "delete": "d"
-    #  "submit": "s"
-    #  "cancel": "l"
-
+    # Add Role Permissions to DocType
     def add_role_permissions(role, doctype, permlevel=0, perm="r"):
         perm_flags = {
             "read": "r" in perm,
@@ -49,32 +40,27 @@ def setup():
             "cancel": "l" in perm,
         }
 
-        exists = frappe.db.exists({
-            "doctype": "Role Permission for Document",
-            "parent": doctype,
+        # Load the DocType definition
+        doc = frappe.get_doc("DocType", doctype)
+
+        # Check if this permission already exists
+        for p in doc.permissions:
+            if p.role == role and p.permlevel == permlevel:
+                return  # Permission already exists, skip
+
+        # Append new permission
+        doc.append("permissions", {
             "role": role,
-            "permlevel": permlevel
+            "permlevel": permlevel,
+            "read": perm_flags["read"],
+            "write": perm_flags["write"],
+            "create": perm_flags["create"],
+            "delete": perm_flags["delete"],
+            "submit": perm_flags["submit"],
+            "cancel": perm_flags["cancel"]
         })
 
-        if not exists:
-            doc = frappe.get_doc({
-                "doctype": "Role Permission for Document",
-                "parent": doctype,
-                "parentfield": "permissions",
-                "parenttype": "DocType",
-                "role": role,
-                "permlevel": permlevel,
-                "read": int(perm_flags["read"]),
-                "write": int(perm_flags["write"]),
-                "create": int(perm_flags["create"]),
-                "delete": int(perm_flags["delete"]),
-                "submit": int(perm_flags["submit"]),
-                "cancel": int(perm_flags["cancel"])
-            })
-            doc.insert(ignore_permissions=True)
-        else:
-            console.log("Role Permission already generated for {role} in {doctype}")
-
+        doc.save()
         frappe.db.commit()
 
     # Adding Roles for Engineering
@@ -82,28 +68,25 @@ def setup():
     create_role("Engineering User")
     create_role("Engineering Viewer")
 
-    # Adding Role Profile for Engineering
-    create_role_profile("Engineering Manager Profile", ["Employee", "Engineering Manager", "Stock User", "Projects User", "Purchase User"])
-    create_role_profile("Engineering User Profile", ["Employee", "Engineering User", "Stock User", "Projects User", "Purchase User"])
-    create_role_profile("Engineering Viewer Profile", ["Employee", "Engineering Viewer"])
+    # Adding Role Profiles
+    create_role_profile("Engineering Manager Profile", [
+        "Employee", "Engineering Manager", "Stock User", "Projects User", "Purchase User"
+    ])
+    create_role_profile("Engineering User Profile", [
+        "Employee", "Engineering User", "Stock User", "Projects User", "Purchase User"
+    ])
+    create_role_profile("Engineering Viewer Profile", [
+        "Employee", "Engineering Viewer"
+    ])
 
-    # Adding permssions for Engineering Manager
-    add_role_permissions("Engineering Manager", "Item", permlevel=0, perm="rwcdls")
-    add_role_permissions("Engineering Manager", "Item Version", permlevel=0, perm="rwcdls")
-    add_role_permissions("Engineering Manager", "Item Coding Table", permlevel=0, perm="rwcdls")
-    add_role_permissions("Engineering Manager", "Project", permlevel=0, perm="rwcdls")    
-    add_role_permissions("Engineering Manager", "Task", permlevel=0, perm="rwcdls")       
+    # Adding Permissions for Engineering Manager
+    for dt in ["Item", "Item Version", "Item Coding Table", "Project", "Task"]:
+        add_role_permissions("Engineering Manager", dt, permlevel=0, perm="rwcdls")
 
-    # Adding permissions for Engineering User
-    add_role_permissions("Engineering User", "Item", permlevel=0, perm="rwc")
-    add_role_permissions("Engineering User", "Item Version", permlevel=0, perm="rwc")  
-    add_role_permissions("Engineering User", "Item Coding Table", permlevel=0, perm="rwc")
-    add_role_permissions("Engineering User", "Project", permlevel=0, perm="rwc")
-    add_role_permissions("Engineering User", "Task", permlevel=0, perm="rwc")
+    # Adding Permissions for Engineering User
+    for dt in ["Item", "Item Version", "Item Coding Table", "Project", "Task"]:
+        add_role_permissions("Engineering User", dt, permlevel=0, perm="rwc")
 
-    # Adding permissions for Engineering Viewer
-    add_role_permissions("Engineering Viewer", "Item", permlevel=0, perm="r")
-    add_role_permissions("Engineering Viewer", "Item Version", permlevel=0, perm="r")
-    add_role_permissions("Engineering Viewer", "Item Coding Table", permlevel=0, perm="r")
-    add_role_permissions("Engineering Viewer", "Project", permlevel=0, perm="r")
-    add_role_permissions("Engineering Viewer", "Task", permlevel=0, perm="r")
+    # Adding Permissions for Engineering Viewer
+    for dt in ["Item", "Item Version", "Item Coding Table", "Project", "Task"]:
+        add_role_permissions("Engineering Viewer", dt, permlevel=0, perm="r")
