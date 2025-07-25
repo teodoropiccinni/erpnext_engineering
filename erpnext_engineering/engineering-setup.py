@@ -72,7 +72,7 @@ def setup():
                 "cancel": int(perm_flags["cancel"])
             })
             doc.insert(ignore_permissions=True)
-        else
+        else:
             console.log("Role Permission already generated for {role} in {doctype}")
 
         frappe.db.commit()
