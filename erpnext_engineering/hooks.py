@@ -33,19 +33,30 @@ fixtures = [
     {
         "dt": "Custom Field",
         "filters": [
-            ["module", "=", "Engineering"]
+            ["module", "=", "Engineering"],
+            ["dt", "=", "Item Coding Table"],
+            ["doc_type", "=", "Item Version"]
         ]
     },
     {
         "dt": "Property Setter",
         "filters": [
-            ["module", "=", "Engineering"]
+            ["module", "=", "Engineering"],
+            ["doc_type", "=", "Item Coding Table"],
+            ["doc_type", "=", "Item Version"]
         ]
     },
     {
         "dt": "Client Script",
         "filters": [
             ["module", "=", "Engineering"]
+        ]
+    },
+    {
+        "dt": "Custom DocType", 
+        "filters": [
+            ["name", "=", "Item Coding Table"],
+            ["name", "=", "Item Version"]
         ]
     }
 ]

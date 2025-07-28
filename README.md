@@ -5,19 +5,57 @@ Engineering module to provide advanced fucntionalities and custom configurations
 
 
 
-### Installation
+### Production
+```
+SITE=sitename
+bench new-site $SITE
+```
 
+1. Install Car Workshop App
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
-
 ```bash
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
 URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext_engineering.git"
 VERSION_OF_FRAPPE="version-15"
 cd $PATH_TO_YOUR_BENCH
 bench get-app $URL_OF_THIS_REPO --branch $VERSION_OF_FRAPPE
-bench install-app erpnext_engineering
+bench --site $SITE install-app erpnext_engineering
 ```
 Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is the current version. Adapt those parameters to your needs.
+
+2. Disable developer mode
+```
+bench --site yoursite set-config -g developer_mode 0
+```
+
+
+
+### Development
+```
+SITE=sitename
+bench new-site $SITE
+```
+
+1. Install Car Workshop App
+You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+```bash
+PATH_TO_YOUR_BENCH="~/frappe-bench/"
+URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext_engineering.git"
+VERSION_OF_FRAPPE="develop-15"
+cd $PATH_TO_YOUR_BENCH
+bench get-app $URL_OF_THIS_REPO --branch $VERSION_OF_FRAPPE
+bench --site $SITE install-app erpnext_engineering
+```
+Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is the current version. Adapt those parameters to your needs.
+
+2. Enable developer mode
+```
+bench --site yoursite set-config -g developer_mode 1
+```
+
+
+
+
 
 ### Contributing
 
