@@ -188,6 +188,7 @@ doc_events = {
         "after_insert": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions",
         "on_update": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions"
     }
+    #TODO Add here hooks for event in dedicated doctype Coding table and Versions
 }
 
 # Scheduled Tasks
