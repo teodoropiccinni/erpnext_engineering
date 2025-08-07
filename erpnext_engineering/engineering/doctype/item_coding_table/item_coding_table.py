@@ -17,3 +17,12 @@ class ItemCodingTable(Document):
             title += f" ({liv1})"
 
         self.engineering_item_coding_table_title = title
+
+    def check_duplicates(self, coding_code):
+        if not frappe.db.exists({
+            "doctype": "Item Coding Table",
+            "engineering_item_coding_table_code": coding_code}
+        ):
+            return True
+        else:
+            return False
