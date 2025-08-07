@@ -1,6 +1,7 @@
 [
   {
     "doctype": "Client Script",
+    "name": "Item-item_coding_table_link",
     "dt": "Item",
     "script_type": "Form",
     "script": "frappe.ui.form.on('Item', {\n    item_coding_table_link: function(frm) {\n        if (frm.doc.item_coding_table_link) {\n            frappe.call({\n                method: \"erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.get_full_coding_description\",\n                args: {\n                    coding_code: frm.doc.item_coding_table_link\n                },\n                callback: function(r) {\n                    frm.set_value('item_coding_table_description', r.message || \"\");\n                }\n            });\n        } else {\n            frm.set_value('item_coding_table_description', \"\");\n        }\n    }\n});"
