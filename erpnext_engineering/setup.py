@@ -15,7 +15,7 @@ def after_install():
     workspace_indicator_color = "#3838fc"
     workspace_is_hidden = "0"
     workspace_public = True
-    workspace_sequence_id = 2
+    workspace_sequence_id = 2.2
 
     # Gen Module Def
     print(f"Module Def: Installing Module Def {module_name}") 

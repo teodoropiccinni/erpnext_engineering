@@ -16,3 +16,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.13.1\n"
 
+# Common translations
+# Item Coding Table
+msgid "Item Coding Table"
+msgstr "Tabella Codifica Articoli"
+
+# Item Revision
+msgid "Item Revision"
+msgstr "Revisione Articolo"
+
+# Item
+msgid "Item"
+msgstr "Articolo"
+
+# Items
+msgid "Items"
+msgstr "Articoli"
+

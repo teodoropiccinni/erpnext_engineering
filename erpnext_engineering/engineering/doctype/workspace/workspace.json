@@ -198,9 +198,27 @@
                 "hidden": 0,
                 "icon": null,
                 "is_query_report": 0,
-                "label": "Articoli",
+                "label": "Items",
                 "link_count": 0,
                 "link_to": "Item",
+                "link_type": "DocType",
+                "onboard": 0,
+                "only_for": null,
+                "parent": "Engineering",
+                "parentfield": "links",
+                "parenttype": "Workspace",
+                "report_ref_doctype": null,
+                "type": "Link"
+            },,
+            {
+                "dependencies": null,
+                "description": null,
+                "hidden": 0,
+                "icon": null,
+                "is_query_report": 0,
+                "label": "Item Revisions",
+                "link_count": 0,
+                "link_to": "Item Revision",
                 "link_type": "DocType",
                 "onboard": 0,
                 "only_for": null,
@@ -551,7 +569,7 @@
                 "role": null
             }
         ],
-        "sequence_id": 8.1,
+        "sequence_id": 2.1,
         "shortcuts": [
             {
                 "color": "Blue",
