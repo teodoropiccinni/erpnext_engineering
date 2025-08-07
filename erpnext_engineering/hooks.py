@@ -176,11 +176,10 @@ doc_events = {
         "after_insert": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions",
         "on_update": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions"
     },
-    "Item Coding Table": {
-        "validate": "",
-        "autoname": "erpnext_engineering.engineering.api.item_coding_table.update_item_coding_table"
-    }
-    #TODO Add here hooks for event in dedicated doctype Coding table and Versions
+# TODO Add here hooks for event in dedicated doctype Coding table and Versions
+#    "Item Coding Table": {
+#        "autoname": "erpnext_engineering.engineering.api.item_coding_table.update_item_coding_table"
+#    }
 }
 
 # Scheduled Tasks
