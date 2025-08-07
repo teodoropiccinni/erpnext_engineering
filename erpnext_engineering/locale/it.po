@@ -1,0 +1,18 @@
+# Translations template for Engineering.
+# Copyright (C) 2025 Teodoro PICCINNI
+# This file is distributed under the same license as the Engineering project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Engineering VERSION\n"
+"Report-Msgid-Bugs-To: studio@teodoropiccinni.com\n"
+"POT-Creation-Date: 2025-08-07 12:20+0050\n"
+"PO-Revision-Date: 2025-08-07 12:20+0050\n"
+"Last-Translator: studio@teodoropiccinni.com\n"
+"Language-Team: studio@teodoropiccinni.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
