@@ -77,7 +77,7 @@
         },
         {
             "default": "5",
-            "description": "Lenght of the item code, not considering the prefix. Example: Prefix - 000 and Lenght: 5 > Code: 00000000",
+            "description": "Lenght of the item code, not considering the prefix. Example: Prefix - 000 and Lenght: 5 > Code: 00012345",
             "fieldname": "engineering_item_coding_table_code_lenght",
             "fieldtype": "Int",
             "in_filter": 1,
