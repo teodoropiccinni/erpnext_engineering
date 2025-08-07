@@ -17,7 +17,7 @@ Engineering module to provide advanced fucntionalities and custom configurations
 ## Functionalities
 * Item coding based on Naming Series
 * Naming Series dictionary (Item Coding Table)
-* Item Versions
+* Item Revisions
 
 ### Production
 ```

@@ -17,22 +17,22 @@ msgstr ""
 "Generated-By: Babel 2.13.1\n"
 
 #. Name of a role
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "Engineering Manager"
-msgstr ""
+msgstr "Responsabile Ingegneria"
 
 #. Name of a role
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "Engineering User"
-msgstr ""
+msgstr "Utente Ingegneria"
 
 #. Label of a Autocomplete field in DocType 'Item Coding Table'
-#. Label of a Autocomplete field in DocType 'Item Version'
+#. Label of a Autocomplete field in DocType 'Item Revision'
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. Label of a Data field in DocType 'Item Coding Table'
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
@@ -42,33 +42,33 @@ msgstr ""
 #. Label of a Data field in DocType 'Item Coding Table'
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
 msgid "Item Code Prefix"
-msgstr ""
+msgstr "Prefisso Codice Articolo"
 
 #. Name of a DocType
 #. Label of a Section Break field in DocType 'Item Coding Table'
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
 msgid "Item Coding Table"
-msgstr ""
+msgstr "Tabella Codifica Articoli"
 
-#. Label of a Data field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#. Label of a Data field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "Item ID"
-msgstr ""
+msgstr "ID Articolo"
 
 #. Name of a DocType
-#. Label of a Section Break field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
-msgid "Item Version"
+#. Label of a Section Break field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
+msgid "Item Revision"
+msgstr "Revisione Articolo"
+
+#. Label of a Data field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
+msgid "Item Revision ID"
 msgstr ""
 
-#. Label of a Data field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
-msgid "Item Version ID"
-msgstr ""
-
-#. Label of a Data field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
-msgid "Item Version Naming Series"
+#. Label of a Data field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
+msgid "Item Revision Naming Series"
 msgstr ""
 
 #. Label of a Data field in DocType 'Item Coding Table'
@@ -81,19 +81,19 @@ msgstr ""
 msgid "Livello 2"
 msgstr ""
 
-#. Label of a Data field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#. Label of a Data field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "Picture"
 msgstr ""
 
-#. Label of a Data field in DocType 'Item Version'
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#. Label of a Data field in DocType 'Item Revision'
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "Release Note"
 msgstr ""
 
 #. Name of a role
 #: erpnext_engineering/engineering/doctype/item_coding_table/item_coding_table.json
-#: erpnext_engineering/engineering/doctype/item_version/item_version.json
+#: erpnext_engineering/engineering/doctype/item_revision/item_revision.json
 msgid "System Manager"
 msgstr ""
 

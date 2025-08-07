@@ -5,5 +5,5 @@ import frappe
 
 from frappe.tests.utils import FrappeTestCase
 
-class TestItemVersion(FrappeTestCase):
+class TestItemRevision(FrappeTestCase):
 	pass
