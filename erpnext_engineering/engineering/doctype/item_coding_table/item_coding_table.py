@@ -18,11 +18,7 @@ class ItemCodingTable(Document):
 
         self.engineering_item_coding_table_title = title
 
-    def check_duplicates(self, coding_code):
-        if not frappe.db.exists({
-            "doctype": "Item Coding Table",
-            "engineering_item_coding_table_code": coding_code}
-        ):
-            return True
-        else:
-            return False
+@frappe.whitelist()
+def check_duplicates(coding_code):
+    exists = frappe.db.exists("Item Coding Table", {"engineering_item_coding_table_code": coding_code})
+    return not bool(exists)
