@@ -1,6 +1,7 @@
 [
     {
         "doctype": "Custom Field",
+        "name": "Item-item_coding_prefix",
         "dt": "Item",
         "fieldname": "item_coding_prefix",
         "label": "Item Coding Prefix",
@@ -14,6 +15,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Item-item_coding_table_link",
         "dt": "Item",
         "fieldname": "item_coding_table_link",
         "label": "Item Coding Table",
