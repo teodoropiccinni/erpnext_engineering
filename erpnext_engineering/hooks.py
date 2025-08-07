@@ -11,15 +11,15 @@ app_license = "mit"
 required_apps = ["frappe", "erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "erpnext_engineering",
-# 		"logo": "/assets/erpnext_engineering/logo.png",
-# 		"title": "Engineering",
-# 		"route": "/erpnext_engineering",
-# 		"has_permission": "erpnext_engineering.api.permission.has_app_permission"
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": "engineering",
+		"logo": "/assets/erpnext_engineering/images/engineering_logo.png",
+		"title": "Engineering",
+		"route": "/app/engineering"#,
+#		"has_permission": "erpnext_engineering.api.permission.has_app_permission"
+	}
+]
 
 # Fixtures
 # ------------------
@@ -31,32 +31,21 @@ fixtures = [
         ]
     },
     {
-        "dt": "Custom Field",
-        "filters": [
-            ["module", "=", "Engineering"],
-            ["dt", "=", "Item Coding Table"],
-            ["doc_type", "=", "Item Version"]
-        ]
-    },
-    {
-        "dt": "Property Setter",
-        "filters": [
-            ["module", "=", "Engineering"],
-            ["doc_type", "=", "Item Coding Table"],
-            ["doc_type", "=", "Item Version"]
-        ]
-    },
-    {
-        "dt": "Client Script",
+        "doctype": "Custom Field",
         "filters": [
             ["module", "=", "Engineering"]
         ]
     },
     {
-        "dt": "Custom DocType", 
+        "doctype": "Property Setter",
         "filters": [
-            ["name", "=", "Item Coding Table"],
-            ["name", "=", "Item Version"]
+            ["module", "=", "Engineering"]
+        ]
+    },
+    {
+        "doctype": "Client Script",
+        "filters": [
+            ["module", "=", "Engineering"]
         ]
     }
 ]
@@ -123,13 +112,12 @@ fixtures = [
 # ------------
 
 # before_install = "erpnext_engineering.install.before_install"
-# after_install = "erpnext_engineering.install.after_install"
-after_install = "erpnext_engineering.engineering-setup.setup"
+after_install = "erpnext_engineering.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "erpnext_engineering.uninstall.before_uninstall"
+before_uninstall = "erpnext_engineering.uninstall.before_uninstall"
 # after_uninstall = "erpnext_engineering.uninstall.after_uninstall"
 
 # Integration Setup
@@ -185,8 +173,8 @@ doc_events = {
 #       "on_trash": "method"
 #   }
     "Workspace": {
-        "after_insert": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions",
-        "on_update": "erpnext_engineering.engineering.api.create_workspace_group_and_permissions"
+        "after_insert": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions",
+        "on_update": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions"
     }
     #TODO Add here hooks for event in dedicated doctype Coding table and Versions
 }

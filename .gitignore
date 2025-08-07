@@ -3,5 +3,19 @@
 *.egg-info
 *.swp
 tags
+erpnext_engineering/public/dist
+erpnext_engineering/public/node_modules
+erpnext_engineering/docs/current
+node_modules/
+dist/
+__pycache__/
+
+# build/
+.vscode
+.vs
 node_modules
-__pycache__
+*debug.log
+erpnext_engineering/docs/current
+erpnext_engineering/public/frontend
+erpnext_engineering/www/erpnext_engineering.html
+erpnext_engineering/www/engineering.html

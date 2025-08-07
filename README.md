@@ -1,9 +1,23 @@
+<div align="center">
+	<a href="https://www.teodoropiccinni.com/erpnext/engineering">
+		<img src=".github/engineering_logo.png" height="80px" width="80px" alt="Engineering Logo">
+	</a>
+	<h2>Car Workshop</h2>
+	<p align="center">
+		<p>Open Source, modern, and easy-to-use Engineering Software for ERPnext</p>
+	</p>
+
+[![codecov](https://codecov.io/gh/frappe/hrms/branch/develop/graph/badge.svg?token=0TwvyUg3I5)](https://codecov.io/gh/frappe/hrms)
+
+
 # Engineering
 
 Engineering module to provide advanced fucntionalities and custom configurations for engineering teams.
 
-
-
+## Functionalities
+* Item coding based on Naming Series
+* Naming Series dictionary (Item Coding Table)
+* Item Versions
 
 ### Production
 ```

@@ -55,3 +55,31 @@ typing-modules = ["frappe.types.DF"]
 quote-style = "double"
 indent-style = "tab"
 docstring-code-format = true
+
+[tool.ruff.lint.isort.sections]
+"frappe" = ["frappe"]
+"erpnext" = ["erpnext"]
+"hrms" = ["hrms"]
+
+[tool.ruff.lint.isort]
+section-order = [
+    "future",
+    "standard-library",
+    "third-party",
+    "frappe",
+    "erpnext",
+    "hrms",
+    "first-party",
+    "local-folder",
+]
+
+
+[project.urls]
+Homepage = "https://www.teodoropiccinni.com/products/erpnext_carworkshop"
+Repository = "https://github.com/teodoropiccinni/erpnext_carworkshop.git"
+"Bug Reports" = "https://github.com/teodoropiccinni/erpnext_carworkshop/issues"
+
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0-dev,<16.0.0"
+erpnext = ">=15.0.0-dev,<16.0.0"
