@@ -65,6 +65,15 @@ def before_uninstall():
 
     # TODO Implement uninstall logic to clean DB and files
 
+    # Deleting DocTypes for Engineering
+    for doctype in frappe.get_all("DocType", filters={"module": module_name}):
+        if doctype.name not in ["DocType", "Custom Field", "Module Def", "Role", "Role Profile"]:
+            try:
+                frappe.delete_doc("DocType", doctype.name, force=True)
+                print(f"Deleted DocType: {doctype.name}")
+            except Exception as e:
+                print(f"Failed to delete DocType: {doctype.name}. Error: {e}")
+
     # Deleting Roles for Engineering
     for role_name in get_engineering_roles_array():
         delete_engineering_role(role_name)
