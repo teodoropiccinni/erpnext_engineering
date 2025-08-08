@@ -11,12 +11,22 @@
   },
   {
     "doctype": "Property Setter",
-    "name": "Engineering-Item-item_name-visible",
+    "name": "Engineering-Item-item_name-hidden",
     "doc_type": "Item",
     "field_name": "item_name",
     "doctype_or_field": "DocField",
     "property": "hidden",
     "property_type": "Data",
     "value": "0"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "Engineering-Item-item_name-allow_on_quick_entry",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "allow_on_quick_entry",
+    "property_type": "Data",
+    "value": "1"
   }
 ]
