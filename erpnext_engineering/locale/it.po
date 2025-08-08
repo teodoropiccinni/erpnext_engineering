@@ -33,3 +33,6 @@ msgstr "Articolo"
 msgid "Items"
 msgstr "Articoli"
 
+# Items, custom fields
+msgid "Item Coding Prefix"
+msgstr "Prefisso Codifica Articoli"
