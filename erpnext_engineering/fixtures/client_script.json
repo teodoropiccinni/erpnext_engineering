@@ -5,5 +5,12 @@
     "dt": "Item",
     "script_type": "Form",
     "script": "frappe.ui.form.on('Item', {\n    item_coding_table_link: function(frm) {\n        if (frm.doc.item_coding_table_link) {\n            frappe.call({\n                method: \"erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.get_full_coding_description\",\n                args: {\n                    coding_code: frm.doc.item_coding_table_link\n                },\n                callback: function(r) {\n                    frm.set_value('item_coding_table_description', r.message || \"\");\n                }\n            });\n        } else {\n            frm.set_value('item_coding_table_description', \"\");\n        }\n    }\n});"
+  },
+  {
+    "doctype": "Client Script",
+    "name": "Item-item_coding_table_prefix_check",
+    "dt": "Item",
+    "script_type": "Form",
+    "script": "frappe.ui.form.on('Item', {\n    refresh: function(frm) {\n        toggle_coding_fields(frm);\n    },\n    item_coding_prefix: function(frm) {\n        toggle_coding_fields(frm);\n    }\n});\n\nfunction toggle_coding_fields(frm) {\n    const show = !!frm.doc.item_coding_prefix;\n    frm.toggle_display('item_coding_table_link', show);\n    frm.toggle_display('item_code', show);\n}"
   }
 ]
