@@ -64,7 +64,9 @@ def before_uninstall():
     module_name = "Engineering"
 
     # TODO Implement uninstall logic to clean DB and files
-
+    # Delete Client Scripts
+    delete_all_client_script(module_name)
+    
     # Deleting DocTypes for Engineering
     for doctype in frappe.get_all("DocType", filters={"module": module_name}):
         if doctype.name not in ["DocType", "Custom Field", "Module Def", "Role", "Role Profile"]:
@@ -390,3 +392,27 @@ def add_engineering_role_permissions(role, doctype, permlevel=0, perm="r"):
 
     doc.save()
     frappe.db.commit()
+
+
+# Client scripts
+# Install and delete client scripts
+
+def create_client_script(doctype, script_name, script):
+    if frappe.db.exists("Client Script", script_name):
+        print(f"Client Script: {script_name} already exists. Skipping.")
+        return
+    
+def delete_all_client_script(module_name):
+    client_scripts = frappe.get_all("Client Script", filters={"dt": module_name})
+    print("Deleting Client Scripts for module {module_name}:")
+    for script in client_scripts:
+        #attempt deleting Client script
+        try:
+            print(f"- {script.name}: Deleted")
+            frappe.delete_doc("Client Script", script.name, force=True)
+        except Exception as e:
+            print(f"- {script.name}: Failed to delete Client Script. Error: {e}")
+        #catch and trace exception
+
+    frappe.db.commit()
+    print(f"All Client Scripts for {module_name} deleted.")

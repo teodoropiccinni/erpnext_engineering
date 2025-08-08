@@ -7,7 +7,8 @@
     "doctype_or_field": "DocField",
     "property": "depends_on",
     "property_type": "Data",
-    "value": "eval:doc.enable_item_coding_prefix==1"
+    "value": "eval:doc.enable_item_coding_prefix==1",
+    "module": "Engineering"
   },
   {
     "doctype": "Property Setter",
@@ -17,7 +18,8 @@
     "doctype_or_field": "DocField",
     "property": "hidden",
     "property_type": "Data",
-    "value": "0"
+    "value": "0",
+    "module": "Engineering"
   },
   {
     "doctype": "Property Setter",
@@ -27,6 +29,7 @@
     "doctype_or_field": "DocField",
     "property": "allow_on_quick_entry",
     "property_type": "Data",
-    "value": "1"
+    "value": "1",
+    "module": "Engineering"
   }
 ]
