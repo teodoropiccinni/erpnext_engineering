@@ -58,6 +58,9 @@ def after_install():
     # Adding Permissions for Engineering Viewer
 #    for dt in ["Item", "Item Version", "Item Coding Table", "Project", "Task"]:
 #        add_engineering_role_permissions("Engineering Viewer", dt, permlevel=0, perm="r")
+    # Enable all Client Scripts
+    enable_all_client_script(module_name)
+
 
 def before_uninstall():
     workspace_name="Engineering"
@@ -396,15 +399,30 @@ def add_engineering_role_permissions(role, doctype, permlevel=0, perm="r"):
 
 # Client scripts
 # Install and delete client scripts
-
 def create_client_script(doctype, script_name, script):
     if frappe.db.exists("Client Script", script_name):
         print(f"Client Script: {script_name} already exists. Skipping.")
         return
+def enable_all_client_script(module_name):
+    client_scripts = frappe.get_all("Client Script", filters={"dt": module_name})
+    print(f"Enabling Client Scripts for module {module_name}:")
+    for script in client_scripts:
+        #attempt enabling Client script
+        try:
+            doc = frappe.get_doc("Client Script", script.name)
+            doc.enabled = 1
+            doc.save()
+            print(f"- {script.name}: Enabled")
+        except Exception as e:
+            print(f"- {script.name}: Failed to enable Client Script. Error: {e}")
+        #catch and trace exception
+
+    frappe.db.commit()
+    print(f"All Client Scripts for {module_name} enabled.")
     
 def delete_all_client_script(module_name):
     client_scripts = frappe.get_all("Client Script", filters={"dt": module_name})
-    print("Deleting Client Scripts for module {module_name}:")
+    print(f"Deleting Client Scripts for module {module_name}:")
     for script in client_scripts:
         #attempt deleting Client script
         try:
@@ -416,3 +434,25 @@ def delete_all_client_script(module_name):
 
     frappe.db.commit()
     print(f"All Client Scripts for {module_name} deleted.")
+
+# Custom Fields
+# Install and delete Custom Fields
+def create_custom_fields(doctype, script_name, script):
+    if frappe.db.exists("Client Script", script_name):
+        print(f"Client Script: {script_name} already exists. Skipping.")
+        return
+    
+def delete_all_custom_fields(module_name):
+    custom_fields = frappe.get_all("Custom Field", filters={"dt": module_name})
+    print(f"Deleting Custom Fields for module {module_name}:")
+    for field in custom_fields:
+        #attempt deleting Custom Field
+        try:
+            print(f"- {field.name}: Deleted")
+            frappe.delete_doc("Custom Field", field.name, force=True)
+        except Exception as e:
+            print(f"- {field.name}: Failed to delete Custom Field. Error: {e}")
+        #catch and trace exception
+
+    frappe.db.commit()
+    print(f"All Custom Fields for {module_name} deleted.")
