@@ -7,7 +7,7 @@
     "doctype_or_field": "DocField",
     "property": "depends_on",
     "property_type": "Data",
-    "value": "eval:doc.enable_item_coding_prefix==1",
+    "value": "eval:doc.engineering-enable_item_coding_prefix==0",
     "module": "Engineering"
   },
   {
