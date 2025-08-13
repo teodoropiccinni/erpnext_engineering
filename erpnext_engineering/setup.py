@@ -59,7 +59,18 @@ def after_install():
 #    for dt in ["Item", "Item Version", "Item Coding Table", "Project", "Task"]:
 #        add_engineering_role_permissions("Engineering Viewer", dt, permlevel=0, perm="r")
     # Enable all Client Scripts
+
+    # Client scripts
+    # When you generate client script from here they are automatically disabled. Enabling them here
     enable_all_client_script(module_name)
+
+    # Create Email Group for Engineering
+    print("Creating Email Group for Engineering")
+    group_name = "Engineering Team"
+    group_title = "Engineering Team"
+    group_description = "Email group for the Engineering team"
+    create_engineering_email_group(group_name, group_title, group_description)
+
 
 
 def before_uninstall():
@@ -87,9 +98,15 @@ def before_uninstall():
     for role_profile in get_engineering_role_profile_array():
         delete_engineering_role_profile(role_profile)
 
+    # Delete Workspace
     delete_engineering_workspace(workspace_name)
 
+    # Delete Module Def
     delete_engineering_module_def(module_name)
+
+    # Delete Email Group
+    group_name = "Engineering Team"
+    delete_engineering_email_group(group_name)
 
 # Workspace
 """
@@ -456,3 +473,29 @@ def delete_all_custom_fields(module_name):
 
     frappe.db.commit()
     print(f"All Custom Fields for {module_name} deleted.")
+
+
+# Mamnage Engineering Email Groups
+def create_engineering_email_group(group_name, group_title, group_description):
+    if not frappe.db.exists("Email Group", group_name):
+        email_group = frappe.get_doc({
+            "doctype": "Email Group",
+            "email_group_name": group_name,
+            "email_group_title": group_title,
+            "email_group_description": group_description
+        })
+        email_group.insert(ignore_permissions=True)
+        frappe.db.commit()
+        print(f"Email Group {group_name} created.")
+        return email_group
+    else:
+        print(f"Email Group {group_name} already exists. Skipping.")
+        return
+def delete_engineering_email_group(group_name):
+    if frappe.db.exists("Email Group", group_name):
+        frappe.delete_doc("Email Group", group_name, force=True)
+        frappe.db.commit()
+        print(f"Email Group {group_name} deleted.")
+    else:
+        print(f"Email Group {group_name} not found.")
+        return
