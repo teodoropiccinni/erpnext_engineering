@@ -337,12 +337,12 @@ def create_engineering_role(role_name, desk_access=1):
             "doctype": "Role",
             "role_name": role_name,
             "desk_access": desk_access,
-            "home_page": "/app/car_workshop"
+            "home_page": "/app/engineering"
         })
         role.insert(ignore_permissions=True)
     else:
         role = frappe.get_doc("Role", role_name)
-        role.home_page = "/app/car_workshop"
+        role.home_page = "/app/engineering"
         role.save(ignore_permissions=True)
     frappe.db.commit()
 
