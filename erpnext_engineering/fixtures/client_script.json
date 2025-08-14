@@ -1,18 +1,18 @@
 [
   {
     "doctype": "Client Script",
-    "name": "Item-item_coding_table_link",
+    "name": "engineering-script-item-item_coding_table_link",
     "dt": "Item",
     "script_type": "Form",
-    "script": "frappe.ui.form.on('Item', {\n    item_coding_table_link: function(frm) {\n        if (frm.doc.item_coding_table_link) {\n            frappe.call({\n                method: \"erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.get_full_coding_description\",\n                args: {\n                    coding_code: frm.doc.item_coding_table_link\n                },\n                callback: function(r) {\n                    frm.set_value('item_coding_table_description', r.message || \"\");\n                }\n            });\n        } else {\n            frm.set_value('item_coding_table_description', \"\");\n        }\n    }\n});",
+    "script": "frappe.ui.form.on('Item', {\n    item_coding_table_link: function(frm) {\n        if (frm.doc.engineering-item-item_coding_table_link) {\n            frappe.call({\n                method: \"erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.get_full_coding_description\",\n                args: {\n                    coding_code: frm.doc.engineering-item-item_coding_table_link\n                },\n                callback: function(r) {\n                    frm.set_value('engineering-item-item_coding_table_link', r.message || \"\");\n                }\n            });\n        } else {\n            frm.set_value('engineering-item-item_coding_table_link', \"\");\n        }\n    }\n});",
     "module": "Engineering"
   },
   {
     "doctype": "Client Script",
-    "name": "Item-item_coding_table_prefix_check",
+    "name": "engineering-script-item-item_coding_table_prefix_check",
     "dt": "Item",
     "script_type": "Form",
-    "script": "frappe.ui.form.on('Item', {\n    refresh: function(frm) {\n        toggle_item_coding_fields(frm);\n        show_item_name(frm);\n    },\n    enable_item_coding_prefix: function(frm) {\n        toggle_item_coding_fields(frm);\n    }\n});\n\nfunction toggle_item_coding_fields(frm) {\n    const show_prefix_list = frm.doc.enable_item_coding_prefix;\n    frm.toggle_display('item_code', show_prefix_list);\n    frm.toggle_display('item_coding_table_link', !show_prefix_list);\n}\n\nfunction show_item_name(frm) {\n    frm.toggle_display('item_name', true);\n}",
+    "script": "frappe.ui.form.on('Item', {\n    refresh: function(frm) {\n        toggle_item_coding_fields(frm);\n        show_item_name(frm);\n    },\n    enable_item_coding_prefix: function(frm) {\n        toggle_item_coding_fields(frm);\n    }\n});\n\nfunction toggle_item_coding_fields(frm) {\n    const show_prefix_list = frm.doc.engineering-item-enable_item_coding_prefix;\n    frm.toggle_display('item_code', show_prefix_list);\n    frm.toggle_display('engineering-item-enable_item_coding_link', !show_prefix_list);\n}\n\nfunction show_item_name(frm) {\n    frm.toggle_display('item_name', true);\n}",
     "module": "Engineering"
   }
 ]

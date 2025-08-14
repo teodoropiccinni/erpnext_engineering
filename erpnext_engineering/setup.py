@@ -481,7 +481,7 @@ def create_engineering_email_group(group_name, group_title, group_description):
         email_group = frappe.get_doc({
             "doctype": "Email Group",
             "email_group_name": group_name,
-            "email_group_title": group_title,
+            "title": group_title,
             "email_group_description": group_description
         })
         email_group.insert(ignore_permissions=True)

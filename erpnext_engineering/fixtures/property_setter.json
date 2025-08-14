@@ -1,18 +1,18 @@
 [
   {
     "doctype": "Property Setter",
-    "name": "Engineering-Item-item_code-depends_on",
+    "name": "engineering-property-item-item_code-depends_on",
     "doc_type": "Item",
     "field_name": "item_code",
     "doctype_or_field": "DocField",
     "property": "depends_on",
     "property_type": "Data",
-    "value": "eval:doc.engineering-enable_item_coding_prefix==0",
+    "value": "eval:doc.engineering-item-enable_item_coding_prefix==0",
     "module": "Engineering"
   },
   {
     "doctype": "Property Setter",
-    "name": "Engineering-Item-item_name-hidden",
+    "name": "engineering-property-item-item_name-hidden",
     "doc_type": "Item",
     "field_name": "item_name",
     "doctype_or_field": "DocField",
@@ -23,7 +23,7 @@
   },
   {
     "doctype": "Property Setter",
-    "name": "Engineering-Item-item_name-allow_on_quick_entry",
+    "name": "engineering-property-item-item_name-allow_on_quick_entry",
     "doc_type": "Item",
     "field_name": "item_name",
     "doctype_or_field": "DocField",
