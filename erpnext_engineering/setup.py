@@ -421,7 +421,7 @@ def create_client_script(doctype, script_name, script):
         print(f"Client Script: {script_name} already exists. Skipping.")
         return
 def enable_all_client_script(module_name):
-    client_scripts = frappe.get_all("Client Script", filters={"dt": module_name})
+    client_scripts = frappe.get_all("Client Script", filters={"module": module_name})
     print(f"Enabling Client Scripts for module {module_name}:")
     for script in client_scripts:
         #attempt enabling Client script
@@ -438,7 +438,7 @@ def enable_all_client_script(module_name):
     print(f"All Client Scripts for {module_name} enabled.")
     
 def delete_all_client_script(module_name):
-    client_scripts = frappe.get_all("Client Script", filters={"dt": module_name})
+    client_scripts = frappe.get_all("Client Script", filters={"module": module_name})
     print(f"Deleting Client Scripts for module {module_name}:")
     for script in client_scripts:
         #attempt deleting Client script
@@ -460,7 +460,7 @@ def create_custom_fields(doctype, script_name, script):
         return
     
 def delete_all_custom_fields(module_name):
-    custom_fields = frappe.get_all("Custom Field", filters={"dt": module_name})
+    custom_fields = frappe.get_all("Custom Field", filters={"module": module_name})
     print(f"Deleting Custom Fields for module {module_name}:")
     for field in custom_fields:
         #attempt deleting Custom Field
