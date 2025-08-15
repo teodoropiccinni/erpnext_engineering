@@ -17,7 +17,7 @@
     "field_name": "item_name",
     "doctype_or_field": "DocField",
     "property": "hidden",
-    "property_type": "Data",
+    "property_type": "Check",
     "value": "0",
     "module": "Engineering"
   },
@@ -28,7 +28,7 @@
     "field_name": "item_name",
     "doctype_or_field": "DocField",
     "property": "allow_on_quick_entry",
-    "property_type": "Data",
+    "property_type": "Check",
     "value": "1",
     "module": "Engineering"
   },
