@@ -1,14 +1,6 @@
 [
   {
     "doctype": "Client Script",
-    "name": "engineering_script_item_item_coding_table_link",
-    "dt": "Item",
-    "script_type": "Form",
-    "script": "frappe.ui.form.on('Item', {\n    item_coding_table_link: function(frm) {\n        if (frm.doc.engineering_field_item_item_coding_table_link) {\n            frappe.call({\n                method: \"erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.get_full_coding_description\",\n                args: {\n                    coding_code: frm.doc.engineering_field_item_item_coding_table_link-hidden\n                },\n                callback: function(r) {\n                    frm.set_value('engineering_field_item_item_coding_table_link-hidden', r.message || \"\");\n                }\n            });\n        } else {\n            frm.set_value('engineering_field_item_item_coding_table_link-hidden', \"\");\n        }\n    }\n});",
-    "module": "Engineering"
-  },
-  {
-    "doctype": "Client Script",
     "name": "engineering_script_item_item_coding_table_prefix_check",
     "dt": "Item",
     "script_type": "Form",
