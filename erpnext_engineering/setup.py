@@ -63,6 +63,7 @@ def after_install():
     # Client scripts
     # When you generate client script from here they are automatically disabled. Enabling them here
     enable_all_client_script(module_name)
+    enable_client_script("engineering_script_item_item_coding_table_prefix_check")
 
     # Create Email Group for Engineering
     print("Creating Email Group for Engineering")
@@ -426,6 +427,18 @@ def create_client_script(doctype, script_name, script):
     if frappe.db.exists("Client Script", script_name):
         print(f"Client Script: {script_name} already exists. Skipping.")
         return
+
+# Enable client script by name
+def enable_client_script(script_name):
+    if frappe.db.exists("Client Script", script_name):
+        doc = frappe.get_doc("Client Script", script_name)
+        doc.enabled = 1
+        doc.save()
+        print(f"Client Script: {script_name} enabled.")
+    else:
+        print(f"Client Script: {script_name} not found.")
+
+# Enable all client scripts
 def enable_all_client_script(module_name):
     client_scripts = frappe.get_all("Client Script", filters={"module": module_name})
     print(f"Enabling Client Scripts for module {module_name}:")
