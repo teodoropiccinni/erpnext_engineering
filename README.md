@@ -15,9 +15,12 @@
 Engineering module to provide advanced fucntionalities and custom configurations for engineering teams.
 
 ## Functionalities
-* Item coding based on Naming Series
-* Naming Series dictionary (Item Coding Table)
+* Item Coding Standard table
+* Item coding based on Item Coding Standard
 * Item Revisions
+
+## Installation
+After installing frappe-bench on your machine and setting up your DNS follow the guide below to prepare your production or your development environment. Testing environement will be added in a later stage.
 
 ### Production
 ```
@@ -25,7 +28,7 @@ SITE=sitename
 bench new-site $SITE
 ```
 
-1. Install Car Workshop App
+1. Install Engineering Module for ERPnext
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 ```bash
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
@@ -42,6 +45,18 @@ Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is th
 bench --site yoursite set-config -g developer_mode 0
 ```
 
+3. Enable HTTPS
+
+	1. Enable DNS based multitenancy
+```
+bench config dns_multitenant on
+sudo service nginx reload
+```
+
+	1. Install Certbot
+https://certbot.eff.org/instructions?ws=nginx&os=pip
+
+	1. 
 
 
 ### Development
@@ -50,7 +65,7 @@ SITE=sitename
 bench new-site $SITE
 ```
 
-1. Install Car Workshop App
+1. Install Engineering Module for ERPnext
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 ```bash
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
@@ -68,10 +83,11 @@ bench --site yoursite set-config -g developer_mode 1
 ```
 
 
+## ERPnext configurations
 
 
 
-### Contributing
+## Contributing
 
 This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
 
@@ -87,7 +103,7 @@ Pre-commit is configured to use the following tools for checking and formatting 
 - prettier
 - pyupgrade
 
-### CI
+## CI
 
 This app can use GitHub Actions for CI. The following workflows are configured:
 

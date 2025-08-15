@@ -12,13 +12,68 @@
   },
   {
     "doctype": "Property Setter",
-    "name": "engineering_property_item_item_name_hidden",
+    "name": "engineering_property_item_item_name_reqd",
     "doc_type": "Item",
     "field_name": "item_name",
     "doctype_or_field": "DocField",
-    "property": "hidden",
+    "property": "reqd",
     "property_type": "Check",
-    "value": "0",
+    "value": "1",
+    "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_name_in_list_view",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "in_list_view",
+    "property_type": "Check",
+    "value": "1",
+    "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_name_in_standard_filter",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "in_standard_filter",
+    "property_type": "Check",
+    "value": "1",
+    "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_name_in_global_search",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "in_global_search",
+    "property_type": "Check",
+    "value": "1",
+    "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_name_in_preview",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "in_preview",
+    "property_type": "Check",
+    "value": "1",
+    "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_name_bold",
+    "doc_type": "Item",
+    "field_name": "item_name",
+    "doctype_or_field": "DocField",
+    "property": "bold",
+    "property_type": "Check",
+    "value": "1",
     "module": "Engineering"
   },
   {
@@ -34,13 +89,13 @@
   },
   {
     "doctype": "Property Setter",
-    "name": "engineering_property_item_item_name_reqd",
+    "name": "engineering_property_item_item_name_hidden",
     "doc_type": "Item",
     "field_name": "item_name",
     "doctype_or_field": "DocField",
-    "property": "reqd",
+    "property": "hidden",
     "property_type": "Check",
-    "value": "1",
+    "value": "0",
     "module": "Engineering"
   }
 ]
