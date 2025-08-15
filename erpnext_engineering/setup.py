@@ -433,6 +433,7 @@ def enable_client_script(script_name):
     if frappe.db.exists("Client Script", script_name):
         doc = frappe.get_doc("Client Script", script_name)
         doc.enabled = 1
+        doc.script_type = "Form"
         doc.save()
         print(f"Client Script: {script_name} enabled.")
     else:
@@ -447,6 +448,7 @@ def enable_all_client_script(module_name):
         try:
             doc = frappe.get_doc("Client Script", script.name)
             doc.enabled = 1
+            doc.script_type = "Form"
             doc.save()
             print(f"- {script.name}: Enabled")
         except Exception as e:
