@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import logger, _
 from frappe.model.document import Document
 
 class ItemCodingTable(Document):
@@ -24,13 +25,60 @@ def check_duplicates(coding_code):
     exists = frappe.db.exists("Item Coding Table", {"engineering_item_coding_table_code": coding_code})
     return not bool(exists)
 
-# Return full coding description for search purposes
+# Return full coding description
 @frappe.whitelist()
 def get_full_coding_description(coding_code):
     item_coding = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_title")
     if not item_coding:
-        return ""
+        return "Not found"
     else:
         # Concatenate vaules from Coding Table like: engineering_item_coding_table_code - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_lenght) 
         full_coding_description = f"{item_coding} - {frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_liv1')} / {frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_liv2')} ({frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_code_lenght')})"
         return full_coding_description
+    
+@frappe.whitelist()
+def generate_item_coding_code(item_prefix):
+    """
+    Generate a new item_code based on the provided item_prefix.
+    The new code will be the first available number in the sequence from the item_code saved in DocType list Item.
+    """
+    # Get full code lenght based on item_coding_table_code_lenght and item_coding_table_code
+    code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_code": item_prefix}, "engineering_item_coding_table_code_lenght")
+    if not code_length:
+        frappe.throw(_("Item Coding Table with code {0} not found.").format(item_prefix))
+        logger.error(f"Item Coding Table: generate_item_coding_code - Item Coding Table with code {item_prefix} not found.")
+        return None
+    
+    # Get the last item_code that start with the given item_prefix and calculated length
+    if not item_prefix:
+        frappe.throw(_("Item prefix cannot be empty."))
+        logger.error("Item Coding Table: generate_item_coding_code - Item prefix cannot be empty.")
+        return None
+
+    # Get all code that 
+    # - start with the given item_prefix
+    # - have the same code length (full_lenght = item_prefix + code_length)
+    item_codes = frappe.get_all(
+        "Item Coding Table",
+        filters={
+            "engineering_item_coding_table_code": [
+                "regexp",
+                f"^{item_prefix}[0-9a-zA-Z\-_]{{{code_length}}}$"
+            ]
+        },
+        fields=["engineering_item_coding_table_code"],
+        order_by="creation desc"
+    )
+
+    # Get the last item_code with the given item_prefix
+    last_item_code = item_codes[0].engineering_item_coding_table_code if item_codes else None
+
+    # generate new item code
+    if last_item_code:
+        # Increment the last item code by 1
+        new_item_code = str(int(last_item_code) + 1)
+    else:
+        # If no last item code found, start with the item prefix
+        new_item_code = item_prefix + str(1).zfill(code_length)
+
+    return new_item_code

@@ -21,10 +21,6 @@ def check_app_permission():
 
 	return False
 
-
-
-
-@frappe.whitelist()
 def create_workspace_group_and_permissions(doc, method):
     """
     Hook function for Workspace `after_insert`.
