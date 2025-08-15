@@ -80,7 +80,13 @@ def before_uninstall():
     # TODO Implement uninstall logic to clean DB and files
     # Delete Client Scripts
     delete_all_client_script(module_name)
-    
+
+    # Delete Property Setters
+    delete_all_property_setters(module_name)
+
+    # Deleting Custom Fields for Engineering
+    delete_all_custom_fields(module_name)
+
     # Deleting DocTypes for Engineering
     for doctype in frappe.get_all("DocType", filters={"module": module_name}):
         if doctype.name not in ["DocType", "Custom Field", "Module Def", "Role", "Role Profile"]:
@@ -499,3 +505,34 @@ def delete_engineering_email_group(group_name):
     else:
         print(f"Email Group {group_name} not found.")
         return
+    
+# Property Setter
+def create_property_setter(doctype, fieldname, property, value):
+    if frappe.db.exists("Property Setter", f"engineering_{doctype}_{fieldname}_{property}"):
+        print(f"Property Setter: engineering_{doctype}_{fieldname}_{property} already exists. Skipping.")
+        return
+    property_setter = frappe.get_doc({
+        "doctype": "Property Setter",
+        "doc_type": doctype,
+        "field_name": fieldname,
+        "property": property,
+        "value": value
+    })
+    property_setter.insert(ignore_permissions=True)
+    frappe.db.commit()
+    print(f"Property Setter: engineering_{doctype}_{fieldname}_{property} created.")
+
+def delete_all_property_setters(module_name):
+    property_setters = frappe.get_all("Property Setter", filters={"module": module_name})
+    print(f"Deleting Property Setters for module {module_name}:")
+    for setter in property_setters:
+        #attempt deleting Property Setter
+        try:
+            print(f"- {setter.name}: Deleted")
+            frappe.delete_doc("Property Setter", setter.name, force=True)
+        except Exception as e:
+            print(f"- {setter.name}: Failed to delete Property Setter. Error: {e}")
+        #catch and trace exception
+
+    frappe.db.commit()
+    print(f"All Property Setters for {module_name} deleted.")
