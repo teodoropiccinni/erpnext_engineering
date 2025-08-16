@@ -71,7 +71,11 @@ def after_install():
     # Client scripts
     script_name = "engineering_script_item_item_coding_table_prefix_check"
     script_file = f"{client_script_folder}/{script_name}.js"
-    create_or_update_client_script(script_name, script_file)
+    script_type = "Form"
+    on_doctype = "Item"  
+    create_or_update_client_script(script_name, script_file, script_type, on_doctype)
+    script_type = "List"
+    create_or_update_client_script(script_name, script_file, script_type, on_doctype)
     # When you generate client script from here they are automatically disabled. Enabling them here
     enable_all_client_script(module_name)
     enable_client_script("engineering_script_item_item_coding_table_prefix_check")
@@ -434,7 +438,7 @@ def add_engineering_role_permissions(role, doctype, permlevel=0, perm="r"):
 
 # Client scripts
 # Install and delete client scripts
-def create_or_update_client_script(script_name, script_file):
+def create_or_update_client_script(script_name, script_file, script_type, on_doctype):
     print(f"Install Client Script: {script_name}.")
     with open(script_file, 'r') as f:
         script_content = f.read()
@@ -447,28 +451,28 @@ def create_or_update_client_script(script_name, script_file):
         doc = frappe.get_doc("Client Script", script_name)
         doc.docstatus = 0
         doc.doctype = "Client Script"
-        doc.dt = "Item"
+        doc.dt = on_doctype
         doc.enabled = 1
         doc.modified = last_edit
         doc.module = "Engineering"
         doc.name = "engineering_script_item_item_coding_table_prefix_check"
         doc.script = script_content
-        doc.script_type = "Form"
-        doc.view = "Form"
+        doc.script_type = script_type
+        doc.view = script_type
         doc.save()
     else:
         print(f"Generate new Client Script: {script_name}.")
         frappe.get_doc({
             "docstatus": 0,
             "doctype": "Client Script",
-            "dt": "Item",
+            "dt": on_doctype,
             "enabled": 1,
             "modified": last_edit,
             "module": "Engineering",
             "name": script_name,
             "script": script_content,
-            "script_type": "Form",
-            "dt": "Item"
+            "script_type": script_type,
+            "view": script_type
         }).insert(ignore_permissions=True)
     frappe.db.commit()
 
