@@ -7,6 +7,7 @@ from frappe.utils import random_string
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 def after_install():
+    development_mode_on=frappe.conf.developer_mode
     app_name="erpnext_engineering"
     workspace_name="Engineering"
     workspace_label="Engineering"
@@ -17,7 +18,12 @@ def after_install():
     workspace_is_hidden = "0"
     workspace_public = True
     workspace_sequence_id = 2.2
-    client_script_folder = "erpnext_engineering/engineering/client_script/"
+    client_script_folder = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
+
+    print("Running after_install function.")
+    if(development_mode_on):
+        cwd = os.getcwd()
+        print(f"Running in path: {cwd}")
 
     # Gen Module Def
     print(f"Module Def: Installing Module Def {module_name}") 
