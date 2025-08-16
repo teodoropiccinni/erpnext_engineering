@@ -58,11 +58,11 @@ def generate_item_coding_code(item_prefix='100'):
     # Get all code that 
     # - start with the given item_prefix
     item_codes_with_prefix = frappe.get_all(
-        "Item Coding Table",
+        "Item",
         filters={
-            "engineering_item_coding_table_code": ["like", f"{item_prefix}%"]
+            "item_code": ["like", f"{item_prefix}%"]
         },
-        fields=["engineering_item_coding_table_code"],
+        fields=["item_code", "item_name", "engineering_field_item_item_coding_table_link"],
         order_by="creation desc"
     )
     # - have the same code length (full_lenght = item_prefix + code_length)

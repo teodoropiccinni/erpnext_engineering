@@ -24,7 +24,7 @@ frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_link', funct
     generate_item_coding_code(frm);
 });
 frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_prefix', function(frm) {
-    console.log('Client Script: Item - engineering_field_item_item_coding_table_link');
+    console.log('Client Script: Item - engineering_field_item_item_coding_table_prefix');
     generate_item_coding_code(frm);
 });
 
