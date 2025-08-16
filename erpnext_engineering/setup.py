@@ -18,7 +18,6 @@ def after_install():
     workspace_is_hidden = "0"
     workspace_public = True
     workspace_sequence_id = 2.2
-    client_script_folder = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
 
     print("Running after_install function.")
     if(development_mode_on):
@@ -69,13 +68,24 @@ def after_install():
     # Enable all Client Scripts
 
     # Client scripts
-    script_name = "engineering_script_item_item_coding_table_prefix_check"
-    script_file = f"{client_script_folder}/{script_name}.js"
-    script_type = "Form"
-    on_doctype = "Item"  
-    create_or_update_client_script(script_name, script_file, script_type, on_doctype)
-    script_type = "List"
-    create_or_update_client_script(script_name, script_file, script_type, on_doctype)
+    client_script_folder = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
+    scripts = [
+        {
+            "name": "engineering_script_item_item_coding_table_prefix_check_form",
+            "file": f"{client_script_folder}/engineering_script_item_item_coding_table_prefix_check.js",
+            "type": "Form",
+            "doctype": "Item"
+        },
+        {
+            "name": "engineering_script_item_item_coding_table_prefix_check_list",
+            "file": f"{client_script_folder}/engineering_script_item_item_coding_table_prefix_check.js",
+            "type": "List",
+            "doctype": "Item"
+        }
+    ]
+    for script in scripts:
+        create_or_update_client_script(script["name"], script["file"], script["type"], script["doctype"])
+
     # When you generate client script from here they are automatically disabled. Enabling them here
     enable_all_client_script(module_name)
     enable_client_script("engineering_script_item_item_coding_table_prefix_check")
@@ -444,7 +454,7 @@ def create_or_update_client_script(script_name, script_file, script_type, on_doc
         script_content = f.read()
         #convert script to one line (replace 'new line' chars with \n) and escape special chars
         script_content = script_content.replace("\n", "\\n").replace("\"", "\\'")
-    last_edit = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(os.path.getmtime(script_file)))
+    last_edit = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(script_file)))
     # Verifica se esiste già
     if frappe.db.exists("Client Script", script_name):
         print(f"Updating Client Script: {script_name}.")
