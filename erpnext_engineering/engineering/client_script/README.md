@@ -1,0 +1,1 @@
+File in this folder are skipped by frappe-bench, use them only as a reference to generate client script before escaping and removing new lines from the code.
