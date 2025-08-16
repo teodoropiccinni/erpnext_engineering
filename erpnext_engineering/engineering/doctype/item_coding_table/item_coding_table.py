@@ -37,7 +37,7 @@ def get_full_coding_description(coding_code):
         return full_coding_description
     
 @frappe.whitelist()
-def generate_item_coding_code(item_prefix):
+def generate_item_coding_code(item_prefix='100'):
     """
     Generate a new item_code based on the provided item_prefix.
     The new code will be the first available number in the sequence from the item_code saved in DocType list Item.
