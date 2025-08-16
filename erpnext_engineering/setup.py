@@ -453,7 +453,7 @@ def create_or_update_client_script(script_name, script_file, script_type, on_doc
     with open(script_file, 'r') as f:
         script_content = f.read()
         #convert script to one line (replace 'new line' chars with \n) and escape special chars
-        script_content = script_content.replace("\n", "\\n").replace("\"", "\\'")
+        script_content = script_content.replace("\"", "\\'")
     last_edit = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(script_file)))
     # Verifica se esiste già
     if frappe.db.exists("Client Script", script_name):
