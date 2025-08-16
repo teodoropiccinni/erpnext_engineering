@@ -46,6 +46,7 @@ function disable_autocode(frm) {
 }
 
 function generate_item_coding_code(frm) {
+    console.log('Client Script: Item - generate_item_coding_code');
     item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_link;
     if (item_coding_prefix) {
         frappe.call({

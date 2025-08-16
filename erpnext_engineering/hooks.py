@@ -41,12 +41,6 @@ fixtures = [
         "filters": [
             ["module", "=", "Engineering"]
         ]
-    },
-    {
-        "doctype": "Client Script",
-        "filters": [
-            ["module", "=", "Engineering"]
-        ]
     }
 ]
 

@@ -1,4 +1,5 @@
 import os
+import time
 import json
 
 import frappe
@@ -16,6 +17,7 @@ def after_install():
     workspace_is_hidden = "0"
     workspace_public = True
     workspace_sequence_id = 2.2
+    client_script_folder = "erpnext_engineering/engineering/client_script/"
 
     # Gen Module Def
     print(f"Module Def: Installing Module Def {module_name}") 
@@ -61,6 +63,9 @@ def after_install():
     # Enable all Client Scripts
 
     # Client scripts
+    script_name = "engineering_script_item_item_coding_table_prefix_check"
+    script_file = f"{client_script_folder}/{script_name}.js"
+    create_or_update_client_script(script_name, script_file)
     # When you generate client script from here they are automatically disabled. Enabling them here
     enable_all_client_script(module_name)
     enable_client_script("engineering_script_item_item_coding_table_prefix_check")
@@ -423,10 +428,43 @@ def add_engineering_role_permissions(role, doctype, permlevel=0, perm="r"):
 
 # Client scripts
 # Install and delete client scripts
-def create_client_script(doctype, script_name, script):
+def create_or_update_client_script(script_name, script_file):
+    print(f"Install Client Script: {script_name}.")
+    with open(script_file, 'r') as f:
+        script_content = f.read()
+        #convert script to one line (replace 'new line' chars with \n) and escape special chars
+        script_content = script_content.replace("\n", "\\n").replace("\"", "\\'")
+    last_edit = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(script_file)))
+    # Verifica se esiste già
     if frappe.db.exists("Client Script", script_name):
-        print(f"Client Script: {script_name} already exists. Skipping.")
-        return
+        print(f"Updating Client Script: {script_name}.")
+        doc = frappe.get_doc("Client Script", script_name)
+        doc.docstatus = 0
+        doc.doctype = "Client Script"
+        doc.dt = "Item"
+        doc.enabled = 1
+        doc.modified = last_edit
+        doc.module = "Engineering"
+        doc.name = "engineering_script_item_item_coding_table_prefix_check"
+        doc.script = script_content
+        doc.script_type = "Form"
+        doc.view = "Form"
+        doc.save()
+    else:
+        print(f"Generate new Client Script: {script_name}.")
+        frappe.get_doc({
+            "docstatus": 0,
+            "doctype": "Client Script",
+            "dt": "Item",
+            "enabled": 1,
+            "modified": last_edit,
+            "module": "Engineering",
+            "name": script_name,
+            "script": script_content,
+            "script_type": "Form",
+            "dt": "Item"
+        }).insert(ignore_permissions=True)
+    frappe.db.commit()
 
 # Enable client script by name
 def enable_client_script(script_name):
