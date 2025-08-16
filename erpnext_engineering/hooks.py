@@ -174,9 +174,9 @@ doc_events = {
 #    "Item Coding Table": {
 #        "autoname": "erpnext_engineering.engineering.api.item_coding_table.update_item_coding_table"
 #    }
-#    "Item": {
-#        "on_update": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.generate_item_coding_code"
-#    }
+    "Item": {
+        "before_insert": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.set_item_code"
+    }
 }
 
 # Scheduled Tasks

@@ -25,6 +25,12 @@ def check_duplicates(coding_code):
     exists = frappe.db.exists("Item Coding Table", {"engineering_item_coding_table_code": coding_code})
     return not bool(exists)
 
+# Set item_code before insert in hooks.py
+@frappe.whitelist()
+def set_item_code(doc, method=None):
+    if not doc.item_code:
+        doc.item_code = generate_item_coding_code(item_prefix=doc.engineering_field_item_item_coding_table_link)
+
 # Return full coding description
 @frappe.whitelist()
 def get_full_coding_description(coding_code):
