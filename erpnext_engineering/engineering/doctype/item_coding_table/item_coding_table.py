@@ -68,7 +68,7 @@ def generate_item_coding_code(item_prefix='100'):
     # - have the same code length (full_lenght = item_prefix + code_length)
     item_codes = []
     for item in item_codes_with_prefix:
-        if len(item.engineering_item_coding_table_code) == len(item_prefix) + int(code_length):
+        if len(item.item_code) == len(item_prefix) + int(code_length):
             item_codes.append(item)
             #stop at first match
             break
