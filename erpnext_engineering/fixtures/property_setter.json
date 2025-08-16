@@ -100,9 +100,9 @@
   },
   {
     "doctype": "Property Setter",
-    "name": "engineering_property_item_item_name_read_only_depends_on",
+    "name": "engineering_property_item_item_code_read_only_depends_on",
     "doc_type": "Item",
-    "field_name": "item_name",
+    "field_name": "item_code",
     "doctype_or_field": "DocField",
     "property": "read_only_depends_on",
     "property_type": "Data",
