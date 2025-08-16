@@ -8,8 +8,7 @@
     "columns": 0,
     "default": "1",
     "depends_on": null,
-    "description": "Enable this to generate automatically the Item Code using prefixes from Item 
-Coding Table.",
+    "description": "Enable this to generate automatically the Item Code using prefixes from Item Coding Table.",
     "docstatus": 0,
     "doctype": "Custom Field",
     "dt": "Item",
