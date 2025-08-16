@@ -57,19 +57,21 @@ def generate_item_coding_code(item_prefix='100'):
 
     # Get all code that 
     # - start with the given item_prefix
-    # - have the same code length (full_lenght = item_prefix + code_length)
-    item_codes = frappe.get_all(
+    item_codes_with_prefix = frappe.get_all(
         "Item Coding Table",
         filters={
-            "engineering_item_coding_table_code": [
-                "regexp",
-                f"^{item_prefix}[0-9a-zA-Z\-_]{{{code_length}}}$"
-            ]
+            "engineering_item_coding_table_code": ["like", f"{item_prefix}%"]
         },
         fields=["engineering_item_coding_table_code"],
         order_by="creation desc"
     )
-
+    # - have the same code length (full_lenght = item_prefix + code_length)
+    item_codes = []
+    for item in item_codes_with_prefix:
+        if len(item.engineering_item_coding_table_code) == len(item_prefix) + int(code_length):
+            item_codes.append(item)
+            #stop at first match
+            break
     # Get the last item_code with the given item_prefix
     last_item_code = item_codes[0].engineering_item_coding_table_code if item_codes else None
 
