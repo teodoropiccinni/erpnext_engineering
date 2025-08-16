@@ -1,6 +1,9 @@
 frappe.ui.form.on('Item', {
-    refresh: function(frm) {
+    load: function(frm) {
         alert('Client Script loaded!');
+        console.log('Client Script: Item - loaded');
+    },
+    refresh: function(frm) {
         console.log('Client Script: Item - refresh');
         toggle_item_coding_fields(frm);
         generate_item_coding_code(frm);
@@ -17,7 +20,10 @@ frappe.ui.form.on('Item', {
 });
 
 frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_link', function(frm) {
-    alert('Client Script running!');
+    console.log('Client Script: Item - engineering_field_item_item_coding_table_link');
+    generate_item_coding_code(frm);
+});
+frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_prefix', function(frm) {
     console.log('Client Script: Item - engineering_field_item_item_coding_table_link');
     generate_item_coding_code(frm);
 });
