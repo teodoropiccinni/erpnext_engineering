@@ -73,7 +73,7 @@ def generate_item_coding_code(item_prefix='100'):
             #stop at first match
             break
     # Get the last item_code with the given item_prefix
-    last_item_code = item_codes[0].engineering_item_coding_table_code if item_codes else None
+    last_item_code = item_codes[0].item_code if item_codes else None
 
     # generate new item code
     if last_item_code:
