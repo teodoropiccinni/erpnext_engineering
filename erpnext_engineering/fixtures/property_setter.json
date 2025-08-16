@@ -108,5 +108,16 @@
     "property_type": "Data",
     "value": "eval:doc.engineering_field_item_enable_item_coding_prefix==1",
     "module": "Engineering"
+  },
+  {
+    "doctype": "Property Setter",
+    "name": "engineering_property_item_item_code_read_only_depends_on",
+    "doc_type": "Item",
+    "field_name": "item_code",
+    "doctype_or_field": "DocField",
+    "property": "default",
+    "property_type": "Data",
+    "value": "00000000",
+    "module": "Engineering"
   }
 ]
