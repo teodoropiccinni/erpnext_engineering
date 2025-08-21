@@ -21,15 +21,21 @@ class ItemCodingTable(Document):
 
 # Check for duplicates in Item Coding Table
 @frappe.whitelist()
-def check_duplicates(coding_code):
-    exists = frappe.db.exists("Item Coding Table", {"engineering_item_coding_table_code": coding_code})
-    return not bool(exists)
+def is_duplicate_code(coding_code):
+    exists = frappe.db.exists("Item", {"item_code": coding_code})
+    return bool(exists)
 
 # Set item_code before insert in hooks.py
 @frappe.whitelist()
 def set_item_code(doc, method=None):
-    if not doc.item_code:
+    #TODO improve default code logic
+    if not doc.engineering_field_item_item_coding_table_link:
+        doc.engineering_field_item_item_coding_table_link = '000'
+    if not doc.item_code or (doc.item_code == '00000000' and doc.engineering_field_item_item_coding_table_link == '000'):
         doc.item_code = generate_item_coding_code(item_prefix=doc.engineering_field_item_item_coding_table_link)
+    if doc.item_code:
+        if is_duplicate_code(doc.item_code):
+            frappe.throw(_("Item code {0} already exists.").format(doc.item_code))
 
 # Return full coding description
 @frappe.whitelist()
@@ -43,7 +49,7 @@ def get_full_coding_description(coding_code):
         return full_coding_description
     
 @frappe.whitelist()
-def generate_item_coding_code(item_prefix='100'):
+def generate_item_coding_code(item_prefix='000'):
     """
     Generate a new item_code based on the provided item_prefix.
     The new code will be the first available number in the sequence from the item_code saved in DocType list Item.
