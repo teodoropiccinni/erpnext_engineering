@@ -31,7 +31,7 @@ def set_item_code(doc, method=None):
     #TODO improve default code logic
     if not doc.engineering_field_item_item_coding_table_link:
         doc.engineering_field_item_item_coding_table_link = '000'
-    if not doc.item_code or (doc.item_code == '00000000' and doc.engineering_field_item_item_coding_table_link == '000'):
+    if not doc.item_code or doc.item_code == '00000000':
         doc.item_code = generate_item_coding_code(item_prefix=doc.engineering_field_item_item_coding_table_link)
     if doc.item_code:
         if is_duplicate_code(doc.item_code):
