@@ -93,6 +93,6 @@ def generate_item_coding_code(item_prefix='000'):
         new_item_code = str(int(last_item_code) + 1)
     else:
         # If no last item code found, start with the item prefix
-        new_item_code = item_prefix + str(1).zfill(code_length)
+        new_item_code = item_prefix + str(0).zfill(code_length)
 
     return new_item_code
