@@ -13,6 +13,7 @@ def after_install():
     workspace_label="Engineering"
     workspace_title="Engineering"
     module_name = "Engineering"
+    module_profile_name = "Engineering"
     workspace_icon = "list-alt"
     workspace_indicator_color = "#3838fc"
     workspace_is_hidden = "0"
@@ -37,6 +38,10 @@ def after_install():
     for role in get_engineering_roles_array():
         print(f"- Role: {role}") 
         create_engineering_role(role)
+
+    # Add Module Profile
+    print(f"Module Profile: Generating Module Profile for {module_name}")
+    create_engineering_module_profile(module_profile_name)
 
     # Adding Role Profiles
     print(f"Role Profiles: Generating Roles Profiles for Module {module_name}") 
@@ -102,6 +107,7 @@ def after_install():
 def before_uninstall():
     workspace_name="Engineering"
     module_name = "Engineering"
+    module_profile_name = "Engineering"
 
     # TODO Implement uninstall logic to clean DB and files
     # Delete Client Scripts
@@ -135,6 +141,9 @@ def before_uninstall():
 
     # Delete Module Def
     delete_engineering_module_def(module_name)
+
+    # Delete Module Profile
+    delete_engineering_module_profile(module_profile_name)
 
     # Delete Email Group
     group_name = "Engineering Team"
@@ -609,3 +618,37 @@ def delete_all_property_setters(module_name):
 
     frappe.db.commit()
     print(f"All Property Setters for {module_name} deleted.")
+
+
+import frappe
+
+# Module Profile for Engineering
+def create_engineering_module_profile(profile_name):
+    modules = ["Project", "Manufacturing", "Stock", "Quality", "Engineering", "Purchasing"]
+
+    # Verifica se esiste già
+    if not frappe.db.exists("Module Profile", profile_name):
+        doc = frappe.get_doc({
+            "doctype": "Module Profile",
+            "module_profile_name": profile_name,
+            "module": [{"module": m} for m in modules],
+            "restrict_to_domain": "",
+            "custom": 1,
+            "is_default": 0,
+            "block_modules": 0,
+            "block_standard_reports": 0,
+            "block_standard_doctypes": 0
+        })
+        doc.insert(ignore_permissions=True)
+        frappe.db.commit()
+        print(f"Module Profile '{profile_name}' generated with modules: {', '.join(modules)}")
+    else:
+        print(f"Module Profile '{profile_name}' already exists.")
+
+def delete_engineering_module_profile(profile_name):
+    if frappe.db.exists("Module Profile", profile_name):
+        frappe.delete_doc("Module Profile", profile_name, force=True)
+        frappe.db.commit()
+        print(f"Module Profile '{profile_name}' deleted.")
+    else:
+        print(f"Module Profile '{profile_name}' not found.")
