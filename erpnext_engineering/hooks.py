@@ -167,8 +167,8 @@ doc_events = {
 #       "on_trash": "method"
 #   }
     "Workspace": {
-        "after_insert": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions",
-        "on_update": "erpnext_engineering.engineering.api.permissions.create_workspace_group_and_permissions"
+        "after_insert": "erpnext_engineering.engineering.api.permissions.create_engineering_workspace_group_and_permissions",
+        "on_update": "erpnext_engineering.engineering.api.permissions.create_engineering_workspace_group_and_permissions"
     },
 # TODO Add here hooks for event in dedicated doctype Coding table and Versions
 #    "Item Coding Table": {

@@ -11,7 +11,7 @@ from frappe.model.document import Document
 import erpnext
 
 
-def check_app_permission():
+def check_engineering_app_permission():
 	"""Check if user has permission to access the app (for showing the app on app screen)"""
 	if frappe.session.user == "Administrator":
 		return True
@@ -21,7 +21,7 @@ def check_app_permission():
 
 	return False
 
-def create_workspace_group_and_permissions(doc, method):
+def create_engineering_workspace_group_and_permissions(doc, method):
     """
     Hook function for Workspace `after_insert`.
     """
@@ -31,4 +31,4 @@ def create_workspace_group_and_permissions(doc, method):
 
 
 ### TODO: from hooks.py
-#  		"has_permission": "erpnext_carworkshop.api.permission.check_app_permission"
+#  		"has_permission": "erpnext_engineering.api.permission.check_engineering_app_permission"
