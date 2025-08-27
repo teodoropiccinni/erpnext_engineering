@@ -11,6 +11,8 @@
         "indicator_color": "green",
         "is_hidden": 0,
         "label": "Engineering",
+        "title": "Engineering",
+        "name": "Engineering",
         "links": [
             {
                 "dependencies": "Item, BOM",
