@@ -1,12 +1,12 @@
 import click
 
-from erpnext_engineering.setup import before_uninstall as remove_custom_fields
+from erpnext_engineering.setup import before_engineering_app_uninstall as uninstall_engineering_app
 
 
 def before_engineering_uninstall():
 	try:
 		print("Removing customizations created by the Engineering module...")
-		remove_custom_fields()
+		uninstall_engineering_app()
 
 	except Exception as e:
 		BUG_REPORT_URL = "https://github.com/teodoropiccinni.com/erpnext_engineering/issues/new"

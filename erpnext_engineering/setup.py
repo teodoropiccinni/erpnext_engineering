@@ -6,7 +6,7 @@ import frappe
 from frappe.utils import random_string
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
-def after_install():
+def after_engineering_app_install():
     development_mode_on=frappe.conf.developer_mode
     app_name="erpnext_engineering"
     workspace_name="Engineering"

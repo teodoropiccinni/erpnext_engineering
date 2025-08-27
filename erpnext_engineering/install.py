@@ -1,12 +1,12 @@
 import click
 
-from erpnext_engineering.setup import after_install as setup
+from erpnext_engineering.setup import after_engineering_app_install as install_engineering_app
 
 
 def after_engineering_install():
 	try:
 		print("Setting up Engineering...")
-		setup()
+		install_engineering_app()
 
 		click.secho("Thank you for installing Engineering module for ERPnext!", fg="green")
 
