@@ -3,7 +3,7 @@ import click
 from erpnext_engineering.setup import after_install as setup
 
 
-def after_install():
+def after_engineering_install():
 	try:
 		print("Setting up Engineering...")
 		setup()

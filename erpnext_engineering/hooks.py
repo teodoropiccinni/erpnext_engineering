@@ -106,12 +106,12 @@ fixtures = [
 # ------------
 
 # before_install = "erpnext_engineering.install.before_install"
-after_install = "erpnext_engineering.install.after_install"
+after_install = "erpnext_engineering.install.after_engineering_install"
 
 # Uninstallation
 # ------------
 
-before_uninstall = "erpnext_engineering.uninstall.before_uninstall"
+before_uninstall = "erpnext_engineering.uninstall.before_engineering_uninstall"
 # after_uninstall = "erpnext_engineering.uninstall.after_uninstall"
 
 # Integration Setup

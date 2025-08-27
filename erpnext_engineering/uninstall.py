@@ -3,7 +3,7 @@ import click
 from erpnext_engineering.setup import before_uninstall as remove_custom_fields
 
 
-def before_uninstall():
+def before_engineering_uninstall():
 	try:
 		print("Removing customizations created by the Engineering module...")
 		remove_custom_fields()
