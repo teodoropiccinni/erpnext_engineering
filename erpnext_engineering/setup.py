@@ -331,19 +331,19 @@ def get_engineering_workspace_content():
 def create_engineering_module_def(module_name="Engineering", app_name="erpnext_engineering", icon=None, color=None):
     if frappe.db.exists("Module Def", module_name):
         print(f"Module Def: {module_name} already exists. Skipping.")
-        return
-
-    module = frappe.get_doc({
-        "doctype": "Module Def",
-        "module_name": module_name,
-        "app_name": app_name,
-        "is_custom": 0,
-        "app_icon": icon or "",
-        "app_color": color or ""
-    })
-    module.insert(ignore_permissions=True)
-    frappe.db.commit()
-    print(f"Module Def {module_name} created.")
+    else:
+        module = frappe.get_doc({
+            "doctype": "Module Def",
+            "module_name": module_name,
+            "app_name": app_name,
+            "is_custom": 0,
+            "app_icon": icon or "",
+            "app_color": color or ""
+        })
+        module.insert(ignore_permissions=True)
+        frappe.db.commit()
+        print(f"Module Def {module_name} created.")
+    return
 
 def delete_engineering_module_def(module_name):
     if frappe.db.exists("Module Def", module_name):
