@@ -41,6 +41,7 @@
             "search_index": 1
         },
         {
+            "allow_in_quick_entry": 1,
             "fieldname": "engineering_item_revision_id",
             "fieldtype": "Data",
             "in_filter": 1,
@@ -49,12 +50,14 @@
             "in_preview": 1,
             "in_standard_filter": 1,
             "label": "Item Revision ID",
+            "hidden": 0,
             "reqd": 1,
             "search_index": 1
         },
         {
             "fieldname": "engineering_item_revision_item_id",
-            "fieldtype": "Data",
+            "fieldtype": "Link",
+            "options": "Item",
             "in_filter": 1,
             "in_global_search": 1,
             "in_list_view": 1,
@@ -94,11 +97,14 @@
             "fieldtype": "Data",
             "in_filter": 1,
             "in_global_search": 1,
+            "in_list_view": 0,
             "in_preview": 1,
+            "in_standard_filter": 0,
             "label": "Release Note",
             "length": 450,
             "read_only": 1,
-            "reqd": 0
+            "hidden": 0,
+            "reqd": 1
         }
     ],
     "grid_page_length": 50,
