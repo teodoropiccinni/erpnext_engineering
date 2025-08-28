@@ -104,7 +104,7 @@ def after_engineering_app_install():
 
 
 
-def before_uninstall():
+def before_engineering_app_uninstall():
     workspace_name="Engineering"
     module_name = "Engineering"
     module_profile_name = "Engineering"
