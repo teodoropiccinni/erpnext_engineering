@@ -11,7 +11,7 @@
     "modified_by": "Administrator",
     "module": "Engineering",
     "name": "Item Revision",
-    "naming_rule": "Naming Series",
+    "naming_rule": "By \"Naming Series\" field",
     "owner": "Administrator",
     "doctype": "DocType",
     "engine": "InnoDB",
@@ -68,7 +68,7 @@
             "in_standard_filter": 1,
             "label": "Item Code - Revision",
             "read_only": 1,
-            "reqd": 1,
+            "reqd": 0,
             "search_index": 1
         },
         {
