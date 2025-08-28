@@ -36,8 +36,8 @@
             "fieldname": "naming_series",
             "fieldtype": "Select",
             "label": "Naming Series",
-            "options": "ENG-ITM-VER-###############",
-            "default": "ENG-ITM-VER-###############",
+            "options": "ENG-ITM-VER-.###############",
+            "default": "ENG-ITM-VER-.###############",
             "hidden": 1,
             "reqd": 1,
             "search_index": 1
