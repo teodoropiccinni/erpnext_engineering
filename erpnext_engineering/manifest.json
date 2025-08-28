@@ -1,0 +1,11 @@
+{
+  "name": "erpnext_engineering",
+  "version": "1.0.0",
+  "title": "ERPNext Engineering",
+  "author": "Teodoro P.",
+  "description": "ERPNext Engineering module providing comprehensive engineering management features",
+  "app_license": "MIT",
+  "required_apps": ["erpnext"],
+  "app_color": "#2e8b57",
+  "app_icon": "octicon octicon-tools"
+}

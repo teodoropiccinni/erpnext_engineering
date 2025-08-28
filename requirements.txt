@@ -1,0 +1,2 @@
+# ERPNext Engineering Dependencies
+# These are managed by bench and should not be manually installed

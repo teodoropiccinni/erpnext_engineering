@@ -1,0 +1,18 @@
+# This file helps you to package and publish your app on PyPI and other package indexes.
+include pyproject.toml
+include requirements.txt
+include erpnext_engineering/public/*
+include erpnext_engineering/templates/*
+include erpnext_engineering/config/*
+include erpnext_engineering/*.txt
+include erpnext_engineering/*.py
+include erpnext_engineering/*.json
+recursive-include erpnext_engineering *.py
+recursive-include erpnext_engineering *.js
+recursive-include erpnext_engineering *.css
+recursive-include erpnext_engineering *.html
+recursive-include erpnext_engineering *.json
+recursive-include erpnext_engineering *.txt
+recursive-include erpnext_engineering *.md
+recursive-exclude erpnext_engineering __pycache__
+recursive-exclude erpnext_engineering *.pyc
