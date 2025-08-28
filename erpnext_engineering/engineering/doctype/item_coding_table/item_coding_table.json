@@ -4,7 +4,7 @@
     "allow_import": 1,
     "autoname": "field:engineering_item_coding_table_code",
     "creation": "2025-07-11 11:33:52.137166",
-    "custom": 0,
+    "custom": 1,
     "editable_grid": 1,
     "modified": "2025-07-22 12:56:53.263718",
     "modified_by": "Administrator",
