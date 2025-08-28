@@ -22,7 +22,7 @@ class ItemRevision(Document):
         else:
             self.engineering_item_revision_id = generate_new_revision_number(self.engineering_item_revision_item_id)
         # generate generate_engineering_item_revision_id_revision
-        self.engineering_item_revision_item_id-revision = generate_engineering_item_revision_id_revision(self.engineering_item_revision_item_id, self.engineering_item_revision_revision)
+        self.engineering_item_revision_item_id_revision = generate_engineering_item_revision_id_revision(self.engineering_item_revision_item_id, self.engineering_item_revision_revision)
 
 def get_last_item_revision(item_id):
     # get all revision of the selected item and order from greatest to smallest and return the engineering_item_revision_item_id of the first element
@@ -38,7 +38,7 @@ def generate_new_revision_number(item_id):
         return 0
     return last_revision + 1
 
-# Generate engineering_item_revision_item_id-revision from engineering_item_revision_item_id and engineering_item_revision_revision
+# Generate engineering_item_revision_item_id_revision from engineering_item_revision_item_id and engineering_item_revision_revision
 def generate_engineering_item_revision_id_revision(engineering_item_revision_item_id, engineering_item_revision_revision):
     return f"{engineering_item_revision_item_id}-{engineering_item_revision_revision}"
 
@@ -55,6 +55,6 @@ def set_doc_item_revision(doc, item_id):
             if last_revision is not None and doc.engineering_item_revision_revision != last_revision + 1:
                 # if it is not last +1 set it to last + 1
                 doc.engineering_item_revision_revision = last_revision + 1
-    # Set doc.engineering_item_revision_item_id-revision as engineering_item_revision_item_id + "-" + engineering_item_revision_revision
-    doc.engineering_item_revision_item_id-revision = generate_engineering_item_revision_id_revision(doc.engineering_item_revision_item_id, doc.engineering_item_revision_revision)
+    # Set doc.engineering_item_revision_item_id_revision as engineering_item_revision_item_id + "-" + engineering_item_revision_revision
+    doc.engineering_item_revision_item_id_revision = generate_engineering_item_revision_id_revision(doc.engineering_item_revision_item_id, doc.engineering_item_revision_revision)
 
