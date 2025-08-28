@@ -331,6 +331,7 @@ def get_engineering_workspace_content():
 def create_engineering_module_def(module_name="Engineering", app_name="erpnext_engineering", icon=None, color=None):
     if frappe.db.exists("Module Def", module_name):
         print(f"Module Def: {module_name} already exists. Skipping.")
+        return
     else:
         module = frappe.get_doc({
             "doctype": "Module Def",
