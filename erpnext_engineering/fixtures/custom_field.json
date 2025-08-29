@@ -123,12 +123,11 @@
   },
   {
     "doctype": "Custom Field",
-    "fieldname": "engineering_item_revisions",
+    "fieldname": "engineering_field_item_item_revision_table",
     "fieldtype": "Table",
     "label": "Item Revisions",
     "modified": "2025-08-29 15:36:51.645384",   
     "module": "Engineering",
-    "name": "engineering_field_item_item_revision_table",
     "options": "Item Revision",
     "insert_after": "engineering_item_revision_item_tab",
     "in_list_view": 0,
