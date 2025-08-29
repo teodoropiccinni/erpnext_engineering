@@ -25,7 +25,12 @@ class ItemRevision(Document):
 
 def get_last_item_revision(item_id):
     # get all revision of the selected item and order from greatest to smallest and return the engineering_item_revision_item_id of the first element
-    revisions = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id}, order_by="engineering_item_revision_revision desc")
+    revisions = frappe.get_all(
+        "Item Revision",
+        filters={"engineering_item_revision_item_id": item_id},
+        fields=["engineering_item_revision_revision"],
+        order_by="engineering_item_revision_revision desc"
+    )
     if revisions:
         return revisions[0].engineering_item_revision_revision
     return None

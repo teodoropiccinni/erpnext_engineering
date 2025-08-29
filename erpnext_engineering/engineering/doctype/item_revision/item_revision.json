@@ -41,7 +41,7 @@
             "default": "ENG-ITM-VER-.###############",
             "hidden": 1,
             "reqd": 1,
-            "search_index": 1
+            "search_index": 0
         },
         {
             "allow_in_quick_entry": 1,
@@ -134,7 +134,8 @@
             "in_list_view": 0,
             "in_preview": 1,
             "in_standard_filter": 0,
-            "reqd": 0
+            "reqd": 0,
+            "search_index": 0
         },
         {
             "fieldname": "engineering_item_revision_release_note",
@@ -148,7 +149,8 @@
             "label": "Release Note",
             "length": 450,
             "read_only": 0,
-            "reqd": 0
+            "reqd": 0,
+            "search_index": 0
         }
     ],
     "grid_page_length": 50,
