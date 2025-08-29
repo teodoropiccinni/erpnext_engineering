@@ -69,6 +69,7 @@
             "label": "Item Code - Revision",
             "read_only": 1,
             "reqd": 0,
+            "unique": 1,
             "search_index": 1
         },
         {
