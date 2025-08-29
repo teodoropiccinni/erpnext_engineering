@@ -44,7 +44,7 @@ def generate_engineering_item_revision_id_revision(engineering_item_revision_ite
 
 # Set Item revision of Form
 @frappe.whitelist()
-def set_doc_item_revision(doc):
+def set_doc_item_revision(doc, method=None):
     # Check if engineering_item_revision_revision is set
     if doc.engineering_item_revision_revision:
         # If it is set, check if it already exists
