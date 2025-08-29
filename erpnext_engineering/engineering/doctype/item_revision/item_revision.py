@@ -26,10 +26,16 @@ class ItemRevision(Document):
 
 def get_last_item_revision(item_id):
     # get all revision of the selected item and order from greatest to smallest and return the engineering_item_revision_item_id of the first element
-    revisions = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id}, order_by="creation desc")
+    revisions = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id}, order_by="engineering_item_revision_revision desc")
     if revisions:
         return revisions[0].engineering_item_revision_revision
     return None
+
+# Check if engineering_item_revision_item_id_revision exists
+def check_item_revision_exists(item_id, revision):
+    if frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id, "engineering_item_revision_revision": revision}):
+        return True
+    return False
 
 def generate_new_revision_number(item_id):
     last_revision = get_last_item_revision(item_id)
@@ -45,16 +51,23 @@ def generate_engineering_item_revision_id_revision(engineering_item_revision_ite
 # Set Item revision of Form
 @frappe.whitelist()
 def set_doc_item_revision(doc, method=None):
-    # Check if engineering_item_revision_revision is set
-    if doc.engineering_item_revision_revision:
-        # If it is set, check if it already exists
-        existing_revision = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": doc.engineering_item_revision_item_id, "engineering_item_revision_revision": doc.engineering_item_revision_revision})
-        if existing_revision:
-            # If it is set and not exists in DB, check if it is last + 1
-            last_revision = get_last_item_revision(doc.engineering_item_revision_item_id)
-            if last_revision is not None and doc.engineering_item_revision_revision != last_revision + 1:
-                # if it is not last +1 set it to last + 1
-                doc.engineering_item_revision_revision = last_revision + 1
+    item_id = doc.engineering_item_revision_item_id
+    revision = doc.engineering_item_revision_revision
+    # Check last revision for the selected Item
+    existing_revision = get_last_item_revision(item_id)
+    # If it is set, check if it already exists
+    if existing_revision is not None:
+        # Check if engineering_item_revision_revision is set
+        if revision:
+            # If revision is set and not exists in DB, check if it is last + 1
+
+            if last_revision is not None:
+                if revision != last_revision + 1:
+                    # if it is not last +1 set it to last + 1
+                    revision = last_revision + 1
+    else:
+        revision = 0
     # Set doc.engineering_item_revision_item_id_revision as engineering_item_revision_item_id + "-" + engineering_item_revision_revision
+    doc.engineering_item_revision_revision = revision
     doc.engineering_item_revision_item_id_revision = generate_engineering_item_revision_id_revision(doc.engineering_item_revision_item_id, doc.engineering_item_revision_revision)
 
