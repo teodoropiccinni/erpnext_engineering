@@ -68,9 +68,10 @@ def validate_and_update_revision(item_id, revision):
     # If it is set, check if it already exists
     if last_existing_revision is not None:
         # If revision is set and not exists in DB, check if it is last + 1
-        if is_item_revision_duplicate(item_id, revision):
+        if last_existing_revision==0:
+            revision = 1
+        else:
             revision = last_existing_revision + 1
-        revision = last_existing_revision + 1
     else:
         revision = 0
     return revision

@@ -85,6 +85,7 @@
             "label": "Item ID",
             "options": "Item",
             "reqd": 1,
+            "unique": 0,
             "search_index": 0
         },
         {
