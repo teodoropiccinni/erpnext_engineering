@@ -60,11 +60,10 @@ def set_doc_item_revision(doc, method=None):
         # Check if engineering_item_revision_revision is set
         if revision:
             # If revision is set and not exists in DB, check if it is last + 1
-
-            if last_revision is not None:
-                if revision != last_revision + 1:
+            if check_item_revision_exists(item_id, revision):
+                if revision != existing_revision + 1:
                     # if it is not last +1 set it to last + 1
-                    revision = last_revision + 1
+                    revision = existing_revision + 1
     else:
         revision = 0
     # Set doc.engineering_item_revision_item_id_revision as engineering_item_revision_item_id + "-" + engineering_item_revision_revision
