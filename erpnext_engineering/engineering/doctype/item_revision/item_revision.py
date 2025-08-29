@@ -38,8 +38,15 @@ def get_item_name(item_id):
     return None
 
 # Check if engineering_item_revision_item_id_revision exists
-def check_item_revision_exists(item_id, revision):
-    if frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id, "engineering_item_revision_revision": revision}):
+def is_item_revision_duplicate(item_id, revision):
+    if frappe.get_all(
+        "Item Revision",
+        filters={
+            "engineering_item_revision_item_id": item_id,
+            "engineering_item_revision_revision": revision
+        }
+    ):    
+        frappe.throw(_("A revision with this Item and Revision number already exists!"))
         return True
     return False
 
@@ -56,10 +63,9 @@ def validate_and_update_revision(item_id, revision):
     # If it is set, check if it already exists
     if last_existing_revision is not None:
         # If revision is set and not exists in DB, check if it is last + 1
-        if check_item_revision_exists(item_id, revision):
+        if is_item_revision_duplicate(item_id, revision):
             revision = last_existing_revision + 1
         revision = last_existing_revision + 1
-        return revision
     else:
         revision = 0
     return revision

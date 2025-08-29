@@ -102,6 +102,12 @@ def after_engineering_app_install():
     group_description = "Email group for the Engineering team"
     create_engineering_email_group(group_name, group_title, group_description)
 
+    # Custom DB constraints
+    generate_item_revision_constraints()
+
+def after_engineering_app_migrate():
+    # Custom DB constraints
+    generate_item_revision_constraints()
 
 
 def before_engineering_app_uninstall():
@@ -149,6 +155,9 @@ def before_engineering_app_uninstall():
     # Delete Email Group
     group_name = "Engineering Team"
     delete_engineering_email_group(group_name)
+
+    # Delete DB constraints
+    delete_engineering_item_revision_constraints()
 
 # Workspace
 """
@@ -654,3 +663,22 @@ def delete_engineering_module_profile(profile_name):
         print(f"Module Profile '{profile_name}' deleted.")
     else:
         print(f"Module Profile '{profile_name}' not found.")
+# DB constraints management
+def generate_item_revision_constraints():
+    frappe.db.add_unique(
+        "tabItem Revision", 
+        [
+            "engineering_item_revision_item_id", 
+            "engineering_item_revision_revision"
+        ]
+    )
+
+def delete_engineering_item_revision_constraints():
+    # Remove unique constraint if exists
+    constraint_name = "unique_engineering_item_revision_item_id_engineering_item_revision_revision"
+    table_name = "tabItem Revision"
+    try:
+        frappe.db.sql(f'ALTER TABLE `{table_name}` DROP INDEX `{constraint_name}`')
+        print(f"Removed unique constraint {constraint_name} from {table_name}")
+    except Exception as e:
+        print(f"Could not remove constraint {constraint_name}: {e}")
