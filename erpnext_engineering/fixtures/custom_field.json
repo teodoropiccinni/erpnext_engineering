@@ -147,7 +147,7 @@
     "length": 0,
     "link_filters": "{\"engineering_item_revision_item_id\": \"eval:doc.item_code\"}",
     "mandatory_depends_on": null,
-    "modified": "2025-08-29 19:28:39.52.616384",
+    "modified": "2025-08-29 16:28:39.52.616384",
     "module": "Engineering",
     "name": "engineering_item_revision_last",
     "no_copy": 0,
