@@ -48,10 +48,10 @@ def set_doc_item_revision(doc, method=None):
     # Check if engineering_item_revision_revision is set
     if doc.engineering_item_revision_revision:
         # If it is set, check if it already exists
-        existing_revision = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": item_id, "engineering_item_revision_revision": doc.engineering_item_revision_revision})
+        existing_revision = frappe.get_all("Item Revision", filters={"engineering_item_revision_item_id": doc.engineering_item_revision_item_id, "engineering_item_revision_revision": doc.engineering_item_revision_revision})
         if existing_revision:
             # If it is set and not exists in DB, check if it is last + 1
-            last_revision = get_last_item_revision(item_id)
+            last_revision = get_last_item_revision(doc.engineering_item_revision_item_id)
             if last_revision is not None and doc.engineering_item_revision_revision != last_revision + 1:
                 # if it is not last +1 set it to last + 1
                 doc.engineering_item_revision_revision = last_revision + 1
