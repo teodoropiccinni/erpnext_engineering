@@ -21,6 +21,7 @@
         "engineering_item_revision_id",
         "engineering_item_revision_item_id_revision",
         "engineering_item_revision_item_id",
+        "engineering_item_revision_item_name",
         "engineering_item_revision_revision",
         "engineering_item_revision_details",
         "engineering_item_revision_picture",
@@ -100,6 +101,21 @@
             "reqd": 1,
             "search_index": 0,
             "default": 0
+        },
+        {
+            "fieldname": "engineering_item_revision_item_name",
+            "fieldtype": "Data",
+            "hidden": 0,
+            "in_filter": 1,
+            "in_global_search": 1,
+            "in_list_view": 1,
+            "in_preview": 1,
+            "in_standard_filter": 1,
+            "label": "Item Name",
+            "length": 140,
+            "reqd": 0,
+            "read_only": 1,
+            "search_index": 0
         },
         {
             "fieldname": "engineering_item_revision_details",
