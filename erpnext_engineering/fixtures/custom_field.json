@@ -117,6 +117,9 @@
     "doctype": "Custom Field",
     "label": "Item Revision",
     "fieldname": "engineering_item_revision_item_tab",
+    "name": "engineering_item_revision_item_tab",
+    "modified": "2025-08-29 15:44:21.745384",   
+    "module": "Engineering",
     "fieldtype": "Section Break",
     "hidden": 0,
     "insert_after": "Details"
@@ -124,6 +127,7 @@
   {
     "doctype": "Custom Field",
     "fieldname": "engineering_field_item_item_revision_table",
+    "name": "engineering_field_item_item_revision_table",
     "fieldtype": "Table",
     "label": "Item Revisions",
     "modified": "2025-08-29 15:36:51.645384",   
