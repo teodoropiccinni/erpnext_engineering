@@ -52,16 +52,14 @@ def generate_new_revision_number(item_id):
 
 def validate_and_update_revision(item_id, revision):
     # Check last revision for the selected Item
-    existing_revision = get_last_item_revision(item_id)
+    last_existing_revision = get_last_item_revision(item_id)
     # If it is set, check if it already exists
-    if existing_revision is not None:
-        # Check if engineering_item_revision_revision is set
-        if revision:
-            # If revision is set and not exists in DB, check if it is last + 1
-            if check_item_revision_exists(item_id, revision):
-                if revision != existing_revision + 1:
-                    # if it is not last +1 set it to last + 1
-                    revision = existing_revision + 1
+    if last_existing_revision is not None:
+        # If revision is set and not exists in DB, check if it is last + 1
+        if check_item_revision_exists(item_id, revision):
+            revision = last_existing_revision + 1
+        revision = last_existing_revision + 1
+        return revision
     else:
         revision = 0
     return revision
