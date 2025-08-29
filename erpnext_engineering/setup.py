@@ -670,12 +670,13 @@ def generate_item_revision_constraints():
         [
             "engineering_item_revision_item_id", 
             "engineering_item_revision_revision"
-        ]
+        ],
+        name="engineering_item_revision_unique_tuple"
     )
 
 def delete_engineering_item_revision_constraints():
     # Remove unique constraint if exists
-    constraint_name = "unique_engineering_item_revision_item_id_engineering_item_revision_revision"
+    constraint_name = "engineering_item_revision_unique_tuple"
     table_name = "Item Revision"
     try:
         frappe.db.sql(f'ALTER TABLE `{table_name}` DROP INDEX `{constraint_name}`')
