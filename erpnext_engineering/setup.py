@@ -666,7 +666,7 @@ def delete_engineering_module_profile(profile_name):
 # DB constraints management
 def generate_item_revision_constraints():
     frappe.db.add_unique(
-        "tabItem Revision", 
+        "Item Revision", 
         [
             "engineering_item_revision_item_id", 
             "engineering_item_revision_revision"
@@ -676,7 +676,7 @@ def generate_item_revision_constraints():
 def delete_engineering_item_revision_constraints():
     # Remove unique constraint if exists
     constraint_name = "unique_engineering_item_revision_item_id_engineering_item_revision_revision"
-    table_name = "tabItem Revision"
+    table_name = "Item Revision"
     try:
         frappe.db.sql(f'ALTER TABLE `{table_name}` DROP INDEX `{constraint_name}`')
         print(f"Removed unique constraint {constraint_name} from {table_name}")
