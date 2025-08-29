@@ -176,6 +176,9 @@ doc_events = {
 #    }
     "Item": {
         "before_insert": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.set_item_code"
+    },
+    "Item Revision": {
+        "before_insert": "erpnext_engineering.engineering.doctype.item_revision.item_revision.set_doc_item_revision"
     }
 }
 
