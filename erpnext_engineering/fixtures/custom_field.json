@@ -115,6 +115,7 @@
   },
   {
     "doctype": "Custom Field",
+    "dt": "Item",
     "label": "Item Revision",
     "fieldname": "engineering_item_revision_item_tab",
     "name": "engineering_item_revision_item_tab",
@@ -127,6 +128,7 @@
   {
     "doctype": "Custom Field",
     "fieldname": "engineering_field_item_item_revision_table",
+    "dt": "Item",
     "name": "engineering_field_item_item_revision_table",
     "fieldtype": "Table",
     "label": "Item Revisions",
