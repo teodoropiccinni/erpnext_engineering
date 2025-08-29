@@ -145,7 +145,7 @@
     "is_virtual": 0,
     "label": "Active Item Revision",
     "length": 0,
-    "link_filters": null,
+    "link_filters": "{\"engineering_item_revision_item_id\": \"eval:doc.name\"}",
     "mandatory_depends_on": null,
     "modified": "2025-08-29 16:28:39.616384",
     "module": "Engineering",
