@@ -114,6 +114,7 @@
     "width": null
   },
   {
+    "doctype": "Custom Field",
     "label": "Item Revision",
     "fieldname": "engineering_item_revision_item_tab",
     "fieldtype": "Section Break",
@@ -121,6 +122,7 @@
     "insert_after": "Details"
   },
   {
+    "doctype": "Custom Field",
     "fieldname": "engineering_item_revisions",
     "fieldtype": "Table",
     "label": "Item Revisions",
