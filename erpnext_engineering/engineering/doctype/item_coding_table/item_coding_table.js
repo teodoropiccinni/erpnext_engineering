@@ -37,6 +37,15 @@ frappe.ui.form.on("Item Coding Table", {
     }
 });
 
+frappe.ui.form.on(
+    "Item Coding Table",
+    'engineering_item_coding_table_code', 
+    function(frm) {
+        console.log('Item Coding Table JS - click:engineering_item_coding_table_code - run:generate_item_coding_code');
+        frm.trigger("validate");
+    }
+);
+
 // Set title
 function set_frm_item_title(frm, coding_code, liv1, liv2, code_length) {
     frappe.call({
