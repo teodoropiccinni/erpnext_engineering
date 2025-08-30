@@ -48,6 +48,7 @@
             "in_standard_filter": 0,
             "label": "Item Code Prefix",
             "length": 140,
+            "read_only_depends_on": "eval:!doc.__islocal",
             "reqd": 1,
             "search_index": 1
         },

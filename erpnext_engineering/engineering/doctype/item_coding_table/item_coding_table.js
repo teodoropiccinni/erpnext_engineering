@@ -14,7 +14,6 @@ frappe.ui.form.on("Item Coding Table", {
                 console.log("Code is unique, set Title");
                 return true;
             } else {
-                frappe.msgprint(__("This prefix already exists!"));
                 return false;
             }
         });
