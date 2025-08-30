@@ -3,40 +3,53 @@
 
 frappe.ui.form.on("Item Coding Table", {
     validate: function(frm) {
-        checkDuplicates(frm, function(is_unique) {
-            if (is_unique) {
-                let coding_code = frm.doc.engineering_item_coding_table_code || "000";
-                let liv1 = frm.doc.engineering_item_coding_table_liv1 || "";
-                let liv2 = frm.doc.engineering_item_coding_table_liv2 || "";
-
-                let title = coding_code;
-                if (liv1 && liv2) {
-                    title += ` (${liv1} - ${liv2})`;
-                } else if (liv1) {
-                    title += ` (${liv1})`;
-                }
-                console.log("Code is unique, set Title: " + title);
-                frm.set_value('engineering_item_coding_table_title', title);
+        // Read variables from form
+        let coding_code = frm.doc.engineering_item_coding_table_code || "000";
+        let liv1 = frm.doc.engineering_item_coding_table_liv1 || "";
+        let liv2 = frm.doc.engineering_item_coding_table_liv2 || "";
+        let code_length = frm.doc.engineering_item_coding_table_code_length || 5;
+        // Check uniqueness of prefix
+        is_duplicate_item_prefix(coding_code, function(is_duplicate) {
+            if (!is_duplicate) {
+                console.log("Code is unique, set Title");
+                set_item_title(frm, coding_code, liv1, liv2, code_length);
+                return true;
+            } else {
+                frappe.msgprint(__("This prefix already exists!"));
+                return false;
             }
         });
     }
 });
 
-// Function to check for duplicates (with callback)
-function checkDuplicates(frm, callback) {
-    let coding_code = frm.doc.engineering_item_coding_table_code || "000";
+// Set title
+function set_item_title(frm, coding_code, liv1, liv2, code_length) {
     frappe.call({
-        method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.check_duplicates",
+        method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.gen_full_coding_description",
         args: {
-            coding_code: coding_code
+            "item_coding": coding_code,
+            "liv1": liv1,
+            "liv2": liv2,
+            "code_length": code_length
         },
         callback: function(response) {
-            if (!response.message) {
-                frappe.msgprint(__("This Item Coding Table already exists."));
-                frm.set_value('engineering_item_coding_table_code', '000');
-                callback(false); // Code is duplicate
-            } else {
-                callback(true); // No duplicates found
+            if (response.message) {
+                frm.set_value('engineering_item_coding_table_title', response.message);
+            }
+        }
+    });
+}
+
+// Function to check for duplicates (with callback)
+function is_duplicate_item_prefix(item_prefix, callback) {
+    frappe.call({
+        method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.is_duplicate_item_prefix",
+        args: {
+            item_prefix: item_prefix
+        },
+        callback: function(response) {
+            if (typeof callback === "function") {
+                callback(response.message);
             }
         }
     });

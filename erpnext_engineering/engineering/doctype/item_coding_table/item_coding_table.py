@@ -21,6 +21,7 @@ def is_duplicate_item_code(coding_code):
     exists = frappe.db.exists("Item", {"item_code": coding_code})
     return bool(exists)
 
+@frappe.whitelist()
 def is_duplicate_item_prefix(item_prefix):
     exists = frappe.db.exists(
         "Item Coding Table", 
@@ -52,6 +53,7 @@ def set_doc_item_code(doc, method=None):
     doc.item_code = item_code
 
 # Generate full coding description
+@frappe.whitelist()
 def gen_full_coding_description(item_coding, liv1, liv2, code_length):
     return f"{item_coding} ({liv1} - {liv2} [{code_length}])"
 
