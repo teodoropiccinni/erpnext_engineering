@@ -81,8 +81,8 @@ def generate_item_coding_code(item_prefix='000'):
     Generate a new item_code based on the provided item_prefix.
     The new code will be the first available number in the sequence from the item_code saved in DocType list Item.
     """
-    # Get full code lenght based on item_coding_table_code_lenght and item_coding_table_code
-    code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_code": item_prefix}, "engineering_item_coding_table_code_lenght")
+    # Get full code length based on item_coding_table_code_length and item_coding_table_code
+    code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_code": item_prefix}, "engineering_item_coding_table_code_length")
     if not code_length:
         frappe.throw(_("Item Coding Table with code {0} not found.").format(item_prefix))
         logger.error(f"Item Coding Table: generate_item_coding_code - Item Coding Table with code {item_prefix} not found.")
@@ -104,7 +104,7 @@ def generate_item_coding_code(item_prefix='000'):
         fields=["item_code", "item_name", "engineering_field_item_item_coding_table_link"],
         order_by="item_code desc"
     )
-    # - have the same code length (full_lenght = item_prefix + code_length)
+    # - have the same code length (full_length = item_prefix + code_length)
     item_codes = []
     for item in item_codes_with_prefix:
         if len(item.item_code) == len(item_prefix) + int(code_length):

@@ -87,7 +87,7 @@
             "in_list_view": 1,
             "in_preview": 1,
             "in_standard_filter": 1,
-            "label": "Item Code Lenght",
+            "label": "Item Code Length",
             "length": "5",
             "reqd": 1,
             "search_index": 0
