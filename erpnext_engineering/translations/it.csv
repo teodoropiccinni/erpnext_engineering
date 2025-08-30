@@ -3,9 +3,7 @@ Item Coding Table,Tabella Codifica Articoli
 Item Coding Tables,Tabelle Codifica Articoli
 Item Code Prefix,Prefisso Codice Articolo
 Item Code Length,Lunghezza Codice Articolo
-Length of the item code,Lunghezza del codice articolo
-not considering the prefix.,non considerando il prefisso.
-Example: Prefix - 000 and Length: 5 > Code: 00012345,Esempio: Prefisso - 000 e Lunghezza: 5 > Codice: 00012345
+Length of the item code\, not considering the prefix. Example: Prefix - 000 and Length: 5 > Code: 00012345,Lunghezza del codice articolo\, non considerando il prefisso. Esempio: Prefisso - 000 e Lunghezza: 5 > Codice: 00012345
 Engineering Manager,Responsabile Ingegneria
 Engineering User,Utente Ingegneria
 Engineering Viewer,Osservatore Ingegneria
