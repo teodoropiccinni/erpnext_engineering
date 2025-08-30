@@ -21,24 +21,17 @@ frappe.ui.form.on("Item Coding Table", {
     },
     refresh: function(frm) {
         frm.trigger("validate");
-    },
-    engineering_item_coding_table_code: function(frm) {
-        frm.trigger("validate");
-    },
-    engineering_item_coding_table_liv1: function(frm) {
-        frm.trigger("validate");
-    },
-    engineering_item_coding_table_liv2: function(frm) {
-        frm.trigger("validate");
-    },
-    engineering_item_coding_table_code_length: function(frm) {
-        frm.trigger("validate");
     }
 });
 
 frappe.ui.form.on(
     "Item Coding Table",
-    'engineering_item_coding_table_code', 
+    [
+        "engineering_item_coding_table_code",
+        "engineering_item_coding_table_liv1",
+        "engineering_item_coding_table_liv2",
+        "engineering_item_coding_table_code_length"
+    ],
     function(frm) {
         console.log('Item Coding Table JS - click:engineering_item_coding_table_code - run:generate_item_coding_code');
         frm.trigger("validate");
