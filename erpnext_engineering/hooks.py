@@ -176,7 +176,7 @@ doc_events = {
 #        "autoname": "erpnext_engineering.engineering.api.item_coding_table.update_item_coding_table"
 #    }
     "Item": {
-        "before_insert": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.set_item_code"
+        "before_insert": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.set_doc_item_code"
     },
     "Item Revision": {
         "before_insert": "erpnext_engineering.engineering.doctype.item_revision.item_revision.set_doc_item_revision"

@@ -7,46 +7,67 @@ from frappe.model.document import Document
 
 class ItemCodingTable(Document):
     def before_insert(self):
+        # Set title field based on code, liv1 and liv2
+
         coding_code = self.engineering_item_coding_table_code or "000"
         liv1 = self.engineering_item_coding_table_liv1 or ""
         liv2 = self.engineering_item_coding_table_liv2 or ""
-
-        title = coding_code
-        if liv1 and liv2:
-            title += f" ({liv1} - {liv2})"
-        elif liv1:
-            title += f" ({liv1})"
-
-        self.engineering_item_coding_table_title = title
+        code_length = self.engineering_item_coding_table_code_length or 5
+        
+        self.engineering_item_coding_table_title = gen_full_coding_description(coding_code, liv1, liv2, code_length)
 
 # Check for duplicates in Item Coding Table
-@frappe.whitelist()
-def is_duplicate_code(coding_code):
+def is_duplicate_item_code(coding_code):
     exists = frappe.db.exists("Item", {"item_code": coding_code})
     return bool(exists)
 
-# Set item_code before insert in hooks.py
+def is_duplicate_item_prefix(item_prefix):
+    exists = frappe.db.exists(
+        "Item Coding Table", 
+        {"engineering_item_coding_table_code": item_prefix}
+    )
+    return bool(exists)
+
+def validate_and_get_item_code(item_prefix, item_code):
+    # Item Prefix - validate and set
+    if not is_duplicate_item_prefix(item_prefix):
+        item_prefix = '000'
+        
+    # Item Code - validate and set
+    if not item_code or item_code == '00000000':
+        new_item_code = generate_item_coding_code(item_prefix)
+    elif is_duplicate_item_code(item_code):
+        new_item_code = generate_item_coding_code(item_prefix)
+        frappe.throw(_("Item code {0} already exists. New code {1} generated.").format(item_code, new_item_code))
+    else:
+        new_item_code = item_code
+    return new_item_code
+
+# Set DocType Item, field item_code before insert in hooks.py
 @frappe.whitelist()
-def set_item_code(doc, method=None):
-    #TODO improve default code logic
-    if not doc.engineering_field_item_item_coding_table_link:
-        doc.engineering_field_item_item_coding_table_link = '000'
-    if not doc.item_code or doc.item_code == '00000000':
-        doc.item_code = generate_item_coding_code(item_prefix=doc.engineering_field_item_item_coding_table_link)
-    if doc.item_code:
-        if is_duplicate_code(doc.item_code):
-            frappe.throw(_("Item code {0} already exists.").format(doc.item_code))
+def set_doc_item_code(doc, method=None):
+    item_code = doc.item_code
+    item_prefix = doc.engineering_field_item_item_coding_table_link
+    item_code = validate_and_get_item_code(item_prefix, item_code)
+    doc.item_code = item_code
+
+# Generate full coding description
+def gen_full_coding_description(item_coding, liv1, liv2, code_length):
+    return f"{item_coding} ({liv1} - {liv2} [{code_length}])"
 
 # Return full coding description
-@frappe.whitelist()
 def get_full_coding_description(coding_code):
     item_coding = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_title")
+    liv1 = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_liv1")
+    liv2 = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_liv2")
+    code_length = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_code_length")
+    
     if not item_coding:
+        frappe.throw(_("Item coding not found for code {0}").format(coding_code))
         return "Not found"
     else:
-        # Concatenate vaules from Coding Table like: engineering_item_coding_table_code - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_lenght) 
-        full_coding_description = f"{item_coding} - {frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_liv1')} / {frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_liv2')} ({frappe.get_value('Item Coding Table', coding_code, 'engineering_item_coding_table_code_lenght')})"
-        return full_coding_description
+        # Concatenate vaules from Coding Table like: engineering_item_coding_table_code - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_length) 
+        return gen_full_coding_description(item_coding, liv1, liv2, code_length)
     
 @frappe.whitelist()
 def generate_item_coding_code(item_prefix='000'):
@@ -75,7 +96,7 @@ def generate_item_coding_code(item_prefix='000'):
             "item_code": ["like", f"{item_prefix}%"]
         },
         fields=["item_code", "item_name", "engineering_field_item_item_coding_table_link"],
-        order_by="creation desc"
+        order_by="item_code desc"
     )
     # - have the same code length (full_lenght = item_prefix + code_length)
     item_codes = []
