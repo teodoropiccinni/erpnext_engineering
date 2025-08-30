@@ -23,6 +23,7 @@
         "engineering_item_revision_item_id",
         "engineering_item_revision_item_name",
         "engineering_item_revision_revision",
+        "engineering_item_revision_col_break_1",
         "engineering_item_revision_details",
         "engineering_item_revision_picture",
         "engineering_item_revision_release_note"
@@ -120,6 +121,10 @@
             "search_index": 0
         },
         {
+            "fieldname": "engineering_item_revision_col_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
             "fieldname": "engineering_item_revision_details",
             "fieldtype": "Section Break",
             "hidden": 0,
@@ -140,7 +145,7 @@
         },
         {
             "fieldname": "engineering_item_revision_release_note",
-            "fieldtype": "Data",
+            "fieldtype": "Text",
             "hidden": 0,
             "in_filter": 1,
             "in_global_search": 0,
@@ -148,7 +153,6 @@
             "in_preview": 1,
             "in_standard_filter": 0,
             "label": "Release Note",
-            "length": 450,
             "read_only": 0,
             "reqd": 0,
             "search_index": 0
