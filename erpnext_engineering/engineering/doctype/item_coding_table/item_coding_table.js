@@ -19,6 +19,21 @@ frappe.ui.form.on("Item Coding Table", {
             }
         });
         set_frm_item_title(frm, coding_code, liv1, liv2, code_length);
+    },
+    refresh: function(frm) {
+        frm.trigger("validate");
+    },
+    engineering_item_coding_table_code: function(frm) {
+        frm.trigger("validate");
+    },
+    engineering_item_coding_table_liv1: function(frm) {
+        frm.trigger("validate");
+    },
+    engineering_item_coding_table_liv2: function(frm) {
+        frm.trigger("validate");
+    },
+    engineering_item_coding_table_code_length: function(frm) {
+        frm.trigger("validate");
     }
 });
 
@@ -27,10 +42,10 @@ function set_frm_item_title(frm, coding_code, liv1, liv2, code_length) {
     frappe.call({
         method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.gen_full_coding_description",
         args: {
-            "item_coding": coding_code,
-            "liv1": liv1,
-            "liv2": liv2,
-            "code_length": code_length
+            item_coding: coding_code,
+            liv1: liv1,
+            liv2: liv2,
+            code_length: code_length
         },
         callback: function(response) {
             if (response.message) {
