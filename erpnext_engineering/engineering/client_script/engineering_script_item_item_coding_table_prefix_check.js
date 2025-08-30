@@ -6,16 +6,16 @@ frappe.ui.form.on('Item', {
 //        }
 //    },
     refresh: function(frm) {
+        toggle_item_coding_fields(frm);
         if (frm.is_new()) {
             console.log('Client Script: Item - refresh');
-            toggle_item_coding_fields(frm);
             generate_item_coding_code(frm);
         }
     },
     engineering_field_item_enable_item_coding_prefix: function(frm) {
+        toggle_item_coding_fields(frm);
         if (frm.is_new()) {
             console.log('Client Script: Item - engineering_field_item_enable_item_coding_prefix');
-            toggle_item_coding_fields(frm);
             generate_item_coding_code(frm);
         }
     },
