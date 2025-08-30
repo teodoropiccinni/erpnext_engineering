@@ -16,7 +16,7 @@
     "doctype": "DocType",
     "engine": "InnoDB",
     "field_order": [
-        "engineering_item_revision",
+        "engineering_item_title_revision",
         "naming_series",
         "engineering_item_revision_id",
         "engineering_item_revision_item_id_revision",
@@ -24,13 +24,12 @@
         "engineering_item_revision_item_name",
         "engineering_item_revision_revision",
         "engineering_item_revision_col_break_1",
-        "engineering_item_revision_details",
         "engineering_item_revision_picture",
         "engineering_item_revision_release_note"
     ],
     "fields": [
         {
-            "fieldname": "engineering_item_revision",
+            "fieldname": "engineering_item_title_revision",
             "fieldtype": "Section Break",
             "label": "Item Revision"
         },
@@ -123,12 +122,6 @@
         {
             "fieldname": "engineering_item_revision_col_break_1",
             "fieldtype": "Column Break"
-        },
-        {
-            "fieldname": "engineering_item_revision_details",
-            "fieldtype": "Section Break",
-            "hidden": 0,
-            "label": "Item Revision Details"
         },
         {
             "fieldname": "engineering_item_revision_picture",
