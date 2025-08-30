@@ -55,7 +55,11 @@ def set_doc_item_code(doc, method=None):
 # Generate full coding description
 @frappe.whitelist()
 def gen_full_coding_description(item_coding, liv1, liv2, code_length):
-    return f"{item_coding} [{code_length}] ({liv1} - {liv2})"
+    if not liv2:
+        return f"{item_coding} [{code_length}] ({liv1})"
+    else:
+        return f"{item_coding} [{code_length}] ({liv1} - {liv2})"
+
 
 # Return full coding description
 def get_full_coding_description(coding_code):

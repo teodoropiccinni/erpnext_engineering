@@ -95,6 +95,7 @@
             "fieldname": "engineering_item_coding_table_title",
             "fieldtype": "Data",
             "hidden": 0,
+            "depends_on": "eval:!doc.__islocal",
             "in_filter": 1,
             "in_global_search": 1,
             "in_list_view": 1,
