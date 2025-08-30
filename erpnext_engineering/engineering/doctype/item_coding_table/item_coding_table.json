@@ -99,7 +99,7 @@
             "label": "Title",
             "length": 450,
             "read_only": 1,
-            "reqd": 1
+            "reqd": 0
         }
     ],
     "grid_page_length": 50,

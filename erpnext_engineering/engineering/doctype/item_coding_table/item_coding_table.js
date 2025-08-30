@@ -12,18 +12,18 @@ frappe.ui.form.on("Item Coding Table", {
         is_duplicate_item_prefix(coding_code, function(is_duplicate) {
             if (!is_duplicate) {
                 console.log("Code is unique, set Title");
-                set_item_title(frm, coding_code, liv1, liv2, code_length);
                 return true;
             } else {
                 frappe.msgprint(__("This prefix already exists!"));
                 return false;
             }
         });
+        set_frm_item_title(frm, coding_code, liv1, liv2, code_length);
     }
 });
 
 // Set title
-function set_item_title(frm, coding_code, liv1, liv2, code_length) {
+function set_frm_item_title(frm, coding_code, liv1, liv2, code_length) {
     frappe.call({
         method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.gen_full_coding_description",
         args: {
