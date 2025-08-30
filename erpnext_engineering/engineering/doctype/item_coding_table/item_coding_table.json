@@ -19,7 +19,7 @@
         "engineering_item_coding_table_code",
         "engineering_item_coding_table_liv1",
         "engineering_item_coding_table_liv2",
-        "engineering_item_coding_table_code_lenght",
+        "engineering_item_coding_table_code_length",
         "naming_series"
     ],
     "fields": [
@@ -78,7 +78,7 @@
         {
             "default": "5",
             "description": "Lenght of the item code, not considering the prefix. Example: Prefix - 000 and Lenght: 5 > Code: 00012345",
-            "fieldname": "engineering_item_coding_table_code_lenght",
+            "fieldname": "engineering_item_coding_table_code_length",
             "fieldtype": "Int",
             "in_filter": 1,
             "in_global_search": 1,
