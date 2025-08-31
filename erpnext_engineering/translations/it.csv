@@ -11,6 +11,8 @@ Engineering Viewer,Osservatore Ingegneria
 Request reference,Riferimento richiesta
 Item ID,ID Articolo
 Item List,Elenco Articoli
+BOM,Distinta Base
+BOMs,Distinte Base
 BOM List,Elenco Distinte Base
 BOM Creator,Generatore di Distinte Base
 Drawing,Disegno
@@ -20,3 +22,4 @@ Paste here the link to the drawing on the shared folder.,Incolla qui il link al 
 Item Revision,Revisione Articolo
 Item Revisions,Revisioni Articolo
 Item Revision Details,Dettagli Revisione Articolo
+Quick access,Accesso rapido

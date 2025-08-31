@@ -1,7 +1,7 @@
 [
     {
         "charts": [],
-        "content": "[{\"id\": \"eng-wksp-header\",\"type\": \"header\",\"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Le tue scorciatoie</b></span>\",\"col\": 12}},{\"id\": \"eng-wksp-header-progetti\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Progetti\",\"col\": 3}},{\"id\": \"eng-wksp-header-articoli\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Articoli\",\"col\": 3}},{\"id\": \"eng-wksp-header-rev-articolio\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Revisioni Articolo\",\"col\": 3}},{\"id\": \"eng-wksp-header-elenco-bom\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"BOM List\",\"col\": 3}},{\"id\": \"eng-wksp-header-bom-creator\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"BOM Creator\",\"col\": 3}},{\"id\": \"eng-wksp-spacer-1\",\"type\": \"spacer\",\"data\": {\"col\": 12}},{\"id\": \"eng-wksp-main\",\"type\": \"header\",\"data\": {\"text\": \"Engineering Functions\",\"col\": 12}},{\"id\": \"eng-wksp-main-projects\",\"type\": \"card\",\"data\": {\"card_name\": \"Projects\",\"col\": 4}},{\"id\": \"eng-wksp-main-items\",\"type\": \"card\",\"data\": {\"card_name\": \"Items\",\"col\": 4}},{\"id\": \"eng-wksp-main-bom\",\"type\": \"card\",\"data\": {\"card_name\": \"Distinte Base\",\"col\": 4}},{\"id\": \"eng-wksp-main-manufacturing\",\"type\": \"card\",\"data\": {\"card_name\": \"Manufacturing\",\"col\": 4}},{\"id\": \"eng-wksp-main-tools\",\"type\": \"card\",\"data\": {\"card_name\": \"Tools\",\"col\": 4}},{\"id\": \"eng-wksp-main-report\",\"type\": \"card\",\"data\": {\"card_name\": \"Report\",\"col\": 4}},{\"id\": \"eng-wksp-main-settings\",\"type\": \"card\",\"data\": {\"card_name\": \"Settings\",\"col\": 4}}]",
+        "content": "[{\"id\": \"eng-wksp-header\",\"type\": \"header\",\"data\": {\"text\": \"Quick access\",\"col\": 12}},{\"id\": \"eng-wksp-header-progetti\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Projects\",\"col\": 3}},{\"id\": \"eng-wksp-header-articoli\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Item\",\"col\": 3}},{\"id\": \"eng-wksp-header-rev-articolio\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"Item Revision\",\"col\": 3}},{\"id\": \"eng-wksp-header-elenco-bom\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"BOM\",\"col\": 3}},{\"id\": \"eng-wksp-header-bom-creator\",\"type\": \"shortcut\",\"data\": {\"shortcut_name\": \"BOM Creator\",\"col\": 3}},{\"id\": \"eng-wksp-spacer-1\",\"type\": \"spacer\",\"data\": {\"col\": 12}},{\"id\": \"eng-wksp-main\",\"type\": \"header\",\"data\": {\"text\": \"Engineering Functions\",\"col\": 12}},{\"id\": \"eng-wksp-main-projects\",\"type\": \"card\",\"data\": {\"card_name\": \"Projects\",\"col\": 4}},{\"id\": \"eng-wksp-main-items\",\"type\": \"card\",\"data\": {\"card_name\": \"Items\",\"col\": 4}},{\"id\": \"eng-wksp-main-bom\",\"type\": \"card\",\"data\": {\"card_name\": \"Distinte Base\",\"col\": 4}},{\"id\": \"eng-wksp-main-manufacturing\",\"type\": \"card\",\"data\": {\"card_name\": \"Manufacturing\",\"col\": 4}},{\"id\": \"eng-wksp-main-tools\",\"type\": \"card\",\"data\": {\"card_name\": \"Tools\",\"col\": 4}},{\"id\": \"eng-wksp-main-report\",\"type\": \"card\",\"data\": {\"card_name\": \"Report\",\"col\": 4}},{\"id\": \"eng-wksp-main-settings\",\"type\": \"card\",\"data\": {\"card_name\": \"Settings\",\"col\": 4}}]",
         "custom_blocks": [],
         "docstatus": 0,
         "doctype": "Workspace",
@@ -13,6 +13,14 @@
         "label": "Engineering",
         "title": "Engineering",
         "name": "Engineering",
+        "modified": "2025-07-22 11:04:56.437006",
+        "module": "Engineering",
+        "number_cards": [],
+        "parent_page": "",
+        "public": 1,
+        "quick_lists": [],
+        "restrict_to_domain": "",
+        "sequence_id": 2.1,
         "links": [
             {
                 "dependencies": "Item, BOM",
@@ -236,7 +244,7 @@
                 "hidden": 0,
                 "icon": null,
                 "is_query_report": 0,
-                "label": "Gruppo Articoli",
+                "label": "Items Group",
                 "link_count": 0,
                 "link_to": "Item Group",
                 "link_type": "DocType",
@@ -573,14 +581,6 @@
                 "type": "Link"
             }
         ],
-        "modified": "2025-07-22 11:04:56.437006",
-        "module": "Engineering",
-        "name": "Engineering",
-        "number_cards": [],
-        "parent_page": "",
-        "public": 1,
-        "quick_lists": [],
-        "restrict_to_domain": "",
         "roles": [
             {
                 "parent": "Engineering",
@@ -589,7 +589,6 @@
                 "role": null
             }
         ],
-        "sequence_id": 2.1,
         "shortcuts": [
             {
                 "color": "Blue",
@@ -659,7 +658,6 @@
                 "type": "DocType",
                 "url": null
             }
-        ],
-        "title": "Engineering"
+        ]
     }
 ]
