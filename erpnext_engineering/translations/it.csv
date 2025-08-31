@@ -1,4 +1,5 @@
 Engineering,Ingegneria
+Engineering Functions,Funzionalità Ingegneria
 Item Coding Table,Tabella Codifica Articoli
 Item Coding Tables,Tabelle Codifica Articoli
 Item Code Prefix,Prefisso Codice Articolo
@@ -9,6 +10,9 @@ Engineering User,Utente Ingegneria
 Engineering Viewer,Osservatore Ingegneria
 Request reference,Riferimento richiesta
 Item ID,ID Articolo
+Item List,Elenco Articoli
+BOM List,Elenco Distinte Base
+BOM Creator,Generatore di Distinte Base
 Drawing,Disegno
 Release Note,Nota di rilascio
 Revision,Revisione
