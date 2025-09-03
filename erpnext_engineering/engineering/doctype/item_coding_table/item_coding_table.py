@@ -6,11 +6,9 @@ from frappe import logger, _
 from frappe.model.document import Document
 
 class ItemCodingTable(Document):
-    @classmethod
     def before_insert(self):
         self.set_title()
 
-    @classmethod
     def set_title(self):
         coding_prefix = self.engineering_item_coding_table_prefix or "000"
         liv1 = self.engineering_item_coding_table_liv1 or ""
