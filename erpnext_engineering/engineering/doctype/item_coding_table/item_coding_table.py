@@ -179,13 +179,15 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
                 item_code = ItemCodingTable.gen_item_code(item_prefix)
         else:
             if not item_prefix:
+                item_prefix = '000'
                 if not item_code or item_code == '00000000':
-                    item_code = ItemCodingTable.gen_item_code('000')
+                    item_code = ItemCodingTable.gen_item_code(item_prefix)
                 elif ItemCodingTable.exists_item_code(item_code):
-                    new_item_code = ItemCodingTable.gen_item_code('000')
+                    new_item_code = ItemCodingTable.gen_item_code(item_prefix)
                     frappe.throw(_("Item code {0} already exists. New code {1} generated.").format(item_code, new_item_code))
                     item_code = new_item_code
             else:
                 item_code = ItemCodingTable.gen_item_code(item_prefix)
+        doc.item_code = item_code
     else:
         frappe.throw(_("before_insert: method called by mistake"))
