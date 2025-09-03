@@ -19,22 +19,13 @@ frappe.ui.form.on('Item', {
             generate_item_coding_code(frm);
         }
     },
-    engineering_field_item_item_coding_table_link: function(frm) {
+    engineering_field_item_item_coding_table_prefix: function(frm) {
         if (frm.is_new()) {
-            console.log('Client Script: Item - engineering_field_item_item_coding_table_link');
+            console.log('Client Script: Item - engineering_field_item_item_coding_table_prefix');
             generate_item_coding_code(frm);
         }
     }
 });
-
-//frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_link', function(frm) {
-//    console.log('Client Script: Item - engineering_field_item_item_coding_table_link');
-//    generate_item_coding_code(frm);
-//});
-//frappe.ui.form.on('Item', 'engineering_field_item_item_coding_table_prefix', function(frm) {
-//    console.log('Client Script: Item - engineering_field_item_item_coding_table_prefix');
-//    generate_item_coding_code(frm);
-//});
 
 function toggle_item_coding_fields(frm) {
     const show_prefix_list = frm.doc.engineering_field_item_enable_item_coding_prefix;
@@ -52,19 +43,19 @@ function show_item_name(frm) {
 function enable_autocode(frm) {
     frm.toggle_display('item_code', true);
     frm.set_df_property('item_code', 'read_only', 1);
-    frm.toggle_display('engineering_field_item_item_coding_table_link', true);
+    frm.toggle_display('engineering_field_item_item_coding_table_prefix', true);
 }
 
 function disable_autocode(frm) {
     frm.toggle_display('item_code', true);
     frm.set_df_property('item_code', 'read_only', 0);
-    frm.toggle_display('engineering_field_item_item_coding_table_link', false);
+    frm.toggle_display('engineering_field_item_item_coding_table_prefix', false);
 }
 
 function generate_item_coding_code(frm) {
     console.log('Client Script: Item - generate_item_coding_code');
     item_coding_prefix_enable=frm.doc.engineering_field_item_enable_item_coding_prefix;
-    item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_link;
+    item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_prefix;
     item_code=frm.doc.item_code;
     //TODO: improve edge case management and recognition of prefixes
     if (item_coding_prefix_enable) {
@@ -79,7 +70,7 @@ function generate_item_coding_code(frm) {
                 }
             });
         } else {
-            frm.set_value('engineering_field_item_item_coding_table_link', '000');
+            frm.set_value('engineering_field_item_item_coding_table_prefix', '000');
         }
     }
     else {
@@ -90,12 +81,12 @@ function generate_item_coding_code(frm) {
                     'item_code': item_code
                 },
                 callback: function(r) {
-                    frm.set_value('engineering_field_item_item_coding_table_link', r.message || '');
+                    frm.set_value('engineering_field_item_item_coding_table_prefix', r.message || '');
                 }
             });
         }
         else {
-            frm.set_value('engineering_field_item_item_coding_table_link', '000');
+            frm.set_value('engineering_field_item_item_coding_table_prefix', '000');
         }
     }
 }

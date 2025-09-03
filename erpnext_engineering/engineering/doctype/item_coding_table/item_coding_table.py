@@ -41,7 +41,7 @@ class ItemCodingTable(Document):
         item_codes_with_prefix = frappe.get_all(
             "Item",
             filters={"item_code": ["like", f"{item_prefix}%"]},
-            fields=["item_code", "item_name", "engineering_field_item_item_coding_table_link"],
+            fields=["item_code", "item_name", "engineering_field_item_item_coding_table_prefix"],
             order_by="item_code desc"
         )
         item_codes = []
@@ -149,7 +149,7 @@ def tpdev_engineering_doc_item_gen_item_code(doc, method=None):
 @frappe.whitelist()
 def tpdev_engineering_doc_item_set_item_prefix(doc, method=None):
     item_prefix = ItemCodingTable.get_item_prefix(doc.item_code)
-    doc.engineering_field_item_item_coding_table_link = item_prefix
+    doc.engineering_field_item_item_coding_table_prefix = item_prefix
 
 @frappe.whitelist()
 def tpdev_engineering_item_coding_table_gen_item_prefix_title(item_prefix, liv1, liv2, code_length):

@@ -6,3 +6,4 @@
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
 erpnext_engineering.patches.20250903_migrate_item_coding_table_prefix_var
+erpnext_engineering.patches.20250903_migrate_item_link_var_to_prefix
