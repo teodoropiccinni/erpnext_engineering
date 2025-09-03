@@ -188,6 +188,7 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
                     item_code = new_item_code
             else:
                 item_code = ItemCodingTable.gen_item_code(item_prefix)
+        doc.item_prefix = item_prefix
         doc.item_code = item_code
     else:
         frappe.throw(_("before_insert: method called by mistake"))
