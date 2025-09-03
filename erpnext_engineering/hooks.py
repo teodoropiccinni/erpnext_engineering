@@ -176,10 +176,7 @@ doc_events = {
 #        "autoname": "erpnext_engineering.engineering.api.item_coding_table.update_item_coding_table"
 #    }
     "Item": {
-        "before_insert": [
-            "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_doc_item_set_item_prefix",
-            "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_doc_item_set_item_code"
-        ]
+        "before_insert": "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_doc_item_coding_table_before_insert_item"
     },
     "Item Revision": {
         "before_insert": "erpnext_engineering.engineering.doctype.item_revision.item_revision.set_doc_item_revision"
