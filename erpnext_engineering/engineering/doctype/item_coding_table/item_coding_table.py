@@ -63,10 +63,10 @@ class ItemCodingTable(Document):
             frappe.throw(_("Item prefix {0} not found. Default prefix '000' will be used.").format(item_prefix))
             item_prefix = '000'
         if not item_code or item_code == '00000000':
-            new_item_code = cls.generate_item_coding_code(item_prefix)
+            new_item_code = cls.gen_item_code(item_prefix)
         elif cls.exists_item_code(item_code):
             frappe.throw(_("Item code {0} already exists. New code {1} generated.").format(item_code, new_item_code))
-            new_item_code = cls.generate_item_coding_code(item_prefix)
+            new_item_code = cls.gen_item_code(item_prefix)
         else:
             new_item_code = item_code
         return new_item_code
@@ -156,8 +156,8 @@ def tpdev_engineering_item_coding_table_gen_item_prefix_title(item_prefix, liv1,
     return ItemCodingTable.gen_item_prefix_title(item_prefix, liv1, liv2, code_length)
 
 @frappe.whitelist()
-def generate_item_coding_code(item_prefix='000'):
-    return ItemCodingTable.generate_item_coding_code(item_prefix)
+def tpdev_engineering_item_coding_table_gen_item_code(item_prefix='000'):
+    return ItemCodingTable.gen_item_code(item_prefix)
 
 @frappe.whitelist()
 def tpdev_engineering_item_coding_table_get_item_prefix(item_code):

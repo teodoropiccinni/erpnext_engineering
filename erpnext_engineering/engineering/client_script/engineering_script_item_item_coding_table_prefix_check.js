@@ -9,20 +9,20 @@ frappe.ui.form.on('Item', {
         toggle_item_coding_fields(frm);
         if (frm.is_new()) {
             console.log('Client Script: Item - refresh');
-            generate_item_coding_code(frm);
+            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
         }
     },
     engineering_field_item_enable_item_coding_prefix: function(frm) {
         toggle_item_coding_fields(frm);
         if (frm.is_new()) {
             console.log('Client Script: Item - engineering_field_item_enable_item_coding_prefix');
-            generate_item_coding_code(frm);
+            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
         }
     },
     engineering_field_item_item_coding_table_prefix: function(frm) {
         if (frm.is_new()) {
             console.log('Client Script: Item - engineering_field_item_item_coding_table_prefix');
-            generate_item_coding_code(frm);
+            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
         }
     }
 });
@@ -52,8 +52,8 @@ function disable_autocode(frm) {
     frm.toggle_display('engineering_field_item_item_coding_table_prefix', false);
 }
 
-function generate_item_coding_code(frm) {
-    console.log('Client Script: Item - generate_item_coding_code');
+function tpdev_engineering_frm_item_coding_table_gen_item_code(frm) {
+    console.log('Client Script: Item - gen_item_coding_code');
     item_coding_prefix_enable=frm.doc.engineering_field_item_enable_item_coding_prefix;
     item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_prefix;
     item_code=frm.doc.item_code;
@@ -61,7 +61,7 @@ function generate_item_coding_code(frm) {
     if (item_coding_prefix_enable) {
         if (item_coding_prefix) {
             frappe.call({
-                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.generate_item_coding_code',
+                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_item_coding_table_gen_item_code',
                 args: {
                     'item_prefix': item_coding_prefix
                 },
