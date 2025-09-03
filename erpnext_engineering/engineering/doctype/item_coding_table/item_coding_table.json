@@ -2,7 +2,7 @@
     "actions": [],
     "allow_rename": 0,
     "allow_import": 1,
-    "autoname": "field:engineering_item_coding_table_code",
+    "autoname": "field:engineering_item_coding_table_prefix",
     "creation": "2025-07-11 11:33:52.137166",
     "custom": 0,
     "editable_grid": 1,
@@ -16,7 +16,7 @@
     "engine": "InnoDB",
     "field_order": [
         "engineering_item_coding_table_title",
-        "engineering_item_coding_table_code",
+        "engineering_item_coding_table_prefix",
         "engineering_item_coding_table_liv1",
         "engineering_item_coding_table_liv2",
         "engineering_item_coding_table_code_length",
@@ -40,7 +40,7 @@
             "search_index": 1
         },
         {
-            "fieldname": "engineering_item_coding_table_code",
+            "fieldname": "engineering_item_coding_table_prefix",
             "fieldtype": "Data",
             "in_filter": 0,
             "in_global_search": 0,

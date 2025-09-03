@@ -4,7 +4,7 @@
 frappe.ui.form.on("Item Coding Table", {
     validate: function(frm) {
         // Read variables from form
-        let coding_code = frm.doc.engineering_item_coding_table_code || "000";
+        let coding_code = frm.doc.engineering_item_coding_table_prefix || "000";
         let liv1 = frm.doc.engineering_item_coding_table_liv1 || "";
         let liv2 = frm.doc.engineering_item_coding_table_liv2 || "";
         let code_length = frm.doc.engineering_item_coding_table_code_length || 5;
@@ -27,13 +27,13 @@ frappe.ui.form.on("Item Coding Table", {
 frappe.ui.form.on(
     "Item Coding Table",
     [
-        "engineering_item_coding_table_code",
+        "engineering_item_coding_table_prefix",
         "engineering_item_coding_table_liv1",
         "engineering_item_coding_table_liv2",
         "engineering_item_coding_table_code_length"
     ],
     function(frm) {
-        console.log('Item Coding Table JS - click:engineering_item_coding_table_code - run:generate_item_coding_code');
+        console.log('Item Coding Table JS - click:engineering_item_coding_table_prefix - run:generate_item_coding_code');
         frm.trigger("validate");
     }
 );

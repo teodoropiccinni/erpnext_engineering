@@ -6,15 +6,13 @@ from frappe import logger, _
 from frappe.model.document import Document
 
 class ItemCodingTable(Document):
-    def before_insert(self):
-        # Set title field based on code, liv1 and liv2
-
-        coding_code = self.engineering_item_coding_table_code or "000"
+    def tpdev_engineering_item_coding_table_before_insert(self):
+        # Set title field based on prefix, length, liv1 and liv2
+        coding_prefix = self.engineering_item_coding_table_prefix or "000"
         liv1 = self.engineering_item_coding_table_liv1 or ""
         liv2 = self.engineering_item_coding_table_liv2 or ""
         code_length = self.engineering_item_coding_table_code_length or 5
-        
-        self.engineering_item_coding_table_title = gen_full_coding_description(coding_code, liv1, liv2, code_length)
+        self.engineering_item_coding_table_title = gen_full_coding_description(coding_prefix, liv1, liv2, code_length)
 
 # Check for duplicates in Item Coding Table
 def is_duplicate_item_code(coding_code):
@@ -25,7 +23,7 @@ def is_duplicate_item_code(coding_code):
 def is_duplicate_item_prefix(item_prefix):
     exists = frappe.db.exists(
         "Item Coding Table", 
-        {"engineering_item_coding_table_code": item_prefix}
+        {"engineering_item_coding_table_prefix": item_prefix}
     )
     return bool(exists)
 
@@ -60,27 +58,27 @@ def tpdev_engineering_doc_item_set_item_prefix(doc, method=None):
 
 # Generate full coding description
 @frappe.whitelist()
-def gen_full_coding_description(item_coding, liv1, liv2, code_length):
+def gen_full_coding_description(item_prefix, liv1, liv2, code_length):
     if not liv2:
-        return f"{item_coding} [{code_length}] ({liv1})"
+        return f"{item_prefix} [{code_length}] ({liv1})"
     else:
-        return f"{item_coding} [{code_length}] ({liv1} - {liv2})"
+        return f"{item_prefix} [{code_length}] ({liv1} - {liv2})"
 
 
 # Return full coding description
-def get_full_coding_description(coding_code):
-    item_coding = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_title")
-    liv1 = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_liv1")
-    liv2 = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_liv2")
-    code_length = frappe.get_value("Item Coding Table", coding_code, "engineering_item_coding_table_code_length")
-    
-    if not item_coding:
-        frappe.throw(_("Item coding not found for code {0}").format(coding_code))
-        return "Not found"
+def get_full_coding_description(coding_prefix):
+    item_title = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_title")
+    liv1 = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_liv1")
+    liv2 = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_liv2")
+    code_length = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_code_length")
+
+    if not item_title:
+        frappe.throw(_("Item Title not found for code {0}").format(item_title))
+        return None
     else:
-        # Concatenate vaules from Coding Table like: engineering_item_coding_table_code - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_length) 
-        return gen_full_coding_description(item_coding, liv1, liv2, code_length)
-    
+        # Concatenate vaules from Coding Table like: engineering_item_coding_table_prefix - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_length) 
+        return gen_full_coding_description(coding_prefix, liv1, liv2, code_length)
+
 @frappe.whitelist()
 def generate_item_coding_code(item_prefix='000'):
     """
@@ -88,10 +86,10 @@ def generate_item_coding_code(item_prefix='000'):
     The new code will be the first available number in the sequence from the item_code saved in DocType list Item.
     """
     # Get full code length based on item_coding_table_code_length and item_coding_table_code
-    code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_code": item_prefix}, "engineering_item_coding_table_code_length")
+    code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_prefix": item_prefix}, "engineering_item_coding_table_code_length")
     if not code_length:
         frappe.throw(_("Item Coding Table with code {0} not found.").format(item_prefix))
-        logger.error(f"Item Coding Table: generate_item_coding_code - Item Coding Table with code {item_prefix} not found.")
+        logger.error(f"Item Coding Table: generate_item_coding_code - Item Coding Table with prefix {item_prefix} not found.")
         return None
     
     # Get the last item_code that start with the given item_prefix and calculated length
@@ -140,15 +138,15 @@ def tpdev_engineering_item_coding_table_get_item_prefix(item_code):
     # Calculate code lenght
     item_code_length = len(item_code)
     # Get all prefixes and code lenght
-    prefixes = frappe.get_all("Item Coding Table", fields=["engineering_item_coding_table_code", "engineering_item_coding_table_code_length", "engineering_item_coding_table_code_total_length"])
+    prefixes = frappe.get_all("Item Coding Table", fields=["engineering_item_coding_table_prefix", "engineering_item_coding_table_code_length", "engineering_item_coding_table_code_total_length"])
     # filter only the matching lenghts
     matching_prefixes = []
     for prefix in prefixes:
         if prefix.engineering_item_coding_table_code_total_length == item_code_length:
-            if item_code.startswith(prefix.engineering_item_coding_table_code):
+            if item_code.startswith(prefix.engineering_item_coding_table_prefix):
                 matching_prefixes.append(prefix)
-        elif (prefix.engineering_item_coding_table_code_length + len(prefix.engineering_item_coding_table_code)) == item_code_length:
-            if item_code.startswith(prefix.engineering_item_coding_table_code):
+        elif (prefix.engineering_item_coding_table_code_length + len(prefix.engineering_item_coding_table_prefix)) == item_code_length:
+            if item_code.startswith(prefix.engineering_item_coding_table_prefix):
                 matching_prefixes.append(prefix)
     if not matching_prefixes:
         frappe.throw(_("No matching item coding prefix found for item code {0}, please check the Item Coding Table and add it.").format(item_code))
@@ -157,5 +155,5 @@ def tpdev_engineering_item_coding_table_get_item_prefix(item_code):
         frappe.throw(_("Multiple matching item coding prefixes found for item code {0}, please check the Item Coding Table and remove duplicates.").format(item_code))
         return None
     else:
-        item_prefix = matching_prefixes[0].engineering_item_coding_table_code
+        item_prefix = matching_prefixes[0].engineering_item_coding_table_prefix
     return item_prefix
