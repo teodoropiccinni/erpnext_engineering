@@ -168,7 +168,7 @@ def tpdev_engineering_item_coding_table_get_item_prefix(item_code):
 @frappe.whitelist()
 def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None):
     item_prefix_enabled = doc.engineering_field_item_enable_item_coding_prefix
-    item_prefix = doc.engineering_field_item_coding_prefix
+    item_prefix = doc.engineering_field_item_item_coding_table_prefix
     item_code = doc.item_code
     if doc.isnew():
         # check if code engineering_field_item_enable_item_coding_prefix is enabled
