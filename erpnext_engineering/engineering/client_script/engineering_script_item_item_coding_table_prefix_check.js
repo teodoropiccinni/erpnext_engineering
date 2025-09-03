@@ -63,18 +63,39 @@ function disable_autocode(frm) {
 
 function generate_item_coding_code(frm) {
     console.log('Client Script: Item - generate_item_coding_code');
+    item_coding_prefix_enable=frm.doc.engineering_field_item_enable_item_coding_prefix;
     item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_link;
-    if (item_coding_prefix) {
-        frappe.call({
-            method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.generate_item_coding_code',
-            args: {
-                'item_prefix': item_coding_prefix
-            },
-            callback: function(r) {
-                frm.set_value('item_code', r.message || '');
-            }
-        });
-    } else {
-        frm.set_value('item_code', '');
+    item_code=frm.doc.item_code;
+    //TODO: improve edge case management and recognition of prefixes
+    if (item_coding_prefix_enable) {
+        if (item_coding_prefix) {
+            frappe.call({
+                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.generate_item_coding_code',
+                args: {
+                    'item_prefix': item_coding_prefix
+                },
+                callback: function(r) {
+                    frm.set_value('item_code', r.message || '');
+                }
+            });
+        } else {
+            frm.set_value('engineering_field_item_item_coding_table_link', '000');
+        }
+    }
+    else {
+        if (item_code) {
+            frappe.call({
+                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_get_item_coding_table_item_prefix',
+                args: {
+                    'item_code': item_code
+                },
+                callback: function(r) {
+                    frm.set_value('engineering_field_item_item_coding_table_link', r.message || '');
+                }
+            });
+        }
+        else {
+            frm.set_value('engineering_field_item_item_coding_table_link', '000');
+        }
     }
 }

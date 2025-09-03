@@ -123,3 +123,33 @@ def generate_item_coding_code(item_prefix='000'):
         new_item_code = item_prefix + str(0).zfill(code_length)
 
     return new_item_code
+
+
+#TODO
+@frappe.whitelist()
+def tpdev_engineering_get_item_coding_table_item_prefix(item_code):
+    """
+    Find the item coding prefix for a given item code.
+    """
+    # Calculate code lenght
+    item_code_length = len(item_code)
+    # Get all prefixes and code lenght
+    prefixes = frappe.get_all("Item Coding Table", fields=["engineering_item_coding_table_code", "engineering_item_coding_table_code_length", "engineering_item_coding_table_code_total_length"])
+    # filter only the matching lenghts
+    matching_prefixes = []
+    for prefix in prefixes:
+        if prefix.engineering_item_coding_table_code_total_length == item_code_length:
+            if item_code.startswith(prefix.engineering_item_coding_table_code):
+                matching_prefixes.append(prefix)
+        elif (prefix.engineering_item_coding_table_code_length + len(prefix.engineering_item_coding_table_code)) == item_code_length:
+            if item_code.startswith(prefix.engineering_item_coding_table_code):
+                matching_prefixes.append(prefix)
+    if not matching_prefixes:
+        frappe.throw(_("No matching item coding prefix found for item code {0}, please check the Item Coding Table and add it.").format(item_code))
+        return None
+    elif len(matching_prefixes) > 1:
+        frappe.throw(_("Multiple matching item coding prefixes found for item code {0}, please check the Item Coding Table and remove duplicates.").format(item_code))
+        return None
+    else:
+        item_prefix = matching_prefixes[0].engineering_item_coding_table_code
+    return item_prefix
