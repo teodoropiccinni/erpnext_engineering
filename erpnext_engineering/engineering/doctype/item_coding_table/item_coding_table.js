@@ -34,7 +34,7 @@ frappe.ui.form.on(
         "engineering_item_coding_table_code_length"
     ],
     function(frm) {
-        console.log('Item Coding Table JS - click:engineering_item_coding_table_prefix - run:generate_item_coding_code');
+        console.log('Item Coding Table JS - click:engineering_item_coding_table_prefix - run:tpdev_engineering_frm_item_coding_table_gen_item_code(frm)');
         frm.trigger("validate");
     }
 );
