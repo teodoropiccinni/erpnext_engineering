@@ -85,7 +85,7 @@ function generate_item_coding_code(frm) {
     else {
         if (item_code) {
             frappe.call({
-                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_get_item_coding_table_item_prefix',
+                method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_item_coding_table_get_item_prefix',
                 args: {
                     'item_code': item_code
                 },

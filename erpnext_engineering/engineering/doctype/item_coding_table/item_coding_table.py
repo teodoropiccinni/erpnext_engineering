@@ -44,13 +44,19 @@ def validate_and_get_item_code(item_prefix, item_code):
         new_item_code = item_code
     return new_item_code
 
-# Set DocType Item, field item_code before insert in hooks.py
+# Set in DocType Item, field item_code before insert in hooks.py
 @frappe.whitelist()
-def set_doc_item_code(doc, method=None):
+def tpdev_engineering_doc_item_set_item_code(doc, method=None):
     item_code = doc.item_code
     item_prefix = doc.engineering_field_item_item_coding_table_link
     item_code = validate_and_get_item_code(item_prefix, item_code)
     doc.item_code = item_code
+
+# Set in DocType Item, field item_prefix before insert in hooks.py
+@frappe.whitelist()
+def tpdev_engineering_doc_item_set_item_prefix(doc, method=None):
+    item_prefix = tpdev_engineering_item_coding_table_get_item_prefix(doc.item_code)
+    doc.engineering_field_item_item_coding_table_link = item_prefix
 
 # Generate full coding description
 @frappe.whitelist()
@@ -127,7 +133,7 @@ def generate_item_coding_code(item_prefix='000'):
 
 #TODO
 @frappe.whitelist()
-def tpdev_engineering_get_item_coding_table_item_prefix(item_code):
+def tpdev_engineering_item_coding_table_get_item_prefix(item_code):
     """
     Find the item coding prefix for a given item code.
     """
