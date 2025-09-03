@@ -39,11 +39,11 @@ frappe.ui.form.on(
 );
 
 // Set title
-function set_frm_item_title(frm, coding_code, liv1, liv2, code_length) {
+function set_frm_item_title(frm, coding_prefix, liv1, liv2, code_length) {
     frappe.call({
         method: "erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.gen_full_coding_description",
         args: {
-            item_coding: coding_code,
+            item_prefix: coding_prefix,
             liv1: liv1,
             liv2: liv2,
             code_length: code_length

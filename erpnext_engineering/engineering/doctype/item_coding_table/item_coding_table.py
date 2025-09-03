@@ -67,17 +67,17 @@ def gen_full_coding_description(item_prefix, liv1, liv2, code_length):
 
 # Return full coding description
 def get_full_coding_description(coding_prefix):
-    item_title = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_title")
+    item_prefix = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_prefix")
     liv1 = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_liv1")
     liv2 = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_liv2")
     code_length = frappe.get_value("Item Coding Table", coding_prefix, "engineering_item_coding_table_code_length")
 
-    if not item_title:
-        frappe.throw(_("Item Title not found for code {0}").format(item_title))
+    if not item_prefix:
+        frappe.throw(_("Item Prefix not found for code {0}").format(item_prefix))
         return None
     else:
         # Concatenate vaules from Coding Table like: engineering_item_coding_table_prefix - engineering_item_coding_table_liv1 / engineering_item_coding_table_liv2 (engineering_item_coding_table_code_length) 
-        return gen_full_coding_description(coding_prefix, liv1, liv2, code_length)
+        return gen_full_coding_description(item_prefix, liv1, liv2, code_length)
 
 @frappe.whitelist()
 def generate_item_coding_code(item_prefix='000'):
