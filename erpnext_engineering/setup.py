@@ -209,7 +209,7 @@ def install_engineering_workspace(
             "icon": icon,
             "is_hidden": 0,
             "label": label or title,
-            "links": json.dumps(link_list),
+            "links": link_list,
             "modified": "2025-07-22 11:04:56.437006",
             "module": module,
             "name": name,
