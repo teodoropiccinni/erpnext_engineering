@@ -11,7 +11,7 @@
         "id": "eng-wksp-header-progetti",
         "type": "shortcut",
         "data": {
-            "shortcut_name": "project",
+            "shortcut_name": "Project",
             "col": 3
         }
     },
@@ -27,7 +27,7 @@
         "id": "eng-wksp-header-rev-articolio",
         "type": "shortcut",
         "data": {
-            "shortcut_name": "item-revision",
+            "shortcut_name": "Item Revision",
             "col": 3
         }
     },
@@ -35,7 +35,7 @@
         "id": "eng-wksp-header-elenco-bom",
         "type": "shortcut",
         "data": {
-            "shortcut_name": "bom",
+            "shortcut_name": "BOM",
             "col": 3
         }
     },
@@ -43,7 +43,7 @@
         "id": "eng-wksp-header-bom-creator",
         "type": "shortcut",
         "data": {
-            "shortcut_name": "bom-creator",
+            "shortcut_name": "BOM Creator",
             "col": 3
         }
     },
