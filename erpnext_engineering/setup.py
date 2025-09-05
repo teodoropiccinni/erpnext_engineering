@@ -229,6 +229,7 @@ def get_engineering_workspace_content():
     # Read JSON from file WORKSPACE_CONTENT_FILE
     with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
         workspace_content = json.load(file)
+        assert isinstance(workspace_content, list), "get_engineering_workspace_content: Workspace content must be a list"
     return workspace_content
 
 # Module Def
