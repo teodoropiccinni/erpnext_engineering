@@ -51,7 +51,10 @@ class ItemCodingTable(Document):
                 break
         last_item_code = item_codes[0].item_code if item_codes else None
         if last_item_code:
-            new_item_code = str(int(last_item_code) + 1)
+            # extract numerical part of the code
+            numeric_part = last_item_code[len(item_prefix):]
+            new_numeric = str(int(numeric_part) + 1).zfill(code_length)
+            new_item_code = item_prefix + new_numeric
         else:
             new_item_code = item_prefix + str(0).zfill(code_length)
         return new_item_code
