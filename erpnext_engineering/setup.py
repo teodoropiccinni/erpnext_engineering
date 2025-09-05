@@ -201,7 +201,7 @@ def install_engineering_workspace(
         assert isinstance(content_blocks, list), "content_blocks must be a list"
 
         workspace = frappe.get_doc({
-            "content": content_blocks,
+            "content": json.dumps(content_blocks),
             "docstatus": 0,
             "doctype": "Workspace",
             "for_user": "",
@@ -209,7 +209,7 @@ def install_engineering_workspace(
             "icon": icon,
             "is_hidden": 0,
             "label": label or title,
-            "links": link_list,
+            "links": json.dumps(link_list),
             "modified": "2025-07-22 11:04:56.437006",
             "module": module,
             "name": name,
