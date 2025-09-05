@@ -6,45 +6,52 @@ import frappe
 from frappe.utils import random_string
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
-def after_engineering_app_install():
-    development_mode_on=frappe.conf.developer_mode
-    app_name="erpnext_engineering"
-    workspace_name="Engineering"
-    workspace_label="Engineering"
-    workspace_title="Engineering"
-    module_name = "Engineering"
-    module_profile_name = "Engineering"
-    workspace_icon = "list-alt"
-    workspace_indicator_color = "#3838fc"
-    workspace_is_hidden = "0"
-    workspace_public = True
-    workspace_sequence_id = 2.2
+import frappe
 
+DEVELOPMENT_MODE_ON = frappe.conf.developer_mode
+APP_NAME = "erpnext_engineering"
+MODULE_NAME = "Engineering"
+MODULE_PROFILE_NAME = "Engineering"
+WORKSPACE_NAME = "Engineering"
+WORKSPACE_LABEL = "Engineering"
+WORKSPACE_TITLE = "Engineering"
+WORKSPACE_ICON = "list-alt"
+WORKSPACE_INDICATOR_COLOR = "#3838fc"
+WORKSPACE_IS_HIDDEN = "0"
+WORKSPACE_PUBLIC = True
+WORKSPACE_SEQUENCE_ID = 2.2
+WORKSPACE_CONTENT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_content.json"
+CLIENT_SCRIPT_FOLDER = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
+EMAIL_GROUP_NAME = "Engineering Team"
+EMAIL_GROUP_TITLE = "Engineering Team"
+EMAIL_GROUP_DESCRIPTION = "Email group for the Engineering team"
+
+def after_engineering_app_install():
     print("Running after_install function.")
-    if(development_mode_on):
+    if(DEVELOPMENT_MODE_ON):
         cwd = os.getcwd()
         print(f"Running in path: {cwd}")
 
     # Gen Module Def
-    print(f"Module Def: Installing Module Def {module_name}") 
-    create_engineering_module_def(module_name, app_name, workspace_icon, workspace_indicator_color)
+    print(f"Module Def: Installing Module Def {MODULE_NAME}") 
+    create_engineering_module_def(MODULE_NAME, APP_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR)
 
     # Gen Workspace
-    print(f"Workspace: Installing workspace {workspace_name}")
-    create_engineering_workspace(workspace_title, workspace_name, module_name,  workspace_icon, workspace_indicator_color, get_engineering_workspace_content(), "", workspace_label,  workspace_public, workspace_sequence_id)
+    print(f"Workspace: Installing workspace {WORKSPACE_NAME}")
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
 
     # Adding Roles for Engineering
-    print(f"Roles: Generating Roles for Module {module_name}") 
+    print(f"Roles: Generating Roles for Module {MODULE_NAME}")
     for role in get_engineering_roles_array():
         print(f"- Role: {role}") 
         create_engineering_role(role)
 
     # Add Module Profile
-    print(f"Module Profile: Generating Module Profile for {module_name}")
-    create_engineering_module_profile(module_profile_name)
+    print(f"Module Profile: Generating Module Profile for {MODULE_NAME}")
+    create_engineering_module_profile(MODULE_PROFILE_NAME)
 
     # Adding Role Profiles
-    print(f"Role Profiles: Generating Roles Profiles for Module {module_name}") 
+    print(f"Role Profiles: Generating Roles Profiles for Module {MODULE_NAME}") 
     print(f"- Engineering Manager Profile")
     create_engineering_role_profile("Engineering Manager Profile", [
         "Employee", "Engineering Manager", "Stock User", "Projects User", "Purchase User"
@@ -73,17 +80,16 @@ def after_engineering_app_install():
     # Enable all Client Scripts
 
     # Client scripts
-    client_script_folder = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
     scripts = [
         {
             "name": "engineering_script_item_item_coding_table_prefix_check_form",
-            "file": f"{client_script_folder}/engineering_script_item_item_coding_table_prefix_check.js",
+            "file": f"{CLIENT_SCRIPT_FOLDER}/engineering_script_item_item_coding_table_prefix_check.js",
             "type": "Form",
             "doctype": "Item"
         },
         {
             "name": "engineering_script_item_item_coding_table_prefix_check_list",
-            "file": f"{client_script_folder}/engineering_script_item_item_coding_table_prefix_check.js",
+            "file": f"{CLIENT_SCRIPT_FOLDER}/engineering_script_item_item_coding_table_prefix_check.js",
             "type": "List",
             "doctype": "Item"
         }
@@ -92,38 +98,34 @@ def after_engineering_app_install():
         create_or_update_client_script(script["name"], script["file"], script["type"], script["doctype"])
 
     # When you generate client script from here they are automatically disabled. Enabling them here
-    enable_all_client_script(module_name)
+    enable_all_client_script(MODULE_NAME)
     enable_client_script("engineering_script_item_item_coding_table_prefix_check")
 
     # Create Email Group for Engineering
     print("Creating Email Group for Engineering")
-    group_name = "Engineering Team"
-    group_title = "Engineering Team"
-    group_description = "Email group for the Engineering team"
-    create_engineering_email_group(group_name, group_title, group_description)
+
+    create_engineering_email_group(EMAIL_GROUP_NAME, EMAIL_GROUP_TITLE, EMAIL_GROUP_DESCRIPTION)
 
     # Custom DB constraints
     generate_item_revision_constraints()
 
 def after_engineering_app_migrate():
+    # Update Workspace
+    update_engineering_workspace(WORKSPACE_NAME)
     # Custom DB constraints
     generate_item_revision_constraints()
 
 
 def before_engineering_app_uninstall():
-    workspace_name="Engineering"
-    module_name = "Engineering"
-    module_profile_name = "Engineering"
-
     # TODO Implement uninstall logic to clean DB and files
     # Delete Client Scripts
-    delete_all_client_script(module_name)
+    delete_all_client_script(MODULE_NAME)
 
     # Delete Property Setters
-    delete_all_property_setters(module_name)
+    delete_all_property_setters(MODULE_NAME)
 
     # Deleting Custom Fields for Engineering
-    delete_all_custom_fields(module_name)
+    delete_all_custom_fields(MODULE_NAME)
 
     # Deleting Roles for Engineering
     for role_name in get_engineering_roles_array():
@@ -134,7 +136,7 @@ def before_engineering_app_uninstall():
         delete_engineering_role_profile(role_profile)
 
     # Deleting DocTypes for Engineering
-    for doctype in frappe.get_all("DocType", filters={"module": module_name}):
+    for doctype in frappe.get_all("DocType", filters={"module": MODULE_NAME}):
         if doctype.name not in ["Custom Field", "Role", "Role Profile"]:
             try:
                 frappe.delete_doc("DocType", doctype.name, force=True)
@@ -144,17 +146,16 @@ def before_engineering_app_uninstall():
 
 
     # Delete Workspace
-    delete_engineering_workspace(workspace_name)
+    delete_engineering_workspace(WORKSPACE_NAME)
 
     # Delete Module Def
-    delete_engineering_module_def(module_name)
+    delete_engineering_module_def(MODULE_NAME)
 
     # Delete Module Profile
-    delete_engineering_module_profile(module_profile_name)
+    delete_engineering_module_profile(MODULE_PROFILE_NAME)
 
     # Delete Email Group
-    group_name = "Engineering Team"
-    delete_engineering_email_group(group_name)
+    delete_engineering_email_group(EMAIL_GROUP_NAME)
 
     # Delete DB constraints
     delete_engineering_item_revision_constraints()
@@ -175,7 +176,7 @@ Args:
     public (bool): If the workspace is visible to all users
     sequence_id (int): Sequence ID for ordering the workspace
 """
-def create_engineering_workspace(
+def install_engineering_workspace(
         title, 
         name,
         module, 
@@ -219,121 +220,15 @@ def delete_engineering_workspace(workspace_name):
     else:
         print(f"Workspace: {workspace_name} not found.")
 
-def get_engineering_workspace_content():
-    workspace_content = [
-        {
-            "id": "csBCiDglCE",
-            "type": "header",
-            "data": {
-            "text": "<span class=\"h4\"><b>Le tue scorciatoie</b></span>",
-            "col": 12
-            }
-        },
-        {
-            "id": "PZ7TfvN6Gq",
-            "type": "shortcut",
-            "data": {
-            "shortcut_name": "Articoli",
-            "col": 3
-            }
-        },
-        {
-            "id": "xit0dg7KvY",
-            "type": "shortcut",
-            "data": {
-            "shortcut_name": "Elenco BOM",
-            "col": 3
-            }
-        },
-        {
-            "id": "YHCQG3wAGv",
-            "type": "shortcut",
-            "data": {
-            "shortcut_name": "BOM Creator",
-            "col": 3
-            }
-        },
-        {
-            "id": "OtMcArFRa5",
-            "type": "shortcut",
-            "data": {
-            "shortcut_name": "Progetti",
-            "col": 3
-            }
-        },
-        {
-            "id": "bN_6tHS-Ct",
-            "type": "spacer",
-            "data": {
-            "col": 12
-            }
-        },
-        {
-            "id": "yVEFZMqVwd",
-            "type": "header",
-            "data": {
-            "text": "Funzionalità Ingegneria",
-            "col": 12
-            }
-        },
-        {
-            "id": "rwrmsTI58-",
-            "type": "card",
-            "data": {
-            "card_name": "Articoli",
-            "col": 4
-            }
-        },
-        {
-            "id": "6dnsyX-siZ",
-            "type": "card",
-            "data": {
-            "card_name": "Distinte materiali",
-            "col": 4
-            }
-        },
-        {
-            "id": "CgBeLUeksT",
-            "type": "card",
-            "data": {
-            "card_name": "Produzione",
-            "col": 4
-            }
-        },
-        {
-            "id": "8OElyjEPCu",
-            "type": "card",
-            "data": {
-            "card_name": "Progetti",
-            "col": 4
-            }
-        },
-        {
-            "id": "8RRiQeYr0G",
-            "type": "card",
-            "data": {
-            "card_name": "Tools",
-            "col": 4
-            }
-        },
-        {
-            "id": "CIq-v5f5KC",
-            "type": "card",
-            "data": {
-            "card_name": "Report",
-            "col": 4
-            }
-        },
-        {
-            "id": "Pu8z7-82rT",
-            "type": "card",
-            "data": {
-            "card_name": "Impostazioni",
-            "col": 4
-            }
-        }
-    ]
+def update_engineering_workspace(workspace_name):
+    delete_engineering_workspace(workspace_name)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
 
+#TODO currently not used, change it to read it from file
+def get_engineering_workspace_content():
+    # Read JSON from file WORKSPACE_CONTENT_FILE
+    with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
+        workspace_content = json.load(file)
     return workspace_content
 
 # Module Def

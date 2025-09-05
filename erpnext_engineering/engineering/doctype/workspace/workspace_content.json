@@ -19,7 +19,7 @@
         "id": "eng-wksp-header-articoli",
         "type": "shortcut",
         "data": {
-            "shortcut_name": "item",
+            "shortcut_name": "Item",
             "col": 3
         }
     },
