@@ -21,6 +21,7 @@ WORKSPACE_IS_HIDDEN = "0"
 WORKSPACE_PUBLIC = True
 WORKSPACE_SEQUENCE_ID = 2.2
 WORKSPACE_CONTENT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_content.json"
+WORKSPACE_LINK_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_link.json"
 CLIENT_SCRIPT_FOLDER = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
 EMAIL_GROUP_NAME = "Engineering Team"
 EMAIL_GROUP_TITLE = "Engineering Team"
@@ -38,7 +39,7 @@ def after_engineering_app_install():
 
     # Gen Workspace
     print(f"Workspace: Installing workspace {WORKSPACE_NAME}")
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_list(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
 
     # Adding Roles for Engineering
     print(f"Roles: Generating Roles for Module {MODULE_NAME}")
@@ -183,6 +184,7 @@ def install_engineering_workspace(
         icon="list-alt", 
         indicator_color="blue", 
         content_blocks=[],
+        link_list=[],
         parent_page=None,
         label=None, 
         public=True,
@@ -196,17 +198,25 @@ def install_engineering_workspace(
         return
     else:
         workspace = frappe.get_doc({
-            "doctype": "Workspace",
-            "title": title,
-            "name": name,
-            "label": label or title,
-            "module": module,
-            "icon": icon,
             "content": content_blocks,
+            "docstatus": 0,
+            "doctype": "Workspace",
             "for_user": "",
+            "hide_custom": 0,
+            "icon": icon,
+            "is_hidden": 0,
+            "label": label or title,
+            "links": link_list,
+            "modified": "2025-07-22 11:04:56.437006",
+            "module": module,
+            "name": name,
+            "number_cards": [],
+            "parent_page": "",
             "public": public,
+            "quick_lists": [],
+            "restrict_to_domain": "",
             "sequence_id": sequence_id,
-            "parent_page": ""
+            "title": title
         })
         workspace.insert(ignore_permissions=True)
         frappe.db.commit()
@@ -222,15 +232,24 @@ def delete_engineering_workspace(workspace_name):
 
 def update_engineering_workspace(workspace_name):
     delete_engineering_workspace(workspace_name)
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_list(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
 
 #TODO currently not used, change it to read it from file
 def get_engineering_workspace_content():
-    # Read JSON from file WORKSPACE_CONTENT_FILE
+    # Read JSON list from file WORKSPACE_CONTENT_FILE
     with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
         workspace_content = json.load(file)
         assert isinstance(workspace_content, list), "get_engineering_workspace_content: Workspace content must be a list"
     return workspace_content
+
+def get_engineering_workspace_list():
+    # Read JSON list from file WORKSPACE_LINK_FILE
+    with open(WORKSPACE_LINK_FILE, "r", encoding="utf-8") as file:
+        workspace_link = json.load(file)
+        assert isinstance(workspace_link, list), "get_engineering_workspace_list: Workspace link must be a list"
+    return workspace_link
+
+
 
 # Module Def
 def create_engineering_module_def(module_name="Engineering", app_name="erpnext_engineering", icon=None, color=None):
