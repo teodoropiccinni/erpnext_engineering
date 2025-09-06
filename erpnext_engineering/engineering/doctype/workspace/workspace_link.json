@@ -1,6 +1,5 @@
 [
     {
-        "dependencies": "Stock",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -18,7 +17,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "Item, BOM",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -36,7 +34,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "Item",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -54,7 +51,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -72,7 +68,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -90,7 +85,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -108,7 +102,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": "",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -126,7 +119,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -144,7 +136,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -162,7 +153,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -180,7 +170,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -198,7 +187,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -216,7 +204,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -234,7 +221,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -252,7 +238,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -270,7 +255,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -288,7 +272,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": "Item",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -306,7 +289,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -324,7 +306,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -342,7 +323,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -360,7 +340,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -378,7 +357,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -396,7 +374,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -414,7 +391,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -432,7 +408,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -450,7 +425,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": "BOM",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -468,7 +442,6 @@
         "type": "Link"
     },
     {
-        "dependencies": "BOM",
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -486,7 +459,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -504,7 +476,6 @@
         "type": "Card Break"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -522,7 +493,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
@@ -540,7 +510,6 @@
         "type": "Link"
     },
     {
-        "dependencies": null,
         "description": null,
         "hidden": 0,
         "icon": null,
