@@ -243,7 +243,14 @@ def get_engineering_workspace_content():
     with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
         workspace_content = json.load(file)
         assert isinstance(workspace_content, list), "get_engineering_workspace_content: Workspace content must be a list"
-    return workspace_content
+    # Convert to JSON string
+    json_str = json.dumps(workspace_content)
+    # Escape double quotes
+    escaped_json_str = json_str.replace('"', '\\"')
+    one_line_json_str = escaped_json_str.replace('\n', '')
+    no_indent_json_str = one_line_json_str.replace('\n', '')
+    print(no_indent_json_str)
+    return no_indent_json_str
 
 def get_engineering_workspace_list():
     # Read JSON list from file WORKSPACE_LINK_FILE
