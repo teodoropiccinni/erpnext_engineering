@@ -241,12 +241,9 @@ def update_engineering_workspace(workspace_name):
     delete_engineering_workspace(workspace_name)
     install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN)
 
-#TODO currently not used, change it to read it from file
 def get_engineering_workspace_content():
     # Read JSON list from file WORKSPACE_CONTENT_FILE
-    with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
-        workspace_content = json.load(file)
-        assert isinstance(workspace_content, list), "get_engineering_workspace_content: Workspace content must be a list"
+    workspace_content = get_engineering_workspace_content_blocks()
     # Convert to JSON string
     json_str = json.dumps(workspace_content)
     # Escape double quotes
@@ -255,6 +252,13 @@ def get_engineering_workspace_content():
     no_indent_json_str = one_line_json_str.replace('\n', '')
     print(no_indent_json_str)
     return no_indent_json_str
+
+def get_engineering_workspace_content_blocks():
+    # Read JSON list from file WORKSPACE_CONTENT_FILE
+    with open(WORKSPACE_CONTENT_FILE, "r", encoding="utf-8") as file:
+        workspace_content = json.load(file)
+        assert isinstance(workspace_content, list), "get_engineering_workspace_content: Workspace content must be a list"
+    return workspace_content
 
 def get_engineering_workspace_list():
     # Read JSON list from file WORKSPACE_LINK_FILE
