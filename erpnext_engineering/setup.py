@@ -17,7 +17,7 @@ WORKSPACE_LABEL = "Engineering"
 WORKSPACE_TITLE = "Engineering"
 WORKSPACE_ICON = "list-alt"
 WORKSPACE_FOR_USER = ""
-WORKSPACE_INDICATOR_COLOR = "#3838fc"
+WORKSPACE_INDICATOR_COLOR = "blue"
 WORKSPACE_IS_HIDDEN = "0"
 WORKSPACE_PARENT_PAGE = ""
 WORKSPACE_PUBLIC = True
@@ -204,7 +204,7 @@ def install_engineering_workspace(
 
         workspace = frappe.get_doc({
             "content": content,
-            "content_blocks": content_blocks,
+#            "content_blocks": content_blocks,
             "docstatus": 0,
             "doctype": "Workspace",
             "for_user": for_user,
@@ -247,8 +247,8 @@ def get_engineering_workspace_content():
     # Convert to JSON string
     json_str = json.dumps(workspace_content)
     # Escape double quotes
-    escaped_json_str = json_str.replace('"', '\\"')
-    one_line_json_str = escaped_json_str.replace('\n', '')
+#    escaped_json_str = json_str.replace('"', '\\"')
+    one_line_json_str = json_str.replace('\n', '')
     no_indent_json_str = one_line_json_str.replace('\n', '')
     print(no_indent_json_str)
     return no_indent_json_str
