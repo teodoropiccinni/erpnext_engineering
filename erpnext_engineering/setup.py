@@ -16,8 +16,10 @@ WORKSPACE_NAME = "Engineering"
 WORKSPACE_LABEL = "Engineering"
 WORKSPACE_TITLE = "Engineering"
 WORKSPACE_ICON = "list-alt"
+WORKSPACE_FOR_USER = ""
 WORKSPACE_INDICATOR_COLOR = "#3838fc"
 WORKSPACE_IS_HIDDEN = "0"
+WORKSPACE_PARENT_PAGE = ""
 WORKSPACE_PUBLIC = True
 WORKSPACE_SEQUENCE_ID = 2.2
 WORKSPACE_CONTENT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_content.json"
@@ -39,7 +41,7 @@ def after_engineering_app_install():
 
     # Gen Workspace
     print(f"Workspace: Installing workspace {WORKSPACE_NAME}")
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_list(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN)
 
     # Adding Roles for Engineering
     print(f"Roles: Generating Roles for Module {MODULE_NAME}")
@@ -182,16 +184,16 @@ def install_engineering_workspace(
         name,
         module, 
         icon="list-alt", 
-        indicator_color="blue", 
+        indicator_color="blue",
+        content=[],
         content_blocks=[],
         link_list=[],
-        parent_page=None,
-        label=None, 
+        parent_page="",
+        label="Engineering", 
         public=True,
-        sequence_id=2
-#        for_user = None,
-#        is_hidden="0"
-#        extends=None
+        sequence_id=2,
+        for_user="",
+        is_hidden="0"
 ):
     if frappe.db.exists("Workspace", name):
         print(f"Impossible to generate new Workspace: {name}. Workspace exists already")
@@ -201,20 +203,22 @@ def install_engineering_workspace(
         assert isinstance(content_blocks, list), "content_blocks must be a list"
 
         workspace = frappe.get_doc({
-            "content": content_blocks,
+            "content": content,
+            "content_blocks": content_blocks,
             "docstatus": 0,
             "doctype": "Workspace",
-            "for_user": "",
+            "for_user": for_user,
             "hide_custom": 0,
             "icon": icon,
-            "is_hidden": 0,
+            "indicator_color": indicator_color,
+            "is_hidden": is_hidden,
             "label": label or title,
             "links": link_list,
             "modified": "2025-07-22 11:04:56.437006",
             "module": module,
             "name": name,
             "number_cards": [],
-            "parent_page": "",
+            "parent_page": parent_page,
             "public": public,
             "quick_lists": [],
             "restrict_to_domain": "",
@@ -235,7 +239,7 @@ def delete_engineering_workspace(workspace_name):
 
 def update_engineering_workspace(workspace_name):
     delete_engineering_workspace(workspace_name)
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME,  WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_list(), "", WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN)
 
 #TODO currently not used, change it to read it from file
 def get_engineering_workspace_content():
