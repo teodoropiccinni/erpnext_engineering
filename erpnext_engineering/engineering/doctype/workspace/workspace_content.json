@@ -1,6 +1,6 @@
 [
     {
-        "id": "enwkheader",
+        "id": "EnWkHeader",
         "type": "header",
         "data": {
             "text": "Quick access",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "id": "enwkheprjt",
+        "id": "EnWkHePrjt",
         "type": "shortcut",
         "data": {
             "shortcut_name": "Project",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "id": "enwkhearti",
+        "id": "EnWkHeArTi",
         "type": "shortcut",
         "data": {
             "shortcut_name": "Item",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "id": "enwkheitre",
+        "id": "EnWkHeArRe",
         "type": "shortcut",
         "data": {
             "shortcut_name": "Item Revision",
@@ -32,7 +32,7 @@
         }
     },
     {
-        "id": "enwkheboml",
+        "id": "EnWkHeBOMl",
         "type": "shortcut",
         "data": {
             "shortcut_name": "BOM",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "id": "enwkhebomc",
+        "id": "EnWkHeBOMc",
         "type": "shortcut",
         "data": {
             "shortcut_name": "BOM Creator",
@@ -48,14 +48,14 @@
         }
     },
     {
-        "id": "enwkhespc1",
+        "id": "EnWkHeSpc1",
         "type": "spacer",
         "data": {
             "col": 12
         }
     },
     {
-        "id": "enwkfuhead",
+        "id": "EnWkFuHead",
         "type": "header",
         "data": {
             "text": "Engineering Functions",
@@ -63,7 +63,7 @@
         }
     },
     {
-        "id": "enwkfuprjt",
+        "id": "EnWkFuPrjt",
         "type": "card",
         "data": {
             "card_name": "Projects",
@@ -71,7 +71,7 @@
         }
     },
     {
-        "id": "enwkfuitem",
+        "id": "EnWkFuItem",
         "type": "card",
         "data": {
             "card_name": "Items",
@@ -79,7 +79,7 @@
         }
     },
     {
-        "id": "enwkfubomc",
+        "id": "EnWkFuBOMc",
         "type": "card",
         "data": {
             "card_name": "Distinte Base",
@@ -87,7 +87,7 @@
         }
     },
     {
-        "id": "enwkfumang",
+        "id": "EnWkFuMang",
         "type": "card",
         "data": {
             "card_name": "Manufacturing",
@@ -95,7 +95,7 @@
         }
     },
     {
-        "id": "enwkfutool",
+        "id": "EnWkFuTool",
         "type": "card",
         "data": {
             "card_name": "Tools",
@@ -103,7 +103,7 @@
         }
     },
     {
-        "id": "enwksehead",
+        "id": "EnWkSeHead",
         "type": "header",
         "data": {
             "text": "Engineering Settings",
@@ -111,7 +111,7 @@
         }
     },
     {
-        "id": "enwksesett",
+        "id": "EnWkSeSett",
         "type": "card",
         "data": {
             "card_name": "Settings",

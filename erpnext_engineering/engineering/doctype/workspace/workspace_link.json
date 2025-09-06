@@ -1,13 +1,13 @@
 [
     {
-        "dependencies": "Item, BOM",
+        "dependencies": "Stock",
         "description": null,
         "hidden": 0,
         "icon": null,
         "is_query_report": 0,
-        "label": "Work Order",
+        "label": "Item",
         "link_count": 0,
-        "link_to": "Work Order",
+        "link_to": "Item",
         "link_type": "DocType",
         "onboard": 1,
         "only_for": null,
