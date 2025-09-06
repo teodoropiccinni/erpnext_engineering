@@ -9,7 +9,7 @@
     },
     {
         "id": "EnWkHePrjt",
-        "type": "link",
+        "type": "shortcut",
         "data": {
             "shortcut_name": "Project",
             "col": 3
@@ -17,7 +17,7 @@
     },
     {
         "id": "EnWkHeArTi",
-        "type": "link",
+        "type": "shortcut",
         "data": {
             "shortcut_name": "Item",
             "col": 3
