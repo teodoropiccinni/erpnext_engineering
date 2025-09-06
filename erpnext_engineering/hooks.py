@@ -25,12 +25,6 @@ add_to_apps_screen = [
 # ------------------
 fixtures = [
     {
-        "doctype": "Workspace",
-        "filters": [
-            ["module", "=", "Engineering"]
-        ]
-    },
-    {
         "doctype": "Custom Field",
         "filters": [
             ["module", "=", "Engineering"]
