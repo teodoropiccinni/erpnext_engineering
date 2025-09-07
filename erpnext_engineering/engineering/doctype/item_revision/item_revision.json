@@ -4,7 +4,7 @@
     "allow_import": 1,
     "autoname": "field:engineering_item_revision_item_id_revision",
     "creation": "2025-07-12 11:33:52.137166",
-    "custom": 1,
+    "custom": 0,
     "editable_grid": 1,
     "istable": 0,
     "modified": "2025-07-22 15:36:43.283728",
