@@ -23,7 +23,7 @@
     "format": "{}  Total",
     "label": "Item Revisions",
     "link_to": "Item Revision",
-    "stats_filter": "[[\"Item Revision\",\"name\",\"!\",null,false]]",
+    "stats_filter": "[[\"Item Revision\",\"name\",\"!=\",null,false]]",
     "type": "DocType"
   }
 ]
