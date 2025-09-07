@@ -57,6 +57,13 @@
     {
         "type": "card",
         "data": {
+            "card_name": "Manufacturing",
+            "col": 4
+        }
+    },
+    {
+        "type": "card",
+        "data": {
             "card_name": "Requests & Issues",
             "col": 4
         }
