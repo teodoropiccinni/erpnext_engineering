@@ -28,146 +28,57 @@
         }
     },
     {
-        "id": "KP1A22WjDl",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Material Request",
-            "col": 3
-        }
-    },
-    {
-        "id": "0EYKOrx6U1",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Stock Entry",
-            "col": 3
-        }
-    },
-    {
-        "id": "cqotiphmhZ",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Purchase Receipt",
-            "col": 3
-        }
-    },
-    {
-        "id": "Xhjqnm-JxZ",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Delivery Note",
-            "col": 3
-        }
-    },
-    {
-        "id": "yxCx6Tay4Z",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Stock Ledger",
-            "col": 3
-        }
-    },
-    {
-        "id": "o3sdEnNy34",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Stock Balance",
-            "col": 3
-        }
-    },
-    {
-        "id": "m9O0HUUDS5",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Dashboard",
-            "col": 3
-        }
-    },
-    {
-        "id": "NwWcNC_xNj",
-        "type": "shortcut",
-        "data": {
-            "shortcut_name": "Learn Inventory Management",
-            "col": 3
-        }
-    },
-    {
-        "id": "9AmAh9LnPI",
         "type": "spacer",
         "data": {
             "col": 12
         }
     },
     {
-        "id": "3SmmwBbOER",
         "type": "header",
         "data": {
-            "text": "Masters & Reports",
+            "text": "Engineering Functionalities",
             "col": 12
         }
     },
     {
-        "id": "OAGNH9njt7",
         "type": "card",
         "data": {
-            "card_name": "Items Catalogue",
+            "card_name": "Projects",
             "col": 4
         }
     },
     {
-        "id": "jF9eKz0qr0",
         "type": "card",
         "data": {
-            "card_name": "Stock Transactions",
+            "card_name": "Items",
             "col": 4
         }
     },
     {
-        "id": "tyTnQo-MIS",
         "type": "card",
         "data": {
-            "card_name": "Stock Reports",
+            "card_name": "Requests & Issues",
             "col": 4
         }
     },
     {
-        "id": "dJaJw6YNPU",
+        "type": "spacer",
+        "data": {
+            "col": 12
+        }
+    },
+    {
+        "type": "header",
+        "data": {
+            "text": "Engineering Settings",
+            "col": 12
+        }
+    },
+    {
         "type": "card",
         "data": {
             "card_name": "Settings",
-            "col": 4
-        }
-    },
-    {
-        "id": "rQf5vK4N_T",
-        "type": "card",
-        "data": {
-            "card_name": "Serial No and Batch",
-            "col": 4
-        }
-    },
-    {
-        "id": "7oM7hFL4v8",
-        "type": "card",
-        "data": {
-            "card_name": "Tools",
-            "col": 4
-        }
-    },
-    {
-        "id": "ve3L6ZifkB",
-        "type": "card",
-        "data": {
-            "card_name": "Key Reports",
-            "col": 4
-        }
-    },
-    {
-        "id": "8Kfvu3umw7",
-        "type": "card",
-        "data": {
-            "card_name": "Other Reports",
-            "col": 4
+            "col": 12
         }
     }
 ]

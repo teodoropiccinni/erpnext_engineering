@@ -1,5 +1,29 @@
 [
     {
+        "hidden": 0,
+        "is_query_report": 0,
+        "label": "Projects",
+        "link_count": 0,
+        "onboard": 0,
+        "type": "Card Break"
+    },
+    {
+        "dependencies": "",
+        "description": "",
+        "hidden": 0,
+        "icon": "",
+        "is_query_report": 0,
+        "link_count": 1,
+        "label": "Project",
+        "link_to": "Project",
+        "link_type": "DocType",
+        "onboard": 1,
+        "only_for": "",
+        "parent": "Engineering",
+        "stats_filter": "[[\"Project\", \"project_type\", \"=\", \"Engineering\", false], [\"Project\", \"status\", \"=\", \"Open\", false]]",
+        "type": "Link"
+    },
+    {
         "color": "blue",
         "dependencies": "",
         "description": null,
@@ -17,26 +41,8 @@
         "parentfield": "links",
         "parenttype": "Workspace",
         "report_ref_doctype": null,
-        "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false]]",
+        "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false],[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"900\",false]]",
         "type": "Link"
-    },
-    {
-        "label": "Project",
-        "link_to": "Project",
-        "link_type": "DocType",
-        "type": "Link",
-        "onboard": 1,
-        "parent": "Engineering",
-        "parentfield": "links",
-        "parenttype": "Workspace",
-        "hidden": 0,
-        "description": "",
-        "icon": "",
-        "is_query_report": 0,
-        "link_count": 1,
-        "only_for": "",
-        "report_ref_doctype": "",
-        "dependencies": ""
     },
     {
         "dependencies": "",
