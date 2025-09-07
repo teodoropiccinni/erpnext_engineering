@@ -1,0 +1,26 @@
+[
+  {
+   "color": "Green",
+   "format": "{}  Ongoing",
+   "label": "Project",
+   "link_to": "Project",
+   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "format": "{}  Total",
+   "label": "Item",
+   "link_to": "Item",
+   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "type": "DocType"
+  },
+  {
+   "color": "Yellow",
+   "format": "{}  Total",
+   "label": "Item Revision",
+   "link_to": "Item Revision",
+   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "type": "DocType"
+  }
+]

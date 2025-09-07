@@ -19,7 +19,7 @@
         "report_ref_doctype": null,
         "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false]]",
         "type": "Link"
-    }, 
+    },
     {
         "label": "Project",
         "link_to": "Project",

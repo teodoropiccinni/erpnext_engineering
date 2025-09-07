@@ -22,8 +22,9 @@ WORKSPACE_IS_HIDDEN = "0"
 WORKSPACE_PARENT_PAGE = ""
 WORKSPACE_PUBLIC = True
 WORKSPACE_SEQUENCE_ID = 2.2
-WORKSPACE_CONTENT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_content.json"
-WORKSPACE_LINK_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/doctype/workspace/workspace_link.json"
+WORKSPACE_CONTENT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/workspace/engineering/workspace_content.json"
+WORKSPACE_LINK_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/workspace/engineering/workspace_link.json"
+WORKSPACE_SHORTCUT_FILE = "../apps/erpnext_engineering/erpnext_engineering/engineering/workspace/engineering/workspace_shortcuts.json"
 CLIENT_SCRIPT_FOLDER = "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script"
 EMAIL_GROUP_NAME = "Engineering Team"
 EMAIL_GROUP_TITLE = "Engineering Team"
@@ -41,7 +42,7 @@ def after_engineering_app_install():
 
     # Gen Workspace
     print(f"Workspace: Installing workspace {WORKSPACE_NAME}")
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN, get_engineering_workspace_shortcuts())
 
     # Adding Roles for Engineering
     print(f"Roles: Generating Roles for Module {MODULE_NAME}")
@@ -193,7 +194,8 @@ def install_engineering_workspace(
         public=True,
         sequence_id=2,
         for_user="",
-        is_hidden="0"
+        is_hidden="0",
+        shortcuts=[]
 ):
     if frappe.db.exists("Workspace", name):
         print(f"Impossible to generate new Workspace: {name}. Workspace exists already")
@@ -223,6 +225,7 @@ def install_engineering_workspace(
             "quick_lists": [],
             "restrict_to_domain": "",
             "sequence_id": sequence_id,
+            "shortcuts": [],
             "title": title
         })
         workspace.insert(ignore_permissions=True)
@@ -239,7 +242,7 @@ def delete_engineering_workspace(workspace_name):
 
 def update_engineering_workspace(workspace_name):
     delete_engineering_workspace(workspace_name)
-    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN)
+    install_engineering_workspace(WORKSPACE_TITLE, WORKSPACE_NAME, MODULE_NAME, WORKSPACE_ICON, WORKSPACE_INDICATOR_COLOR, get_engineering_workspace_content(), get_engineering_workspace_content_blocks(), get_engineering_workspace_list(), WORKSPACE_PARENT_PAGE, WORKSPACE_LABEL,  WORKSPACE_PUBLIC, WORKSPACE_SEQUENCE_ID, WORKSPACE_FOR_USER, WORKSPACE_IS_HIDDEN, get_engineering_workspace_shortcuts())
 
 def get_engineering_workspace_content():
     # Read JSON list from file WORKSPACE_CONTENT_FILE
@@ -267,6 +270,12 @@ def get_engineering_workspace_list():
         assert isinstance(workspace_link, list), "get_engineering_workspace_list: Workspace link must be a list"
     return workspace_link
 
+def get_engineering_workspace_shortcuts():
+    # Read JSON list from file WORKSPACE_SHORTCUT_FILE
+    with open(WORKSPACE_SHORTCUT_FILE, "r", encoding="utf-8") as file:
+        workspace_shortcuts = json.load(file)
+        assert isinstance(workspace_shortcuts, list), "get_engineering_workspace_shortcuts: Workspace shortcuts must be a list"
+    return workspace_shortcuts
 
 
 # Module Def
