@@ -1,30 +1,27 @@
 [
   {
-   "color": "Green",
-   "format": "{}  Ongoing",
-   "label": "Project",
-   "link_to": "Project",
-   "stats_filter": [
-    ["Project","project_type","=","Engineering",false],
-    ["Project","status","=","Open",false]
-  ],
-   "type": "DocType"
+    "color": "Green",
+    "format": "{}  Ongoing",
+    "label": "Project",
+    "link_to": "Project",
+    "stats_filter": "[[\"Project\", \"project_type\", \"=\", \"Engineering\", false], [\"Project\", \"status\", \"=\", \"Open\", false]]",
+    "type": "DocType"
   },
   {
-   "color": "Blue",
-   "doc_view": "List",
-   "format": "{}  Total",
-   "label": "Item",
-   "link_to": "Item",
-   "stats_filter": "",
-   "type": "DocType"
+    "color": "Blue",
+    "doc_view": "List",
+    "format": "{}  Total",
+    "label": "Item",
+    "link_to": "Item",
+    "stats_filter": "",
+    "type": "DocType"
   },
   {
-   "color": "Yellow",
-   "format": "{}  Total",
-   "label": "Item Revision",
-   "link_to": "Item Revision",
-   "stats_filter": "",
-   "type": "DocType"
+    "color": "Yellow",
+    "format": "{}  Total",
+    "label": "Item Revision",
+    "link_to": "Item Revision",
+    "stats_filter": "",
+    "type": "DocType"
   }
 ]
