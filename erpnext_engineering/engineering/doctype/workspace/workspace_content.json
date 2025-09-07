@@ -17,11 +17,6 @@
         "type": "shortcut",
         "data": {
             "shortcut_name": "Item",
-            "link_to": "Item",
-            "link_type": "DocType",
-            "doc_view": "List",
-            "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false]]",
-            "color": "blue",
             "col": 3
         }
     },
