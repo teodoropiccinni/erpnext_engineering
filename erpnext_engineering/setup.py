@@ -6,8 +6,6 @@ import frappe
 from frappe.utils import random_string
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
-import frappe
-
 DEVELOPMENT_MODE_ON = frappe.conf.developer_mode
 APP_NAME = "erpnext_engineering"
 MODULE_NAME = "Engineering"
@@ -573,8 +571,6 @@ def delete_all_property_setters(module_name):
     frappe.db.commit()
     print(f"All Property Setters for {module_name} deleted.")
 
-
-import frappe
 
 # Module Profile for Engineering
 def create_engineering_module_profile(profile_name):
