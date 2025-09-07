@@ -8,6 +8,7 @@ Length of the item code\, not considering the prefix. Example: Prefix - 000 and 
 Engineering Manager,Responsabile Ingegneria
 Engineering User,Utente Ingegneria
 Engineering Viewer,Osservatore Ingegneria
+Engineering Items,Articoli Ingegneria
 Request reference,Riferimento richiesta
 Item ID,ID Articolo
 Item List,Elenco Articoli

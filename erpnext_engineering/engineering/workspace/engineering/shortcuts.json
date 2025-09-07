@@ -1,8 +1,9 @@
 [
   {
     "color": "Green",
+    "doc_view": "List",
     "format": "{}  Ongoing",
-    "label": "Project",
+    "label": "Projects",
     "link_to": "Project",
     "stats_filter": "[[\"Project\", \"project_type\", \"=\", \"Engineering\", false], [\"Project\", \"status\", \"=\", \"Open\", false]]",
     "type": "DocType"
@@ -11,17 +12,18 @@
     "color": "Blue",
     "doc_view": "List",
     "format": "{}  Total",
-    "label": "Item",
+    "label": "Engineering Items",
     "link_to": "Item",
-    "stats_filter": "",
+    "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false],[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"900\",false]]",
     "type": "DocType"
   },
   {
     "color": "Yellow",
+    "doc_view": "List",
     "format": "{}  Total",
-    "label": "Item Revision",
+    "label": "Item Revisions",
     "link_to": "Item Revision",
-    "stats_filter": "",
+    "stats_filter": "[[\"Item Revision\",\"name\",\"!\",null,false]]",
     "type": "DocType"
   }
 ]
