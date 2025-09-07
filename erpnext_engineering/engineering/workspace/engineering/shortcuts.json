@@ -4,12 +4,10 @@
    "format": "{}  Ongoing",
    "label": "Project",
    "link_to": "Project",
-   "stats_filter": {
-       "filters": [
-           ["Project","project_type","=","Engineering",false],
-           ["Project","status","=","Open",false]
-       ]
-   },
+   "stats_filter": [
+    ["Project","project_type","=","Engineering",false],
+    ["Project","status","=","Open",false]
+  ],
    "type": "DocType"
   },
   {
