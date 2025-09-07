@@ -225,7 +225,7 @@ def install_engineering_workspace(
             "quick_lists": [],
             "restrict_to_domain": "",
             "sequence_id": sequence_id,
-            "shortcuts": [],
+            "shortcuts": shortcuts,
             "title": title
         })
         workspace.insert(ignore_permissions=True)
