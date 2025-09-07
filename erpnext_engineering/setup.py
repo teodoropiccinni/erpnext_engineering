@@ -201,8 +201,9 @@ def install_engineering_workspace(
         print(f"Impossible to generate new Workspace: {name}. Workspace exists already")
         return
     else:
-        print(type(content_blocks), content_blocks[:1])
-        assert isinstance(content_blocks, list), "content_blocks must be a list"
+        if(DEVELOPMENT_MODE_ON):
+            print(type(content_blocks), content_blocks[:1])
+            assert isinstance(content_blocks, list), "content_blocks must be a list"
 
         workspace = frappe.get_doc({
             "content": content,
