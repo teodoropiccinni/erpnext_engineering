@@ -9,21 +9,21 @@
     {
         "type": "shortcut",
         "data": {
-            "shortcut_name": "Project",
+            "shortcut_name": "Projects",
             "col": 3
         }
     },
     {
         "type": "shortcut",
         "data": {
-            "shortcut_name": "Item",
+            "shortcut_name": "Engineering Items",
             "col": 3
         }
     },
     {
         "type": "shortcut",
         "data": {
-            "shortcut_name": "Item Revision",
+            "shortcut_name": "Item Revisions",
             "col": 3
         }
     },
