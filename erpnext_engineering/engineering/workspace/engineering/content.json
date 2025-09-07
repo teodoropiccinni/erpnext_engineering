@@ -2,7 +2,7 @@
     {
         "type": "header",
         "data": {
-            "text": "<span class=\\"h4\\"><b>Quick Access</b></span>",
+            "text": "Quick Access",
             "col": 12
         }
     },
@@ -19,7 +19,7 @@
             "shortcut_name": "Item",
             "col": 3
         }
-    },,
+    },
     {
         "type": "shortcut",
         "data": {
@@ -102,7 +102,7 @@
         "id": "3SmmwBbOER",
         "type": "header",
         "data": {
-            "text": "<span class=\\"h4\\"><b>Masters &amp; Reports</b></span>",
+            "text": "Masters & Reports",
             "col": 12
         }
     },
