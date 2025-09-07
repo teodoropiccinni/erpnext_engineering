@@ -7,7 +7,7 @@ else
   echo "GIT repo update failed"
   exit 1
 fi
-git submodule update --remote --recursive
+git pull --recurse-submodules
 if [ $? -eq 0 ]; then
   echo "GIT submodule update successful"
 else
