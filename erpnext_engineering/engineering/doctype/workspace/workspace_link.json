@@ -1,5 +1,23 @@
 [
     {
+        "label": "Project",
+        "link_to": "Project",
+        "link_type": "DocType",
+        "type": "Link",
+        "onboard": 1,
+        "parent": "Engineering",
+        "parentfield": "links",
+        "parenttype": "Workspace",
+        "hidden": 0,
+        "description": "",
+        "icon": "",
+        "is_query_report": 0,
+        "link_count": 1,
+        "only_for": "",
+        "report_ref_doctype": "",
+        "dependencies": ""
+    },
+    {
         "dependencies": "",
         "description": "",
         "hidden": 0,
