@@ -251,10 +251,10 @@ def get_engineering_workspace_content():
     # Convert to JSON string
     json_str = json.dumps(workspace_content)
     # Escape double quotes
-#    escaped_json_str = json_str.replace('"', '\\"')
     one_line_json_str = json_str.replace('\n', '')
     no_indent_json_str = one_line_json_str.replace('\n', '')
-    print(no_indent_json_str)
+    if(DEVELOPMENT_MODE_ON):
+        print(no_indent_json_str)
     return no_indent_json_str
 
 def get_engineering_workspace_content_blocks():
