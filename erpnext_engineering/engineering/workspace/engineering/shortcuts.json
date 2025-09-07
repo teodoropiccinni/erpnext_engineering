@@ -4,15 +4,21 @@
    "format": "{}  Ongoing",
    "label": "Project",
    "link_to": "Project",
-   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "stats_filter": {
+       "filters": [
+           ["Project","project_type","=","Engineering",false],
+           ["Project","status","=","Open",false]
+       ]
+   },
    "type": "DocType"
   },
   {
    "color": "Blue",
+   "doc_view": "List",
    "format": "{}  Total",
    "label": "Item",
    "link_to": "Item",
-   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "stats_filter": "",
    "type": "DocType"
   },
   {
@@ -20,7 +26,7 @@
    "format": "{}  Total",
    "label": "Item Revision",
    "link_to": "Item Revision",
-   "stats_filter": "{\n    \"disabled\" : 0\n}",
+   "stats_filter": "",
    "type": "DocType"
   }
 ]
