@@ -2,7 +2,7 @@ import os
 import time
 import json
 
-from erpnext_engineering.tools.erpnext_tpdev_helper import ERPnext_TPdev_SetupHelper 
+from erpnext_engineering.tools.erpnext_tpdev_helper.erpnext_tpdev_setup_helper import ERPnext_TPdev_SetupHelper
 import frappe
 
 TPH = ERPnext_TPdev_SetupHelper(
