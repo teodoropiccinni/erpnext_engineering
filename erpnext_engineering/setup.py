@@ -21,9 +21,10 @@ TPH = ERPnext_TPdev_SetupHelper(
     workspace_public=True,
     workspace_sequence_id=2.2,
     workspace_files = {
-        "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/workspace/engineering/",
+        "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/workspace/engineering",
         "content": "content.json",
-        "link": "link.json",
+        "content_blocks": "content_blocks.json",
+        "links": "links.json",
         "number_cards": "number_cards.json",
         "shortcuts": "shortcuts.json"
     },
