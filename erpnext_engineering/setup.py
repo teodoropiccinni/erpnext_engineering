@@ -30,16 +30,16 @@ TPH = ERPnext_TPdev_SetupHelper(
     },
     client_scripts=[
         {
-            "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script",
             "name": "engineering_script_item_item_coding_table_prefix_check_form",
             "file": "engineering_script_item_item_coding_table_prefix_check.js",
+            "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script",
             "type": "Form",
             "doctype": "Item"
         },
         {
-            "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script",
             "name": "engineering_script_item_item_coding_table_prefix_check_list",
             "file": "engineering_script_item_item_coding_table_prefix_check.js",
+            "folder": "../apps/erpnext_engineering/erpnext_engineering/engineering/client_script",
             "type": "List",
             "doctype": "Item"
         },
