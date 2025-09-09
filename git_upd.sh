@@ -19,11 +19,12 @@ else
 fi
 
 bench --site $SITE uninstall-app $APP_NAME
-if [ $? -eq 0 ]; thenß
+if [ $? -eq 0 ]; then
   echo "Frappe app: $APP_NAME uninstall successful"
 else
   echo "Frappe app: $APP_NAME uninstall failed"
 fi
+
 bench --version
 if [ $? -eq 0 ]; then
   echo "Frappe Bench version check successful"
