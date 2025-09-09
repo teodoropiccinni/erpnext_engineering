@@ -205,7 +205,7 @@ def after_engineering_app_install():
     TPH.install_client_scripts()
 
     # Create Email Group for Engineering
-    TPH.install_email_group()
+    TPH.install_email_groups()
 
     # Custom DB constraints
     TPH.install_db_constraints()
