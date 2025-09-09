@@ -1,5 +1,8 @@
 #!/bin/bash
 
+: "${SITE:?Set SITE variable}"
+: "${APP_NAME:?Set APP_NAME variable}"
+
 git pull
 if [ $? -eq 0 ]; then
   echo "GIT repo update successful"
