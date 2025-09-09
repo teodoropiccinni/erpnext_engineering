@@ -18,7 +18,7 @@ else
   exit 1
 fi
 
-y | bench --site $SITE uninstall-app $APP_NAME  --force
+bench --site $SITE uninstall-app $APP_NAME  --force | yes
 if [ $? -eq 0 ]; then
   echo "Frappe app: $APP_NAME uninstall successful"
 else
