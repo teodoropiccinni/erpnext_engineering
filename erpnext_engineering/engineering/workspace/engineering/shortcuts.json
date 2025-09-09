@@ -12,9 +12,9 @@
     "color": "Blue",
     "doc_view": "List",
     "format": "{}  Total",
-    "label": "Engineering Items",
+    "label": "Items",
     "link_to": "Item",
-    "stats_filter": "[[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"SRV-IT-\",false],[\"Item\",\"engineering_field_item_item_coding_table_prefix\",\"!=\",\"900\",false]]",
+    "stats_filter": "",
     "type": "DocType"
   },
   {
