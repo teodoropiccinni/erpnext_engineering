@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "-------------MODULE UPDATE SCRIPT-------------"
+echo -e "\033[32m-------------MODULE UPDATE SCRIPT-------------\033[0m"
 echo "Execution started at: $(date)"
 : "${SITE:?Set SITE variable}"
 echo "Site: $SITE"
@@ -50,8 +50,8 @@ bench --site $SITE install-app $APP_NAME
 if [ $? -eq 0 ]; then
   echo "- - Frappe app: $APP_NAME install successful"
 else
-  echo "- - Frappe app: $APP_NAME install failed"
+  echo -e "\033[31m- - Frappe app: $APP_NAME install failed\033[0m"
 fi
 
 echo "Update completed at: $(date)"
-echo "-------------MODULE UPDATE SCRIPT-------------"
+echo -e "\033[32m-------------MODULE UPDATE SCRIPT-------------\033[0m"
