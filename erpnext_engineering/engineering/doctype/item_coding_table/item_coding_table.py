@@ -178,20 +178,30 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
         if item_prefix_enabled:
             if not item_prefix:
                 frappe.throw(_("Please select one Item Coding Prefix for this item."))
-            else:
+            elif ItemCodingTable.exists_item_prefix(item_prefix):
                 item_code = ItemCodingTable.gen_item_code(item_prefix)
+                doc.item_code = item_code
+                return True
+            else:
+                frappe.throw(_("Item prefix {0} not found. Please select a valid Item Coding Prefix for this item.").format(item_prefix))
         else:
-            if not item_prefix:
-                item_prefix = '000'
-                if not item_code or item_code == '00000000':
-                    item_code = ItemCodingTable.gen_item_code(item_prefix)
-                elif ItemCodingTable.exists_item_code(item_code):
-                    new_item_code = ItemCodingTable.gen_item_code(item_prefix)
-                    frappe.throw(_("Item code {0} already exists. New code {1} generated.").format(item_code, new_item_code))
-                    item_code = new_item_code
+            if item_code:
+                # check if item_code already exists
+                if ItemCodingTable.exists_item_code(item_code):
+                    item_prefix_check = ItemCodingTable.get_item_prefix(item_code)
+                    if item_prefix_check:
+                        new_item_code = ItemCodingTable.gen_item_code(item_prefix)
+                        item_code = new_item_code
+                        doc.item_code = item_code
+                        doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
+                        frappe.throw(_("Item code {0} already exists. Proposed code: {1}. Confirm new code by saving modifications change it or enable Item Coding Prefix to auto-generate a new code.").format(item_code, new_item_code))
+                    else:
+                        frappe.msgprint(_("Item code {0} is acceptable but we can't recognize any coding schema. Please delete the item and recreate it with a valid coding schema if this code is wrong.").format(item_code))
+                        return True
             else:
-                item_code = ItemCodingTable.gen_item_code(item_prefix)
-        doc.item_prefix = item_prefix
+                frappe.throw(_("Please set an Item Code or enable Item Coding Prefix to auto-generate a new code."))
+                return False
+        doc.engineering_field_item_item_coding_table_prefix = item_prefix
         doc.item_code = item_code
     else:
         frappe.throw(_("before_insert: method called by mistake"))
