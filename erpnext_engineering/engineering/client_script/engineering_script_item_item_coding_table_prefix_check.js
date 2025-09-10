@@ -43,12 +43,14 @@ function show_item_name(frm) {
 function enable_autocode(frm) {
     frm.toggle_display('item_code', true);
     frm.set_df_property('item_code', 'read_only', 1);
+    frm.set_df_property('engineering_field_item_item_coding_table_prefix', 'reqd', 1);
     frm.toggle_display('engineering_field_item_item_coding_table_prefix', true);
 }
 
 function disable_autocode(frm) {
     frm.toggle_display('item_code', true);
     frm.set_df_property('item_code', 'read_only', 0);
+    frm.set_df_property('engineering_field_item_item_coding_table_prefix', 'reqd', 0);
     frm.toggle_display('engineering_field_item_item_coding_table_prefix', false);
 }
 
