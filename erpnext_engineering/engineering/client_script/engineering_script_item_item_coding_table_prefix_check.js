@@ -1,28 +1,39 @@
 frappe.ui.form.on('Item', {
 //    load: function(frm) {
 //        if (frm.is_new()) {
-//            alert('Client Script loaded!');
-//            console.log('Client Script: Item - loaded');
+//            alert('Engineering Client Script loaded!');
+//            console.log('Engineering Client Script: Item - loaded');
 //        }
 //    },
     refresh: function(frm) {
         toggle_item_coding_fields(frm);
         if (frm.is_new()) {
-            console.log('Client Script: Item - refresh');
-            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+            console.log('Engineering Client Script: Item - refresh');
+            if (frm.doc.engineering_field_item_enable_item_coding_prefix) {
+                if (frm.doc.engineering_field_item_item_coding_table_prefix) {
+                    console.log('Engineering Client Script: Item - Refresh - Proposing new Item Code');
+                    tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+                }
+            }
         }
     },
     engineering_field_item_enable_item_coding_prefix: function(frm) {
         toggle_item_coding_fields(frm);
-        if (frm.is_new()) {
-            console.log('Client Script: Item - engineering_field_item_enable_item_coding_prefix');
-            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+        if (frm.doc.engineering_field_item_enable_item_coding_prefix) {
+            if (frm.doc.engineering_field_item_item_coding_table_prefix) {
+                console.log('Engineering Client Script: Item - Refresh - Proposing new Item Code');
+                tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+            }
         }
     },
     engineering_field_item_item_coding_table_prefix: function(frm) {
         if (frm.is_new()) {
-            console.log('Client Script: Item - engineering_field_item_item_coding_table_prefix');
-            tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+            if (frm.doc.engineering_field_item_enable_item_coding_prefix) {
+                if (frm.doc.engineering_field_item_item_coding_table_prefix) {
+                    console.log('Engineering Client Script: Item - Refresh - Proposing new Item Code');
+                    tpdev_engineering_frm_item_coding_table_gen_item_code(frm);
+                }
+            }
         }
     }
 });
@@ -55,7 +66,7 @@ function disable_autocode(frm) {
 }
 
 function tpdev_engineering_frm_item_coding_table_gen_item_code(frm) {
-    console.log('Engineering Client Script: Item - called gen_item_coding_code');
+    console.log('Engineering Client Script: Item - called tpdev_engineering_frm_item_coding_table_gen_item_code');
     item_coding_prefix_enable=frm.doc.engineering_field_item_enable_item_coding_prefix;
     item_coding_prefix=frm.doc.engineering_field_item_item_coding_table_prefix;
     item_code=frm.doc.item_code;
