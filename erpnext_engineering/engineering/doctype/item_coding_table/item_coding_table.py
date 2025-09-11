@@ -190,6 +190,7 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
                 if ItemCodingTable.exists_item_code(item_code):
                     item_prefix_check = ItemCodingTable.get_item_prefix(item_code)
                     if item_prefix_check:
+                        item_prefix = item_prefix_check
                         new_item_code = ItemCodingTable.gen_item_code(item_prefix)
                         item_code = new_item_code
                         doc.item_code = item_code
