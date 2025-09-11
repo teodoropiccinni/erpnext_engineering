@@ -197,11 +197,19 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
                         doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
                         frappe.throw(_("Item code {0} already exists. Proposed code: {1}. Confirm new code by saving modifications change it or enable Item Coding Prefix to auto-generate a new code.").format(item_code, new_item_code))
                     else:
-                        frappe.msgprint(_("Item code {0} is acceptable but we can't recognize any coding schema. Please delete the item and recreate it with a valid coding schema if this code is wrong.").format(item_code))
+                        frappe.msgprint(_("Item code {0} is already present in the database. Please change the code or enable Item Coding Prefix to auto-generate a new code.").format(item_code))
                         return True
+                else:
+                    item_prefix_check = ItemCodingTable.get_item_prefix(item_code)
+                    if item_prefix_check:
+                        frappe.msgprint(_("Item code {0} pattern recognized to Prefix: {1}. Assigning prefix.").format(item_code, item_prefix_check))
+                        item_prefix = item_prefix_check
+                        doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
+                        return True
+                    else:
+                        frappe.throw(_("Item code {0} is valid but not recognized as part of any coding schema. If you know what you are doing you can ignore this message.").format(item_code))
             else:
                 frappe.throw(_("Please set an Item Code or enable Item Coding Prefix to auto-generate a new code."))
-                return False
         doc.engineering_field_item_item_coding_table_prefix = item_prefix
         doc.item_code = item_code
     else:
