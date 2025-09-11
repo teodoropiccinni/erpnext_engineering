@@ -32,11 +32,9 @@ class ItemCodingTable(Document):
         if not item_prefix:
             logger.error("Item Coding Table: gen_item_code - Item prefix cannot be empty.")
             frappe.throw(_("Item Coding Table: gen_item_code - Item prefix cannot be empty."))
-            return None
         if not code_length:
             logger.error(f"Item Coding Table: gen_item_code - Item Coding Table with prefix {item_prefix} not found.")
             frappe.throw(_("Item Coding Table: gen_item_code - Item Coding Table with Prefix {0} not found.").format(item_prefix))
-            return None
         #TODO improve selection and generation logic
         item_codes_with_prefix = frappe.get_all(
             "Item",
@@ -158,44 +156,45 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
     item_prefix_enabled = doc.engineering_field_item_enable_item_coding_prefix
     item_prefix = doc.engineering_field_item_item_coding_table_prefix
     item_code = doc.item_code
+    detected_item_prefix = None
     if doc.is_new():
         # check if code engineering_field_item_enable_item_coding_prefix is enabled
         if item_prefix_enabled:
             if not item_prefix:
-                frappe.throw(_("Please select one Item Coding Prefix for this item."))
+                if item_code:
+                    detected_item_prefix = ItemCodingTable.get_item_prefix(item_code)
+                    doc.engineering_field_item_item_coding_table_prefix = detected_item_prefix
+                    frappe.throw(_("Item Prefix not selected. Proposing one from your item code: {0}\n").format(detected_item_prefix))
+                else:
+                    frappe.throw(_("Please select one Item Coding Prefix for this item."))
             elif ItemCodingTable.exists_item_prefix(item_prefix):
                 item_code = ItemCodingTable.gen_item_code(item_prefix)
                 doc.item_code = item_code
-                return True
+                frappe.msgprint(_("Item Code ({0}) generated from prefix ({1}).").format(item_code, item_prefix))
             else:
                 frappe.throw(_("Item prefix {0} not found. Please select a valid Item Coding Prefix for this item.").format(item_prefix))
         else:
             if item_code:
                 # check if item_code already exists
-                if ItemCodingTable.exists_item_code(item_code):
+                item_code_check = ItemCodingTable.exists_item_code(item_code)
+                if item_code_check:
+                    # return error with indications
                     item_prefix_check = ItemCodingTable.get_item_prefix(item_code)
                     if item_prefix_check:
                         item_prefix = item_prefix_check
                         new_item_code = ItemCodingTable.gen_item_code(item_prefix)
-                        item_code = new_item_code
-                        doc.item_code = item_code
-                        doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
-                        frappe.throw(_("Item code {0} already exists. Proposed code: {1}. Confirm new code by saving modifications change it or enable Item Coding Prefix to auto-generate a new code.").format(item_code, new_item_code))
+                        frappe.throw(_("Item code {0} already exists. Proposed code: {1}. Please, copy and paste the proposed code to proceed  or enable Item Coding Prefix to auto-generate a new code.").format(item_code, new_item_code))
                     else:
-                        frappe.msgprint(_("Item code {0} is already present in the database. Please change the code or enable Item Coding Prefix to auto-generate a new code.").format(item_code))
-                        return True
+                        frappe.throw(_("Item code {0} is already present in the database. Please change the code or enable Item Coding Prefix to auto-generate a new code.").format(item_code))
                 else:
-                    item_prefix_check = ItemCodingTable.get_item_prefix(item_code)
+                    # If code is unique all good, throw error otherwise
                     if item_prefix_check:
                         frappe.msgprint(_("Item code {0} pattern recognized to Prefix: {1}. Assigning prefix.").format(item_code, item_prefix_check))
                         item_prefix = item_prefix_check
                         doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
-                        return True
                     else:
-                        frappe.throw(_("Item code {0} is valid but not recognized as part of any coding schema. If you know what you are doing you can ignore this message.").format(item_code))
+                        frappe.msgprint(_("Item code {0} is valid but not recognized as part of any coding schema. If you know what you are doing you can ignore this message.").format(item_code))
             else:
                 frappe.throw(_("Please set an Item Code or enable Item Coding Prefix to auto-generate a new code."))
-        doc.engineering_field_item_item_coding_table_prefix = item_prefix
-        doc.item_code = item_code
     else:
-        frappe.throw(_("before_insert: method called by mistake"))
+        frappe.throw(_("before_insert: method called by mistake. This is not a new document"))
