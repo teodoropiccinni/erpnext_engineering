@@ -98,10 +98,10 @@ class ItemCodingTable(Document):
                 if item_code.startswith(prefix.engineering_item_coding_table_prefix):
                     matching_prefixes.append(prefix)
         if not matching_prefixes:
-            frappe.throw(_("No matching item coding prefix found for item code {0}, please check the Item Coding Table and add it.").format(item_code))
+            frappe.msgprint(_("No matching item coding prefix found for item code {0}, please check the Item Coding Table and add it.").format(item_code))
             return None
         elif len(matching_prefixes) > 1:
-            frappe.throw(_("Multiple matching item coding prefixes found for item code {0}, please check the Item Coding Table and remove duplicates.").format(item_code))
+            frappe.msgprint(_("Multiple matching item coding prefixes found for item code {0}, please check the Item Coding Table and remove duplicates.").format(item_code))
             return None
         else:
             item_prefix = matching_prefixes[0].engineering_item_coding_table_prefix
