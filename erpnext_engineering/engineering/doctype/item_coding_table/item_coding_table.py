@@ -30,12 +30,12 @@ class ItemCodingTable(Document):
     def gen_item_code(item_prefix):
         code_length = frappe.db.get_value("Item Coding Table", {"engineering_item_coding_table_prefix": item_prefix}, "engineering_item_coding_table_code_length")
         if not item_prefix:
-            frappe.throw(_("gen_item_code: Item prefix cannot be empty."))
             logger.error("Item Coding Table: gen_item_code - Item prefix cannot be empty.")
+            frappe.throw(_("Item Coding Table: gen_item_code - Item prefix cannot be empty."))
             return None
         if not code_length:
-            frappe.throw(_("gen_item_code: Item Coding Table with Prefix {0} not found.").format(item_prefix))
             logger.error(f"Item Coding Table: gen_item_code - Item Coding Table with prefix {item_prefix} not found.")
+            frappe.throw(_("Item Coding Table: gen_item_code - Item Coding Table with Prefix {0} not found.").format(item_prefix))
             return None
         #TODO improve selection and generation logic
         item_codes_with_prefix = frappe.get_all(
@@ -57,21 +57,6 @@ class ItemCodingTable(Document):
             new_item_code = item_prefix + new_numeric
         else:
             new_item_code = item_prefix + str(0).zfill(code_length)
-        return new_item_code
-
-
-    @classmethod
-    def validate_and_get_item_code(cls, item_prefix, item_code):
-        if not cls.exists_item_prefix(item_prefix):
-            frappe.throw(_("Item prefix {0} not found. Default prefix '000' will be used.").format(item_prefix))
-            item_prefix = '000'
-        if not item_code or item_code == '00000000':
-            new_item_code = cls.gen_item_code(item_prefix)
-        elif cls.exists_item_code(item_code):
-            frappe.throw(_("Item code {0} already exists. New code {1} generated.").format(item_code, new_item_code))
-            new_item_code = cls.gen_item_code(item_prefix)
-        else:
-            new_item_code = item_code
         return new_item_code
 
     @staticmethod
@@ -159,7 +144,7 @@ def tpdev_engineering_item_coding_table_gen_item_prefix_title(item_prefix, liv1,
     return ItemCodingTable.gen_item_prefix_title(item_prefix, liv1, liv2, code_length)
 
 @frappe.whitelist()
-def tpdev_engineering_item_coding_table_gen_item_code(item_prefix='000'):
+def tpdev_engineering_item_coding_table_gen_item_code(item_prefix):
     return ItemCodingTable.gen_item_code(item_prefix)
 
 @frappe.whitelist()

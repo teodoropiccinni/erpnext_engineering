@@ -90,12 +90,12 @@ function tpdev_engineering_frm_item_coding_table_gen_item_code(frm) {
                 frm.set_value('item_code', r.message || '');
             },
             error: function(xhr, status) {
-                if (status === "timeout") {
-                    console.log("Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.");
-                    frappe.msgprint("Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.");
+                if (status === 'timeout') {
+                    console.log('Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.');
+                    frappe.msgprint('Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.');
                 } else {
-                    console.log("Engineering Client Script: Item - API Call get_item_prefix failed with status: " + status);
-                    frappe.msgprint("An error occurred: " + status);
+                    console.log('Engineering Client Script: Item - API Call get_item_prefix failed with status: ' + status);
+                    frappe.msgprint('An error occurred: ' + status);
                 }
             }
         });
@@ -103,7 +103,7 @@ function tpdev_engineering_frm_item_coding_table_gen_item_code(frm) {
     else {
         console.log('Engineering Client Script: Item - Item Code Prefix disabled');
         if (item_code) {
-            // Try to identify the code in the item coding table. If not found, set to "null"
+            // Try to identify the code in the item coding table. If not found, set to 'null'
             console.log('Engineering Client Script: Item - API Call (tpdev_engineering_item_coding_table_get_item_prefix) to get prefix from item code ' + item_code);
             frappe.call({
                 method: 'erpnext_engineering.engineering.doctype.item_coding_table.item_coding_table.tpdev_engineering_item_coding_table_get_item_prefix',
@@ -117,19 +117,19 @@ function tpdev_engineering_frm_item_coding_table_gen_item_code(frm) {
                     frm.set_value('engineering_field_item_item_coding_table_prefix', item_coding_prefix);
                 },
                 error: function(xhr, status) {
-                    if (status === "timeout") {
-                        console.log("Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.");
-                        frappe.msgprint("Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.");
+                    if (status === 'timeout') {
+                        console.log('Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.');
+                        frappe.msgprint('Engineering Client Script: Item - API Call get_item_prefix timed-out. Please try again.');
                     } else {
-                        console.log("Engineering Client Script: Item - API Call get_item_prefix failed with status: " + status);
-                        frappe.msgprint("An error occurred: " + status);
+                        console.log('Engineering Client Script: Item - API Call get_item_prefix failed with status: ' + status);
+                        frappe.msgprint('An error occurred: ' + status);
                     }
                 }
             });
         }
         else {
             console.log('Engineering Client Script: Item - No item code defined and Code Generation disabled.');
-            frappe.msgprint("No item code defined. Cannot retrieve prefix.");
+            frappe.msgprint('No item code defined. Cannot retrieve prefix.');
         }
     }
 }
