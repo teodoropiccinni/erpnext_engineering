@@ -34,9 +34,21 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
 URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext_engineering.git"
 VERSION_OF_FRAPPE="version-15"
+APP_NAME="erpnext_engineering"
+echo "Moving to folder: $PATH_TO_YOUR_BENCH"
 cd $PATH_TO_YOUR_BENCH
+echo "Bench get-app $APP_NAME"
 bench get-app $URL_OF_THIS_REPO --branch $VERSION_OF_FRAPPE
-bench --site $SITE install-app erpnext_engineering
+echo "Moving to app folder"
+cd apps/$APP_NAME
+echo "GIT pull"
+git pull
+echo "GIT submodule init"
+git submodule init
+echo "GIT pull --recurse-submodules"
+git pull --recurse-submodules
+echo "Bench install-app $APP_NAME"
+bench --site $SITE install-app $APP_NAME
 ```
 Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is the current version. Adapt those parameters to your needs.
 
@@ -71,9 +83,21 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 PATH_TO_YOUR_BENCH="~/frappe-bench/"
 URL_OF_THIS_REPO="git@github.com:teodoropiccinni/erpnext_engineering.git"
 VERSION_OF_FRAPPE="develop-15"
+APP_NAME="erpnext_engineering"
+echo "Moving to folder: $PATH_TO_YOUR_BENCH"
 cd $PATH_TO_YOUR_BENCH
+echo "Bench get-app $APP_NAME"
 bench get-app $URL_OF_THIS_REPO --branch $VERSION_OF_FRAPPE
-bench --site $SITE install-app erpnext_engineering
+echo "Moving to app folder"
+cd apps/$APP_NAME
+echo "GIT pull"
+git pull
+echo "GIT submodule init"
+git submodule init
+echo "GIT pull --recurse-submodules"
+git pull --recurse-submodules
+echo "Bench install-app $APP_NAME"
+bench --site $SITE install-app $APP_NAME
 ```
 Where `$PATH_TO_YOUR_BENCH` is usually: `~/frappe-bench/` and `version-15` is the current version. Adapt those parameters to your needs.
 
