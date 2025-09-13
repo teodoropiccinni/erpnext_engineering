@@ -188,13 +188,16 @@ def tpdev_engineering_doc_item_coding_table_before_insert_item(doc, method=None)
                         frappe.throw(_("Failed: Item code {0} is already present in the database. Please change the code or enable Item Coding Prefix to auto-generate a new code.").format(item_code))
                 else:
                     # If code is unique all good, throw error otherwise
-                    if item_prefix_check:
+                    if item_prefix_check and item_prefix_check != item_prefix:
                         frappe.msgprint(_("Success: Item code {0} pattern recognized to Prefix: {1}. Assigning prefix.").format(item_code, item_prefix_check))
                         item_prefix = item_prefix_check
                         doc.engineering_field_item_item_coding_table_prefix = item_prefix_check
+                    elif item_prefix_check and item_prefix_check == item_prefix:
+                        #code and prefix are valid and consistent
+                        return
                     else:
                         frappe.msgprint(_("Success: but Item code {0} is valid but not recognized as part of any coding schema. If you know what you are doing you can ignore this message.").format(item_code))
             else:
-                frappe.throw(_("Please set an Item Code or enable Item Coding Prefix to auto-generate a new code."))
+                frappe.throw(_("Error: Please set an Item Code or enable Item Coding Prefix to auto-generate a new code."))
     else:
-        frappe.throw(_("before_insert: method called by mistake. This is not a new document"))
+        frappe.throw(_("Error: before_insert: method called by mistake. This is not a new document"))
